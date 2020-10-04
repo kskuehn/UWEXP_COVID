@@ -1,7 +1,7 @@
 # UWEXP COVID Mixed Methods Study
 Data and analysis scripts for UWEXP COVID mixed methods study. 
 
-Data files: 
+# Data files included in repository: 
 
 Year2Year.csv: Data file used to compare 2019 and 2020 responses
 
