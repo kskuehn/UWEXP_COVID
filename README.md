@@ -31,7 +31,7 @@ Analysis scripts are here: https://kskuehn.github.io/UWEXP_COVID/
     PID
     date
     rank
-    Depressec
+    Depressed
     Anxious
     Frustrated
     Lonely
