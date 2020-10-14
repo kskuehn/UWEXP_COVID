@@ -1679,90 +1679,58 @@ mean(anx)</code></pre>
 <h1>Comparing pre to post in 2020</h1>
 <pre class="r"><code>pre.post&lt;-read.csv(&quot;/Users/kevinkuehn/Documents/UWEXP/COVID/pre.post.csv&quot;)
 
-mod1&lt;-lm(Q_BDI2~as.factor(tp), data=pre.post)
-
-summary(mod1)</code></pre>
+aov.1 &lt;- aov(Q_BDI2 ~ as.factor(tp) + Error(as.factor(PID)), data = pre.post)
+summary(aov.1)</code></pre>
 <pre><code>## 
-## Call:
-## lm(formula = Q_BDI2 ~ as.factor(tp), data = pre.post)
+## Error: as.factor(PID)
+##                Df Sum Sq Mean Sq F value Pr(&gt;F)
+## as.factor(tp)   1      6     6.4   0.045  0.832
+## Residuals     150  21213   141.4               
 ## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -13.510  -7.422  -1.510   5.262  29.578 
-## 
-## Coefficients:
-##                Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)     12.4218     0.7619   16.30   &lt;2e-16 ***
-## as.factor(tp)1   1.0884     1.0774    1.01    0.313    
+## Error: Within
+##                Df Sum Sq Mean Sq F value Pr(&gt;F)  
+## as.factor(tp)   1     99   99.38   3.805 0.0531 .
+## Residuals     141   3683   26.12                 
 ## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 9.237 on 292 degrees of freedom
-## Multiple R-squared:  0.003483,   Adjusted R-squared:  7.003e-05 
-## F-statistic: 1.021 on 1 and 292 DF,  p-value: 0.3132</code></pre>
-<pre class="r"><code>mod2&lt;-lm(Q_STAI~as.factor(tp), data=pre.post)
-
-summary(mod2)</code></pre>
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code>aov.2 &lt;- aov(Q_STAI ~ as.factor(tp) + Error(as.factor(PID)), data = pre.post)
+summary(aov.2)</code></pre>
 <pre><code>## 
-## Call:
-## lm(formula = Q_STAI ~ as.factor(tp), data = pre.post)
+## Error: as.factor(PID)
+##                Df Sum Sq Mean Sq F value Pr(&gt;F)
+## as.factor(tp)   1      1     0.9   0.005  0.945
+## Residuals     150  28504   190.0               
 ## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -24.2857  -8.2857   0.6463   7.7143  25.7143 
-## 
-## Coefficients:
-##                Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)     44.3537     0.8634  51.370   &lt;2e-16 ***
-## as.factor(tp)1   0.9320     1.2211   0.763    0.446    
+## Error: Within
+##                Df Sum Sq Mean Sq F value Pr(&gt;F)  
+## as.factor(tp)   1     69   69.01   2.788 0.0972 .
+## Residuals     141   3490   24.75                 
 ## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 10.47 on 292 degrees of freedom
-## Multiple R-squared:  0.001991,   Adjusted R-squared:  -0.001427 
-## F-statistic: 0.5825 on 1 and 292 DF,  p-value: 0.4459</code></pre>
-<pre class="r"><code>mod3&lt;-lm(Q_PSS~as.factor(tp), data=pre.post)
-
-summary(mod3)</code></pre>
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code>aov.3 &lt;- aov(Q_PSS ~ as.factor(tp) + Error(as.factor(PID)), data = pre.post)
+summary(aov.3)</code></pre>
 <pre><code>## 
-## Call:
-## lm(formula = Q_PSS ~ as.factor(tp), data = pre.post)
+## Error: as.factor(PID)
+##                Df Sum Sq Mean Sq F value Pr(&gt;F)
+## as.factor(tp)   1     29   28.90    0.33  0.566
+## Residuals     150  13118   87.45               
 ## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -18.6327  -4.8622  -0.6327   5.0612  25.3673 
-## 
-## Coefficients:
-##                Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)     26.9388     0.6042  44.585   &lt;2e-16 ***
-## as.factor(tp)1  -0.3061     0.8545  -0.358     0.72    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 7.326 on 292 degrees of freedom
-## Multiple R-squared:  0.0004393,  Adjusted R-squared:  -0.002984 
-## F-statistic: 0.1283 on 1 and 292 DF,  p-value: 0.7204</code></pre>
-<pre class="r"><code>mod4&lt;-lm(Q_UCLA~as.factor(tp), data=pre.post)
-
-summary(mod4)</code></pre>
+## Error: Within
+##                Df Sum Sq Mean Sq F value Pr(&gt;F)
+## as.factor(tp)   1    2.8   2.761   0.154  0.695
+## Residuals     141 2528.2  17.931</code></pre>
+<pre class="r"><code>aov.4 &lt;- aov(Q_UCLA ~ as.factor(tp) + Error(as.factor(PID)), data = pre.post)
+summary(aov.4)</code></pre>
 <pre><code>## 
-## Call:
-## lm(formula = Q_UCLA ~ as.factor(tp), data = pre.post)
+## Error: as.factor(PID)
+##                Df Sum Sq Mean Sq F value Pr(&gt;F)
+## as.factor(tp)   1     48   48.40   1.152  0.285
+## Residuals     150   6303   42.02               
 ## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -11.2177  -4.1769  -0.1973   3.7823  12.8231 
-## 
-## Coefficients:
-##                Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)    22.21769    0.41601  53.407   &lt;2e-16 ***
-## as.factor(tp)1 -0.04082    0.58832  -0.069    0.945    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 5.044 on 292 degrees of freedom
-## Multiple R-squared:  1.648e-05,  Adjusted R-squared:  -0.003408 
-## F-statistic: 0.004813 on 1 and 292 DF,  p-value: 0.9447</code></pre>
+## Error: Within
+##                Df Sum Sq Mean Sq F value Pr(&gt;F)
+## as.factor(tp)   1    2.8   2.761   0.362  0.548
+## Residuals     141 1074.2   7.619</code></pre>
 </div>
 <div id="comparing-change-over-time-in-2020-esm-data" class="section level1">
 <h1>Comparing change over time in 2020 ESM data</h1>
