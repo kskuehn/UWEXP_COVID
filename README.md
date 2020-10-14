@@ -14,6 +14,16 @@ Analysis scripts are here: https://kskuehn.github.io/UWEXP_COVID/
     Q_STAI: State-Trait Anxiety Inventory scale scores
     Q_PSS: Perceived Stress Scale Scores
     Q_UCLA: UCLA Loneliness Scale scores
+    
+## Within.csv
+ Data file that includes only participants in both 2019 and 2020
+ ### Variables included in this file:
+     PID: Participant ID
+     Phase: Variable specifying if 2019 or 2020 data 
+     Q_BDI: BDI-II scale scores  
+     Q_STAI: State-Trait Anxiety Inventory scale scores
+     Q_PSS: Perceived Stress Scale Scores
+     Q_UCLA: UCLA Loneliness Scale scores
 
 ## 2020pre.post.csv: 
   Data file to compare 2020 pre and post survey
