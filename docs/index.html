@@ -1771,11 +1771,6 @@ summary(fm1)</code></pre>
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>sjstats::icc(fm1)</code></pre>
-<pre><code>## # Intraclass Correlation Coefficient
-## 
-##      Adjusted ICC: 0.528
-##   Conditional ICC: 0.520</code></pre>
 <pre class="r"><code>fm1.2&lt;-lme(fixed=as.numeric(Depressed)~rank, data=UWEXP, random=~1|PID, na.action = na.omit)
 summary(fm1.2)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
@@ -1802,10 +1797,6 @@ summary(fm1.2)</code></pre>
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>BIC(fm1,fm1.2)</code></pre>
-<pre><code>##       df      BIC
-## fm1    6 4778.189
-## fm1.2  4 4894.744</code></pre>
 <pre class="r"><code>fm1.3&lt;-lme(fixed=as.numeric(Depressed)~rank+(rank^2), data=UWEXP, random=~rank|PID, na.action = na.omit)
 summary(fm1.3)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
@@ -1870,11 +1861,6 @@ summary(fm2)</code></pre>
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>sjstats::icc(fm2)</code></pre>
-<pre><code>## # Intraclass Correlation Coefficient
-## 
-##      Adjusted ICC: 0.513
-##   Conditional ICC: 0.510</code></pre>
 <pre class="r"><code>fm3&lt;-lme(fixed=as.numeric(Frustrated)~rank, data=UWEXP, random=~rank|PID, na.action = na.omit)
 summary(fm3)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
@@ -1904,11 +1890,6 @@ summary(fm3)</code></pre>
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>sjstats::icc(fm3)</code></pre>
-<pre><code>## # Intraclass Correlation Coefficient
-## 
-##      Adjusted ICC: 0.323
-##   Conditional ICC: 0.315</code></pre>
 <pre class="r"><code>fm4&lt;-lme(fixed=as.numeric(Lonely)~rank, data=UWEXP, random=~rank|PID, na.action = na.omit)
 summary(fm4)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
@@ -1938,11 +1919,6 @@ summary(fm4)</code></pre>
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>sjstats::icc(fm4)</code></pre>
-<pre><code>## # Intraclass Correlation Coefficient
-## 
-##      Adjusted ICC: 0.552
-##   Conditional ICC: 0.552</code></pre>
 <pre class="r"><code>fm5&lt;-lme(fixed=as.numeric(neg.aff)~rank, data=UWEXP, random=~rank|PID, na.action = na.omit)
 summary(fm5)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
@@ -1972,11 +1948,6 @@ summary(fm5)</code></pre>
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>sjstats::icc(fm5)</code></pre>
-<pre><code>## # Intraclass Correlation Coefficient
-## 
-##      Adjusted ICC: 0.558
-##   Conditional ICC: 0.547</code></pre>
 </div>
 <div id="subgroup-analysis-vulnerability-indicators" class="section level1">
 <h1>Subgroup Analysis: Vulnerability indicators</h1>
@@ -1991,287 +1962,286 @@ UWEXP$high_BDI2&lt;-NA
 UWEXP$high_BDI2[UWEXP$PID %in% ID==&quot;TRUE&quot;]&lt;-1
 UWEXP$high_BDI2[UWEXP$PID %in% ID==&quot;FALSE&quot;]&lt;-0
 
-mod1&lt;-lme(fixed = as.numeric(PHQ4) ~ rank+as.factor(high_BDI2),
+UWEXP$PHQ4.scale&lt;-c(scale(UWEXP$PHQ4,center=TRUE))
+UWEXP$PSS4.scale&lt;-c(scale(UWEXP$PSS4,center=TRUE))
+UWEXP$Depressed.scale&lt;-c(scale(UWEXP$Depressed, center=TRUE))
+UWEXP$Anxious.scale&lt;-c(scale(UWEXP$Anxious, center=TRUE))
+UWEXP$Lonely.scale&lt;-c(scale(UWEXP$Lonely,center=TRUE))
+UWEXP$neg.aff.scale&lt;-c(scale(UWEXP$neg.aff,center=TRUE))
+
+mod1&lt;-lme(fixed = as.numeric(PHQ4.scale) ~ rank+as.factor(high_BDI2),
          data = UWEXP,
-         random = ~ rank+as.factor(high_BDI2) | PID, na.action=na.omit)
+         random = ~ rank | PID, na.action=na.omit)
 
 summary(mod1)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
 ##        AIC      BIC    logLik
-##   4886.465 4937.357 -2433.232
+##   2478.591 2514.216 -1232.296
 ## 
 ## Random effects:
-##  Formula: ~rank + as.factor(high_BDI2) | PID
+##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##                       StdDev    Corr         
-## (Intercept)           1.5079148 (Intr) rank  
-## rank                  0.1305709  0.212       
-## as.factor(high_BDI2)1 2.2495981 -0.479 -0.371
-## Residual              1.4859628              
+##             StdDev     Corr  
+## (Intercept) 0.60025093 (Intr)
+## rank        0.04816207 0.053 
+## Residual    0.54454685       
 ## 
-## Fixed effects: as.numeric(PHQ4) ~ rank + as.factor(high_BDI2) 
-##                           Value Std.Error   DF   t-value p-value
-## (Intercept)           1.8599111 0.1679523 1055 11.074042       0
-## rank                  0.0648058 0.0142142 1055  4.559215       0
-## as.factor(high_BDI2)1 2.5925664 0.4325077  144  5.994266       0
+## Fixed effects: as.numeric(PHQ4.scale) ~ rank + as.factor(high_BDI2) 
+##                            Value  Std.Error   DF   t-value p-value
+## (Intercept)           -0.3662597 0.06497060 1055 -5.637314       0
+## rank                   0.0239310 0.00523108 1055  4.574781       0
+## as.factor(high_BDI2)1  0.9451656 0.14650169  144  6.451567       0
 ##  Correlation: 
 ##                       (Intr) rank  
-## rank                  -0.164       
-## as.factor(high_BDI2)1 -0.358 -0.125
+## rank                  -0.237       
+## as.factor(high_BDI2)1 -0.418 -0.001
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.3317307 -0.5353462 -0.1107272  0.4640667  5.3187600 
+## -3.3463062 -0.5340064 -0.1091517  0.4712059  5.1409156 
 ## 
 ## Number of Observations: 1202
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>mod2&lt;-lme(fixed = as.numeric(PSS4) ~ rank+as.factor(high_BDI2),
+<pre class="r"><code>mod2&lt;-lme(fixed = as.numeric(PSS4.scale) ~ rank+as.factor(high_BDI2),
          data = UWEXP,
-         random = ~ rank+as.factor(high_BDI2) | PID, na.action=na.omit)
+         random = ~ rank | PID, na.action=na.omit)
 
 summary(mod2)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
-##       AIC      BIC   logLik
-##   4947.24 4998.124 -2463.62
+##        AIC      BIC    logLik
+##   2493.086 2528.705 -1239.543
 ## 
 ## Random effects:
-##  Formula: ~rank + as.factor(high_BDI2) | PID
+##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##                       StdDev    Corr         
-## (Intercept)           1.9680510 (Intr) rank  
-## rank                  0.1329224 -0.162       
-## as.factor(high_BDI2)1 2.0231088 -0.664 -0.217
-## Residual              1.5156060              
+##             StdDev     Corr  
+## (Intercept) 0.68542123 (Intr)
+## rank        0.04779615 -0.203
+## Residual    0.54472234       
 ## 
-## Fixed effects: as.numeric(PSS4) ~ rank + as.factor(high_BDI2) 
-##                          Value Std.Error   DF   t-value p-value
-## (Intercept)           5.482211 0.2065033 1055 26.547812  0.0000
-## rank                  0.040291 0.0143958 1055  2.798780  0.0052
-## as.factor(high_BDI2)1 2.592081 0.3603774  143  7.192685  0.0000
+## Fixed effects: as.numeric(PSS4.scale) ~ rank + as.factor(high_BDI2) 
+##                            Value  Std.Error   DF   t-value p-value
+## (Intercept)           -0.2982287 0.07231617 1055 -4.123956  0.0000
+## rank                   0.0144692 0.00517518 1055  2.795877  0.0053
+## as.factor(high_BDI2)1  0.9531683 0.15440604  143  6.173128  0.0000
 ##  Correlation: 
 ##                       (Intr) rank  
-## rank                  -0.354       
-## as.factor(high_BDI2)1 -0.472 -0.081
+## rank                  -0.386       
+## as.factor(high_BDI2)1 -0.398 -0.002
 ## 
 ## Standardized Within-Group Residuals:
 ##         Min          Q1         Med          Q3         Max 
-## -3.27303583 -0.58769477 -0.04756121  0.48355893  3.58942860 
+## -3.25301514 -0.58800671 -0.05172543  0.48821061  3.58519921 
 ## 
 ## Number of Observations: 1201
 ## Number of Groups: 145</code></pre>
-<pre class="r"><code>mod3&lt;-lme(fixed = as.numeric(Depressed) ~ rank+as.factor(high_BDI2),
+<pre class="r"><code>mod3&lt;-lme(fixed = as.numeric(Depressed.scale) ~ rank+as.factor(high_BDI2),
          data = UWEXP,
-         random = ~ rank+as.factor(high_BDI2) | PID, na.action=na.omit)
+         random = ~ rank| PID, na.action=na.omit)
 
 summary(mod3)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
 ##        AIC      BIC    logLik
-##   4716.483 4774.328 -2348.242
+##   5598.587 5639.079 -2792.294
 ## 
 ## Random effects:
-##  Formula: ~rank + as.factor(high_BDI2) | PID
+##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##                       StdDev     Corr         
-## (Intercept)           0.38921352 (Intr) rank  
-## rank                  0.04097327 -0.132       
-## as.factor(high_BDI2)1 0.61402547 -0.320 -0.109
-## Residual              0.57624957              
+##             StdDev     Corr  
+## (Intercept) 0.53350699 (Intr)
+## rank        0.04935659 -0.175
+## Residual    0.69222522       
 ## 
-## Fixed effects: as.numeric(Depressed) ~ rank + as.factor(high_BDI2) 
-##                           Value  Std.Error   DF  t-value p-value
-## (Intercept)           0.2348435 0.04425416 2259 5.306698       0
-## rank                  0.0205440 0.00422359 2259 4.864101       0
-## as.factor(high_BDI2)1 0.6137794 0.12887179  144 4.762713       0
+## Fixed effects: as.numeric(Depressed.scale) ~ rank + as.factor(high_BDI2) 
+##                            Value  Std.Error   DF   t-value p-value
+## (Intercept)           -0.3458834 0.05799367 2259 -5.964156       0
+## rank                   0.0246793 0.00508292 2259  4.855344       0
+## as.factor(high_BDI2)1  0.7388064 0.12511796  144  5.904879       0
 ##  Correlation: 
 ##                       (Intr) rank  
-## rank                  -0.359       
-## as.factor(high_BDI2)1 -0.286 -0.036
+## rank                  -0.365       
+## as.factor(high_BDI2)1 -0.401 -0.002
 ## 
 ## Standardized Within-Group Residuals:
 ##         Min          Q1         Med          Q3         Max 
-## -3.19591694 -0.43364895 -0.11191514  0.06948645  5.76657906 
+## -3.08718790 -0.43613720 -0.10312636  0.07056787  5.73852419 
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>mod4&lt;-lme(fixed = as.numeric(Anxious) ~ rank+as.factor(high_BDI2),
+<pre class="r"><code>mod4&lt;-lme(fixed = as.numeric(Anxious.scale) ~ rank+as.factor(high_BDI2),
          data = UWEXP,
-         random = ~ rank+as.factor(high_BDI2) | PID, na.action=na.omit)
+         random = ~ rank | PID, na.action=na.omit)
 
 summary(mod4)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
 ##        AIC      BIC    logLik
-##   5351.232 5409.077 -2665.616
+##   5687.106 5727.597 -2836.553
 ## 
 ## Random effects:
-##  Formula: ~rank + as.factor(high_BDI2) | PID
+##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##                       StdDev     Corr         
-## (Intercept)           0.50282375 (Intr) rank  
-## rank                  0.04413194  0.005       
-## as.factor(high_BDI2)1 0.68496615 -0.448 -0.413
-## Residual              0.65632051              
+##             StdDev     Corr  
+## (Intercept) 0.58346209 (Intr)
+## rank        0.04751435 -0.147
+## Residual    0.70395634       
 ## 
-## Fixed effects: as.numeric(Anxious) ~ rank + as.factor(high_BDI2) 
-##                           Value  Std.Error   DF   t-value p-value
-## (Intercept)           0.6345115 0.05514320 2259 11.506613  0.0000
-## rank                  0.0137064 0.00463754 2259  2.955527  0.0032
-## as.factor(high_BDI2)1 0.3095150 0.12936587  144  2.392555  0.0180
+## Fixed effects: as.numeric(Anxious.scale) ~ rank + as.factor(high_BDI2) 
+##                             Value  Std.Error   DF   t-value p-value
+## (Intercept)           -0.17721221 0.06218679 2259 -2.849676  0.0044
+## rank                   0.01463416 0.00498609 2259  2.934997  0.0034
+## as.factor(high_BDI2)1  0.31255172 0.13541037  144  2.308182  0.0224
 ##  Correlation: 
 ##                       (Intr) rank  
-## rank                  -0.263       
-## as.factor(high_BDI2)1 -0.358 -0.146
+## rank                  -0.343       
+## as.factor(high_BDI2)1 -0.405 -0.001
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.5862335 -0.5468328 -0.1681750  0.4876448  3.7929273 
+## -3.3998266 -0.5445685 -0.1554424  0.4868893  3.7918012 
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>mod5&lt;-lme(fixed = as.numeric(neg.aff) ~ rank+as.factor(high_BDI2),
+<pre class="r"><code>mod5&lt;-lme(fixed = as.numeric(neg.aff.scale) ~ rank+as.factor(high_BDI2),
          data = UWEXP,
-         random = ~ rank+as.factor(high_BDI2) | PID, na.action=na.omit)
+         random = ~ rank| PID, na.action=na.omit)
 
 summary(mod5)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
-##        AIC      BIC    logLik
-##   3603.781 3661.626 -1791.891
+##       AIC      BIC    logLik
+##   5474.29 5514.781 -2730.145
 ## 
 ## Random effects:
-##  Formula: ~rank + as.factor(high_BDI2) | PID
+##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##                       StdDev     Corr         
-## (Intercept)           0.29496635 (Intr) rank  
-## rank                  0.03351257  0.266       
-## as.factor(high_BDI2)1 0.56078766 -0.386 -0.465
-## Residual              0.45541612              
+##             StdDev     Corr  
+## (Intercept) 0.53848062 (Intr)
+## rank        0.04976845 -0.047
+## Residual    0.67074395       
 ## 
-## Fixed effects: as.numeric(neg.aff) ~ rank + as.factor(high_BDI2) 
-##                           Value  Std.Error   DF   t-value p-value
-## (Intercept)           0.3520280 0.03450290 2259 10.202852   0e+00
-## rank                  0.0201345 0.00341402 2259  5.897589   0e+00
-## as.factor(high_BDI2)1 0.3635456 0.10497865  144  3.463043   7e-04
+## Fixed effects: as.numeric(neg.aff.scale) ~ rank + as.factor(high_BDI2) 
+##                            Value  Std.Error   DF   t-value p-value
+## (Intercept)           -0.3452121 0.05821512 2259 -5.929939   0e+00
+## rank                   0.0294738 0.00506040 2259  5.824394   0e+00
+## as.factor(high_BDI2)1  0.5343508 0.12987469  144  4.114357   1e-04
 ##  Correlation: 
 ##                       (Intr) rank  
-## rank                  -0.125       
-## as.factor(high_BDI2)1 -0.302 -0.170
+## rank                  -0.272       
+## as.factor(high_BDI2)1 -0.415 -0.001
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.7956308 -0.5189198 -0.1487672  0.3898078  5.3941874 
+## -3.6618228 -0.5111371 -0.1366786  0.3864007  5.4068613 
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>mod6&lt;-lme(fixed = as.numeric(Lonely) ~ rank+as.factor(high_BDI2),
+<pre class="r"><code>mod6&lt;-lme(fixed = as.numeric(Lonely.scale) ~ rank+as.factor(high_BDI2),
          data = UWEXP,
-         random = ~ rank+as.factor(high_BDI2) | PID, na.action=na.omit)
+         random = ~ rank | PID, na.action=na.omit)
 
 summary(mod6)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
-##       AIC      BIC    logLik
-##   5479.97 5537.815 -2729.985
+##        AIC      BIC    logLik
+##   5512.891 5553.382 -2749.446
 ## 
 ## Random effects:
-##  Formula: ~rank + as.factor(high_BDI2) | PID
+##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##                       StdDev    Corr         
-## (Intercept)           0.6896090 (Intr) rank  
-## rank                  0.0452646 -0.293       
-## as.factor(high_BDI2)1 0.7666811 -0.506  0.041
-## Residual              0.6673296              
+##             StdDev     Corr  
+## (Intercept) 0.70097459 (Intr)
+## rank        0.04561903 -0.278
+## Residual    0.67273209       
 ## 
-## Fixed effects: as.numeric(Lonely) ~ rank + as.factor(high_BDI2) 
-##                           Value  Std.Error   DF  t-value p-value
-## (Intercept)           0.6925217 0.06939513 2259 9.979399  0.0000
-## rank                  0.0020638 0.00473963 2259 0.435439  0.6633
-## as.factor(high_BDI2)1 0.3333154 0.15556564  144 2.142603  0.0338
+## Fixed effects: as.numeric(Lonely.scale) ~ rank + as.factor(high_BDI2) 
+##                            Value  Std.Error   DF    t-value p-value
+## (Intercept)           -0.0857646 0.07049365 2259 -1.2166286  0.2239
+## rank                   0.0020660 0.00477753 2259  0.4324329  0.6655
+## as.factor(high_BDI2)1  0.3319881 0.15028620  144  2.2090391  0.0288
 ##  Correlation: 
 ##                       (Intr) rank  
-## rank                  -0.404       
-## as.factor(high_BDI2)1 -0.378  0.011
+## rank                  -0.393       
+## as.factor(high_BDI2)1 -0.396 -0.002
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -4.4453020 -0.5121015 -0.1071817  0.4895498  5.1425144 
+## -4.4553920 -0.5107203 -0.1063520  0.4907968  5.1428807 
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>mod7&lt;-lme(fixed = as.numeric(PHQ4) ~ as.factor(high_BDI2) + rank + rank:as.factor(high_BDI2),
+<pre class="r"><code>mod7&lt;-lme(fixed = as.numeric(PHQ4.scale) ~ as.factor(high_BDI2) + rank + rank:as.factor(high_BDI2),
           data = UWEXP,
-          random = ~ rank+as.factor(high_BDI2) | PID, na.action=na.omit)
+          random = ~ rank | PID, na.action=na.omit)
 
 summary(mod7)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
-##        AIC      BIC    logLik
-##   4893.235 4949.207 -2435.617
+##        AIC      BIC   logLik
+##   2487.339 2528.046 -1235.67
 ## 
 ## Random effects:
-##  Formula: ~rank + as.factor(high_BDI2) | PID
+##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##                       StdDev    Corr         
-## (Intercept)           1.5080153 (Intr) rank  
-## rank                  0.1313595  0.209       
-## as.factor(high_BDI2)1 2.2484105 -0.478 -0.370
-## Residual              1.4859417              
+##             StdDev     Corr  
+## (Intercept) 0.60023186 (Intr)
+## rank        0.04844472 0.051 
+## Residual    0.54454805       
 ## 
-## Fixed effects: as.numeric(PHQ4) ~ as.factor(high_BDI2) + rank + rank:as.factor(high_BDI2) 
-##                                Value Std.Error   DF   t-value p-value
-## (Intercept)                1.8615648 0.1684846 1054 11.048875  0.0000
-## as.factor(high_BDI2)1      2.5677758 0.4692996  144  5.471507  0.0000
-## rank                       0.0639022 0.0158381 1054  4.034710  0.0001
-## as.factor(high_BDI2)1:rank 0.0049450 0.0364631 1054  0.135615  0.8922
+## Fixed effects: as.numeric(PHQ4.scale) ~ as.factor(high_BDI2) + rank + rank:as.factor(high_BDI2) 
+##                                 Value  Std.Error   DF   t-value p-value
+## (Intercept)                -0.3647986 0.06539439 1054 -5.578438  0.0000
+## as.factor(high_BDI2)1       0.9370709 0.15178645  144  6.173614  0.0000
+## rank                        0.0234269 0.00582953 1054  4.018663  0.0001
+## as.factor(high_BDI2)1:rank  0.0027214 0.01340794 1054  0.202968  0.8392
 ##  Correlation: 
 ##                            (Intr) as.(_BDI2)1 rank  
-## as.factor(high_BDI2)1      -0.359                   
-## rank                       -0.181  0.065            
-## as.factor(high_BDI2)1:rank  0.079 -0.388      -0.434
+## as.factor(high_BDI2)1      -0.431                   
+## rank                       -0.262  0.113            
+## as.factor(high_BDI2)1:rank  0.114 -0.262      -0.435
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.3250484 -0.5350424 -0.1109613  0.4656950  5.3116682 
+## -3.3366348 -0.5348876 -0.1071118  0.4741261  5.1336908 
 ## 
 ## Number of Observations: 1202
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>mod8&lt;-lme(fixed = as.numeric(PHQ4) ~ as.factor(high_BDI2) + rank + rank:as.factor(high_BDI2),
+<pre class="r"><code>mod8&lt;-lme(fixed = as.numeric(PHQ4.scale) ~ as.factor(high_BDI2) + rank + rank:as.factor(high_BDI2),
           data = UWEXP,
-          random = ~ rank+as.factor(high_BDI2) | PID, na.action=na.omit)
+          random = ~ rank | PID, na.action=na.omit)
 
 summary(mod8)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
-##        AIC      BIC    logLik
-##   4893.235 4949.207 -2435.617
+##        AIC      BIC   logLik
+##   2487.339 2528.046 -1235.67
 ## 
 ## Random effects:
-##  Formula: ~rank + as.factor(high_BDI2) | PID
+##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##                       StdDev    Corr         
-## (Intercept)           1.5080153 (Intr) rank  
-## rank                  0.1313595  0.209       
-## as.factor(high_BDI2)1 2.2484105 -0.478 -0.370
-## Residual              1.4859417              
+##             StdDev     Corr  
+## (Intercept) 0.60023186 (Intr)
+## rank        0.04844472 0.051 
+## Residual    0.54454805       
 ## 
-## Fixed effects: as.numeric(PHQ4) ~ as.factor(high_BDI2) + rank + rank:as.factor(high_BDI2) 
-##                                Value Std.Error   DF   t-value p-value
-## (Intercept)                1.8615648 0.1684846 1054 11.048875  0.0000
-## as.factor(high_BDI2)1      2.5677758 0.4692996  144  5.471507  0.0000
-## rank                       0.0639022 0.0158381 1054  4.034710  0.0001
-## as.factor(high_BDI2)1:rank 0.0049450 0.0364631 1054  0.135615  0.8922
+## Fixed effects: as.numeric(PHQ4.scale) ~ as.factor(high_BDI2) + rank + rank:as.factor(high_BDI2) 
+##                                 Value  Std.Error   DF   t-value p-value
+## (Intercept)                -0.3647986 0.06539439 1054 -5.578438  0.0000
+## as.factor(high_BDI2)1       0.9370709 0.15178645  144  6.173614  0.0000
+## rank                        0.0234269 0.00582953 1054  4.018663  0.0001
+## as.factor(high_BDI2)1:rank  0.0027214 0.01340794 1054  0.202968  0.8392
 ##  Correlation: 
 ##                            (Intr) as.(_BDI2)1 rank  
-## as.factor(high_BDI2)1      -0.359                   
-## rank                       -0.181  0.065            
-## as.factor(high_BDI2)1:rank  0.079 -0.388      -0.434
+## as.factor(high_BDI2)1      -0.431                   
+## rank                       -0.262  0.113            
+## as.factor(high_BDI2)1:rank  0.114 -0.262      -0.435
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.3250484 -0.5350424 -0.1109613  0.4656950  5.3116682 
+## -3.3366348 -0.5348876 -0.1071118  0.4741261  5.1336908 
 ## 
 ## Number of Observations: 1202
 ## Number of Groups: 146</code></pre>
@@ -2284,285 +2254,279 @@ UWEXP$high_STAI&lt;-NA
 UWEXP$high_STAI[UWEXP$PID %in% ID==&quot;TRUE&quot;]&lt;-1
 UWEXP$high_STAI[UWEXP$PID %in% ID==&quot;FALSE&quot;]&lt;-0
 
-mod1&lt;-lme(fixed = as.numeric(PHQ4) ~ rank+as.factor(high_STAI),
+mod1&lt;-lme(fixed = as.numeric(PHQ4.scale) ~ rank+as.factor(high_STAI),
          data = UWEXP,
-         random = ~ rank+as.factor(high_STAI) | PID, na.action=na.omit)
+         random = ~ rank | PID, na.action=na.omit)
 
 summary(mod1)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
 ##        AIC      BIC    logLik
-##   4886.827 4937.719 -2433.413
+##   2476.323 2511.947 -1231.161
 ## 
 ## Random effects:
-##  Formula: ~rank + as.factor(high_STAI) | PID
+##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##                       StdDev    Corr         
-## (Intercept)           1.5331427 (Intr) rank  
-## rank                  0.1307303  0.125       
-## as.factor(high_STAI)1 2.0812525 -0.454 -0.040
-## Residual              1.4854213              
+##             StdDev     Corr  
+## (Intercept) 0.58895364 (Intr)
+## rank        0.04811073 0.1   
+## Residual    0.54453606       
 ## 
-## Fixed effects: as.numeric(PHQ4) ~ rank + as.factor(high_STAI) 
-##                           Value Std.Error   DF   t-value p-value
-## (Intercept)           1.8918041 0.1667765 1055 11.343349       0
-## rank                  0.0647378 0.0142251 1055  4.550969       0
-## as.factor(high_STAI)1 2.8172498 0.4775238  144  5.899705       0
+## Fixed effects: as.numeric(PHQ4.scale) ~ rank + as.factor(high_STAI) 
+##                            Value  Std.Error   DF   t-value p-value
+## (Intercept)           -0.3537880 0.06314615 1055 -5.602685       0
+## rank                   0.0238158 0.00522708 1055  4.556228       0
+## as.factor(high_STAI)1  1.0331228 0.15512549  144  6.659916       0
 ##  Correlation: 
 ##                       (Intr) rank  
-## rank                  -0.212       
-## as.factor(high_STAI)1 -0.330 -0.015
+## rank                  -0.216       
+## as.factor(high_STAI)1 -0.387 -0.005
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.0600138 -0.5304496 -0.1044730  0.4665137  5.2348227 
+## -3.0488523 -0.5326679 -0.1018337  0.4662627  5.1820037 
 ## 
 ## Number of Observations: 1202
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>mod2&lt;-lme(fixed = as.numeric(PSS4) ~ rank+as.factor(high_STAI),
+<pre class="r"><code>mod2&lt;-lme(fixed = as.numeric(PSS4.scale) ~ rank+as.factor(high_STAI),
          data = UWEXP,
-         random = ~ rank+as.factor(high_STAI) | PID, na.action=na.omit)
+         random = ~ rank | PID, na.action=na.omit)
 
 summary(mod2)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
 ##        AIC      BIC    logLik
-##   4941.924 4992.808 -2460.962
+##   2486.786 2522.404 -1236.393
 ## 
 ## Random effects:
-##  Formula: ~rank + as.factor(high_STAI) | PID
+##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##                       StdDev    Corr         
-## (Intercept)           1.9341483 (Intr) rank  
-## rank                  0.1328247 -0.233       
-## as.factor(high_STAI)1 2.9387025 -0.945  0.225
-## Residual              1.5154655              
+##             StdDev     Corr  
+## (Intercept) 0.66504312 (Intr)
+## rank        0.04773134 -0.191
+## Residual    0.54470901       
 ## 
-## Fixed effects: as.numeric(PSS4) ~ rank + as.factor(high_STAI) 
-##                          Value Std.Error   DF   t-value p-value
-## (Intercept)           5.497452 0.2002466 1055 27.453404  0.0000
-## rank                  0.040629 0.0143854 1055  2.824321  0.0048
-## as.factor(high_STAI)1 3.163747 0.3914530  143  8.082060  0.0000
+## Fixed effects: as.numeric(PSS4.scale) ~ rank + as.factor(high_STAI) 
+##                            Value  Std.Error   DF   t-value p-value
+## (Intercept)           -0.2946503 0.06975862 1055 -4.223855   0.000
+## rank                   0.0145330 0.00517095 1055  2.810509   0.005
+## as.factor(high_STAI)1  1.0968589 0.16130360  143  6.799965   0.000
 ##  Correlation: 
 ##                       (Intr) rank  
-## rank                  -0.408       
-## as.factor(high_STAI)1 -0.468  0.102
+## rank                  -0.389       
+## as.factor(high_STAI)1 -0.367  0.000
 ## 
 ## Standardized Within-Group Residuals:
 ##         Min          Q1         Med          Q3         Max 
-## -3.25348248 -0.58651705 -0.05021459  0.51238879  3.58071202 
+## -3.24419884 -0.58389908 -0.05013853  0.51629144  3.58574180 
 ## 
 ## Number of Observations: 1201
 ## Number of Groups: 145</code></pre>
-<pre class="r"><code>mod3&lt;-lme(fixed = as.numeric(Depressed) ~ rank+as.factor(high_STAI),
+<pre class="r"><code>mod3&lt;-lme(fixed = as.numeric(Depressed.scale) ~ rank+as.factor(high_STAI),
          data = UWEXP,
-         random = ~ rank+as.factor(high_STAI) | PID, na.action=na.omit)
+         random = ~ rank | PID, na.action=na.omit)
 
 summary(mod3)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
-##        AIC      BIC  logLik
-##   4732.799 4790.644 -2356.4
+##        AIC      BIC    logLik
+##   5612.872 5653.363 -2799.436
 ## 
 ## Random effects:
-##  Formula: ~rank + as.factor(high_STAI) | PID
+##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##                       StdDev     Corr         
-## (Intercept)           0.42595966 (Intr) rank  
-## rank                  0.04087703  0.017       
-## as.factor(high_STAI)1 0.60313534 -0.430 -0.359
-## Residual              0.57634394              
+##             StdDev     Corr  
+## (Intercept) 0.56318053 (Intr)
+## rank        0.04930245 -0.149
+## Residual    0.69226913       
 ## 
-## Fixed effects: as.numeric(Depressed) ~ rank + as.factor(high_STAI) 
-##                           Value  Std.Error   DF  t-value p-value
-## (Intercept)           0.2695163 0.04651187 2259 5.794570   0e+00
-## rank                  0.0206120 0.00421693 2259 4.887912   0e+00
-## as.factor(high_STAI)1 0.4805532 0.12523438  144 3.837231   2e-04
+## Fixed effects: as.numeric(Depressed.scale) ~ rank + as.factor(high_STAI) 
+##                            Value  Std.Error   DF   t-value p-value
+## (Intercept)           -0.3021860 0.05945874 2259 -5.082280       0
+## rank                   0.0246567 0.00507959 2259  4.854078       0
+## as.factor(high_STAI)1  0.5932084 0.14029186  144  4.228388       0
 ##  Correlation: 
 ##                       (Intr) rank  
-## rank                  -0.256       
-## as.factor(high_STAI)1 -0.318 -0.115
+## rank                  -0.345       
+## as.factor(high_STAI)1 -0.372 -0.003
 ## 
 ## Standardized Within-Group Residuals:
 ##         Min          Q1         Med          Q3         Max 
-## -3.10364908 -0.43238769 -0.11005544  0.06070097  5.62434181 
+## -3.07301017 -0.43587090 -0.10408762  0.08055724  5.64518136 
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>mod4&lt;-lme(fixed = as.numeric(Anxious) ~ rank+as.factor(high_STAI),
+<pre class="r"><code>mod4&lt;-lme(fixed = as.numeric(Anxious.scale) ~ rank+as.factor(high_STAI),
          data = UWEXP,
-         random = ~ rank+as.factor(high_STAI) | PID, na.action=na.omit)
+         random = ~ rank | PID, na.action=na.omit)
 
 summary(mod4)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
 ##        AIC      BIC    logLik
-##   5350.273 5408.118 -2665.136
+##   5682.697 5723.188 -2834.349
 ## 
 ## Random effects:
-##  Formula: ~rank + as.factor(high_STAI) | PID
+##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##                       StdDev     Corr         
-## (Intercept)           0.51436915 (Intr) rank  
-## rank                  0.04421647 -0.133       
-## as.factor(high_STAI)1 0.69413138 -0.507 -0.044
-## Residual              0.65625315              
+##             StdDev    Corr  
+## (Intercept) 0.5727224 (Intr)
+## rank        0.0474762 -0.147
+## Residual    0.7039719       
 ## 
-## Fixed effects: as.numeric(Anxious) ~ rank + as.factor(high_STAI) 
-##                           Value  Std.Error   DF   t-value p-value
-## (Intercept)           0.6214688 0.05488329 2259 11.323461  0.0000
-## rank                  0.0136306 0.00464296 2259  2.935764  0.0034
-## as.factor(high_STAI)1 0.4170759 0.14639143  144  2.849046  0.0050
+## Fixed effects: as.numeric(Anxious.scale) ~ rank + as.factor(high_STAI) 
+##                            Value  Std.Error   DF   t-value p-value
+## (Intercept)           -0.1895080 0.06044055 2259 -3.135444  0.0017
+## rank                   0.0146113 0.00498352 2259  2.931930  0.0034
+## as.factor(high_STAI)1  0.4459691 0.14228241  144  3.134394  0.0021
 ##  Correlation: 
 ##                       (Intr) rank  
-## rank                  -0.348       
-## as.factor(high_STAI)1 -0.324 -0.016
+## rank                  -0.350       
+## as.factor(high_STAI)1 -0.372 -0.003
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.5077369 -0.5501330 -0.1578798  0.4801797  3.7919198 
+## -3.4142417 -0.5460810 -0.1564150  0.4808662  3.7926034 
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>mod5&lt;-lme(fixed = as.numeric(neg.aff) ~ rank+as.factor(high_STAI),
+<pre class="r"><code>mod5&lt;-lme(fixed = as.numeric(neg.aff.scale) ~ rank+as.factor(high_STAI),
          data = UWEXP,
-         random = ~ rank+as.factor(high_STAI) | PID, na.action=na.omit)
+         random = ~ rank | PID, na.action=na.omit)
 
 summary(mod5)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
-##        AIC      BIC    logLik
-##   3602.401 3660.246 -1791.201
+##        AIC     BIC    logLik
+##   5471.638 5512.13 -2728.819
 ## 
 ## Random effects:
-##  Formula: ~rank + as.factor(high_STAI) | PID
+##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##                       StdDev     Corr         
-## (Intercept)           0.29649257 (Intr) rank  
-## rank                  0.03363746  0.290       
-## as.factor(high_STAI)1 0.55825565 -0.412 -0.427
-## Residual              0.45534021              
+##             StdDev     Corr  
+## (Intercept) 0.53111678 (Intr)
+## rank        0.04966779 -0.038
+## Residual    0.67079910       
 ## 
-## Fixed effects: as.numeric(neg.aff) ~ rank + as.factor(high_STAI) 
-##                           Value  Std.Error   DF   t-value p-value
-## (Intercept)           0.3538891 0.03400474 2259 10.407054   0e+00
-## rank                  0.0200145 0.00342257 2259  5.847805   0e+00
-## as.factor(high_STAI)1 0.4114322 0.11265679  144  3.652085   4e-04
+## Fixed effects: as.numeric(neg.aff.scale) ~ rank + as.factor(high_STAI) 
+##                            Value  Std.Error   DF   t-value p-value
+## (Intercept)           -0.3419714 0.05673743 2259 -6.027264       0
+## rank                   0.0293761 0.00505350 2259  5.813018       0
+## as.factor(high_STAI)1  0.6108894 0.13738606  144  4.446517       0
 ##  Correlation: 
 ##                       (Intr) rank  
-## rank                  -0.107       
-## as.factor(high_STAI)1 -0.283 -0.144
+## rank                  -0.272       
+## as.factor(high_STAI)1 -0.381 -0.005
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.7848022 -0.5229576 -0.1489356  0.3961350  5.3933129 
+## -3.6479762 -0.5148850 -0.1380086  0.3876434  5.4064136 
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>mod6&lt;-lme(fixed = as.numeric(Lonely) ~ rank+as.factor(high_STAI),
+<pre class="r"><code>mod6&lt;-lme(fixed = as.numeric(Lonely.scale) ~ rank+as.factor(high_STAI),
          data = UWEXP,
-         random = ~ rank+as.factor(high_STAI) | PID, na.action=na.omit)
+         random = ~ rank| PID, na.action=na.omit)
 
 summary(mod6)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
 ##        AIC      BIC    logLik
-##   5481.885 5539.729 -2730.942
+##   5515.448 5555.939 -2750.724
 ## 
 ## Random effects:
-##  Formula: ~rank + as.factor(high_STAI) | PID
+##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##                       StdDev     Corr         
-## (Intercept)           0.71576133 (Intr) rank  
-## rank                  0.04523269 -0.265       
-## as.factor(high_STAI)1 0.72257563 -0.629 -0.030
-## Residual              0.66735462              
+##             StdDev     Corr  
+## (Intercept) 0.70904850 (Intr)
+## rank        0.04562334 -0.28 
+## Residual    0.67273506       
 ## 
-## Fixed effects: as.numeric(Lonely) ~ rank + as.factor(high_STAI) 
-##                           Value  Std.Error   DF   t-value p-value
-## (Intercept)           0.7158987 0.07067073 2259 10.130059  0.0000
-## rank                  0.0020795 0.00473788 2259  0.438909  0.6608
-## as.factor(high_STAI)1 0.2296816 0.14408809  144  1.594036  0.1131
+## Fixed effects: as.numeric(Lonely.scale) ~ rank + as.factor(high_STAI) 
+##                             Value  Std.Error   DF    t-value p-value
+## (Intercept)           -0.06134679 0.07017888 2259 -0.8741489  0.3821
+## rank                   0.00209628 0.00477775 2259  0.4387590  0.6609
+## as.factor(high_STAI)1  0.23475607 0.16175129  144  1.4513397  0.1489
 ##  Correlation: 
 ##                       (Intr) rank  
-## rank                  -0.387       
-## as.factor(high_STAI)1 -0.414 -0.009
+## rank                  -0.400       
+## as.factor(high_STAI)1 -0.365  0.001
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -4.4603191 -0.5122401 -0.1039510  0.4921472  5.1424030 
+## -4.4518943 -0.5129066 -0.1067653  0.4910986  5.1420264 
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>mod7&lt;-lme(fixed = as.numeric(PHQ4) ~ as.factor(high_STAI) + rank + rank:as.factor(high_STAI),
+<pre class="r"><code>mod7&lt;-lme(fixed = as.numeric(PHQ4.scale) ~ as.factor(high_STAI) + rank + rank:as.factor(high_STAI),
           data = UWEXP,
-          random = ~ as.factor(high_STAI) | PID, na.action=na.omit)
+          random = ~ rank | PID, na.action=na.omit)
 
 summary(mod7)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
 ##        AIC      BIC    logLik
-##   4983.547 5024.254 -2483.774
+##   2484.688 2525.395 -1234.344
 ## 
 ## Random effects:
-##  Formula: ~as.factor(high_STAI) | PID
+##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##                       StdDev   Corr  
-## (Intercept)           1.924352 (Intr)
-## as.factor(high_STAI)1 2.572024 -0.475
-## Residual              1.628319       
+##             StdDev     Corr  
+## (Intercept) 0.58948853 (Intr)
+## rank        0.04824586 0.096 
+## Residual    0.54459396       
 ## 
-## Fixed effects: as.numeric(PHQ4) ~ as.factor(high_STAI) + rank + rank:as.factor(high_STAI) 
-##                                 Value Std.Error   DF   t-value p-value
-## (Intercept)                 1.8962546 0.2016479 1054  9.403790  0.0000
-## as.factor(high_STAI)1       2.9417109 0.5844469  144  5.033324  0.0000
-## rank                        0.0660532 0.0104628 1054  6.313148  0.0000
-## as.factor(high_STAI)1:rank -0.0337243 0.0274849 1054 -1.227011  0.2201
+## Fixed effects: as.numeric(PHQ4.scale) ~ as.factor(high_STAI) + rank + rank:as.factor(high_STAI) 
+##                                 Value  Std.Error   DF   t-value p-value
+## (Intercept)                -0.3566573 0.06344878 1054 -5.621185  0.0000
+## as.factor(high_STAI)1       1.0529288 0.16028601  144  6.569063  0.0000
+## rank                        0.0249127 0.00568119 1054  4.385119  0.0000
+## as.factor(high_STAI)1:rank -0.0072568 0.01464389 1054 -0.495551  0.6203
 ##  Correlation: 
 ##                            (Intr) as.(_STAI)1 rank  
-## as.factor(high_STAI)1      -0.345                   
-## rank                       -0.436  0.150            
-## as.factor(high_STAI)1:rank  0.166 -0.381      -0.381
+## as.factor(high_STAI)1      -0.396                   
+## rank                       -0.235  0.093            
+## as.factor(high_STAI)1:rank  0.091 -0.251      -0.388
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.1561564 -0.5457605 -0.1046711  0.4941852  5.4954945 
+## -3.0552264 -0.5328760 -0.1029138  0.4636747  5.1825472 
 ## 
 ## Number of Observations: 1202
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>mod8&lt;-lme(fixed = as.numeric(PHQ4) ~ as.factor(high_STAI) + rank + rank:as.factor(high_STAI),
+<pre class="r"><code>mod8&lt;-lme(fixed = as.numeric(PHQ4.scale) ~ as.factor(high_STAI) + rank + rank:as.factor(high_STAI),
           data = UWEXP,
-          random = ~ as.factor(high_STAI) | PID, na.action=na.omit)
+          random = ~ rank| PID, na.action=na.omit)
 
 summary(mod8)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
 ##        AIC      BIC    logLik
-##   4983.547 5024.254 -2483.774
+##   2484.688 2525.395 -1234.344
 ## 
 ## Random effects:
-##  Formula: ~as.factor(high_STAI) | PID
+##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##                       StdDev   Corr  
-## (Intercept)           1.924352 (Intr)
-## as.factor(high_STAI)1 2.572024 -0.475
-## Residual              1.628319       
+##             StdDev     Corr  
+## (Intercept) 0.58948853 (Intr)
+## rank        0.04824586 0.096 
+## Residual    0.54459396       
 ## 
-## Fixed effects: as.numeric(PHQ4) ~ as.factor(high_STAI) + rank + rank:as.factor(high_STAI) 
-##                                 Value Std.Error   DF   t-value p-value
-## (Intercept)                 1.8962546 0.2016479 1054  9.403790  0.0000
-## as.factor(high_STAI)1       2.9417109 0.5844469  144  5.033324  0.0000
-## rank                        0.0660532 0.0104628 1054  6.313148  0.0000
-## as.factor(high_STAI)1:rank -0.0337243 0.0274849 1054 -1.227011  0.2201
+## Fixed effects: as.numeric(PHQ4.scale) ~ as.factor(high_STAI) + rank + rank:as.factor(high_STAI) 
+##                                 Value  Std.Error   DF   t-value p-value
+## (Intercept)                -0.3566573 0.06344878 1054 -5.621185  0.0000
+## as.factor(high_STAI)1       1.0529288 0.16028601  144  6.569063  0.0000
+## rank                        0.0249127 0.00568119 1054  4.385119  0.0000
+## as.factor(high_STAI)1:rank -0.0072568 0.01464389 1054 -0.495551  0.6203
 ##  Correlation: 
 ##                            (Intr) as.(_STAI)1 rank  
-## as.factor(high_STAI)1      -0.345                   
-## rank                       -0.436  0.150            
-## as.factor(high_STAI)1:rank  0.166 -0.381      -0.381
+## as.factor(high_STAI)1      -0.396                   
+## rank                       -0.235  0.093            
+## as.factor(high_STAI)1:rank  0.091 -0.251      -0.388
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.1561564 -0.5457605 -0.1046711  0.4941852  5.4954945 
+## -3.0552264 -0.5328760 -0.1029138  0.4636747  5.1825472 
 ## 
 ## Number of Observations: 1202
 ## Number of Groups: 146</code></pre>
@@ -2575,7 +2539,7 @@ UWEXP$high_UCLA&lt;-NA
 UWEXP$high_UCLA[UWEXP$PID %in% ID==&quot;TRUE&quot;]&lt;-1
 UWEXP$high_UCLA[UWEXP$PID %in% ID==&quot;FALSE&quot;]&lt;-0
 
-mod1&lt;-lme(fixed = as.numeric(PHQ4) ~ rank+as.factor(high_UCLA),
+mod1&lt;-lme(fixed = as.numeric(PHQ4.scale) ~ rank+as.factor(high_UCLA),
          data = UWEXP,
          random = ~ rank+as.factor(high_UCLA) | PID, na.action=na.omit)
 
@@ -2583,22 +2547,22 @@ summary(mod1)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
 ##        AIC      BIC    logLik
-##   4911.933 4962.826 -2445.967
+##   2506.143 2557.036 -1243.072
 ## 
 ## Random effects:
 ##  Formula: ~rank + as.factor(high_UCLA) | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##                       StdDev   Corr         
-## (Intercept)           1.778445 (Intr) rank  
-## rank                  0.131430  0.070       
-## as.factor(high_UCLA)1 1.988853 -0.515 -0.002
-## Residual              1.485061              
+##                       StdDev     Corr         
+## (Intercept)           0.65213545 (Intr) rank  
+## rank                  0.04819342  0.070       
+## as.factor(high_UCLA)1 0.72895141 -0.515 -0.002
+## Residual              0.54455126              
 ## 
-## Fixed effects: as.numeric(PHQ4) ~ rank + as.factor(high_UCLA) 
-##                           Value Std.Error   DF   t-value p-value
-## (Intercept)           2.0186694 0.1883630 1055 10.716912   0e+00
-## rank                  0.0651225 0.0142725 1055  4.562789   0e+00
-## as.factor(high_UCLA)1 1.7114520 0.4410539  144  3.880369   2e-04
+## Fixed effects: as.numeric(PHQ4.scale) ~ rank + as.factor(high_UCLA) 
+##                            Value  Std.Error   DF   t-value p-value
+## (Intercept)           -0.3070645 0.06907045 1055 -4.445671   0e+00
+## rank                   0.0238795 0.00523353 1055  4.562797   0e+00
+## as.factor(high_UCLA)1  0.6275661 0.16172879  144  3.880361   2e-04
 ##  Correlation: 
 ##                       (Intr) rank  
 ## rank                  -0.210       
@@ -2606,182 +2570,177 @@ summary(mod1)</code></pre>
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.2837658 -0.5373283 -0.1051345  0.4472465  5.0745172 
+## -3.2837681 -0.5373283 -0.1051341  0.4472455  5.0745195 
 ## 
 ## Number of Observations: 1202
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>mod2&lt;-lme(fixed = as.numeric(PSS4) ~ rank+as.factor(high_UCLA),
+<pre class="r"><code>mod2&lt;-lme(fixed = as.numeric(PSS4.scale) ~ rank+as.factor(high_UCLA),
          data = UWEXP,
-         random = ~ rank+as.factor(high_UCLA) | PID, na.action=na.omit)
+         random = ~ rank | PID, na.action=na.omit)
 
 summary(mod2)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
 ##        AIC      BIC    logLik
-##   4968.327 5019.211 -2474.164
+##   2511.666 2547.285 -1248.833
 ## 
 ## Random effects:
-##  Formula: ~rank + as.factor(high_UCLA) | PID
+##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##                       StdDev    Corr         
-## (Intercept)           2.0443969 (Intr) rank  
-## rank                  0.1328516 -0.262       
-## as.factor(high_UCLA)1 2.3587179 -0.370 -0.166
-## Residual              1.5157679              
+##             StdDev    Corr  
+## (Intercept) 0.7634220 (Intr)
+## rank        0.0477391 -0.277
+## Residual    0.5447993       
 ## 
-## Fixed effects: as.numeric(PSS4) ~ rank + as.factor(high_UCLA) 
-##                          Value Std.Error   DF   t-value p-value
-## (Intercept)           5.641666 0.2115446 1055 26.668921  0.0000
-## rank                  0.040166 0.0143879 1055  2.791638  0.0053
-## as.factor(high_UCLA)1 1.851132 0.4965154  143  3.728246  0.0003
+## Fixed effects: as.numeric(PSS4.scale) ~ rank + as.factor(high_UCLA) 
+##                            Value  Std.Error   DF   t-value p-value
+## (Intercept)           -0.2422012 0.07827289 1055 -3.094317  0.0020
+## rank                   0.0144047 0.00517048 1055  2.785947  0.0054
+## as.factor(high_UCLA)1  0.6534472 0.16463666  143  3.969026  0.0001
 ##  Correlation: 
 ##                       (Intr) rank  
-## rank                  -0.412       
-## as.factor(high_UCLA)1 -0.332 -0.052
+## rank                  -0.416       
+## as.factor(high_UCLA)1 -0.393 -0.001
 ## 
 ## Standardized Within-Group Residuals:
 ##         Min          Q1         Med          Q3         Max 
-## -3.38112255 -0.57990683 -0.04896248  0.50272125  3.57411865 
+## -3.36432561 -0.58382162 -0.04877508  0.49778854  3.57183312 
 ## 
 ## Number of Observations: 1201
 ## Number of Groups: 145</code></pre>
-<pre class="r"><code>mod3&lt;-lme(fixed = as.numeric(Depressed) ~ rank+as.factor(high_UCLA),
+<pre class="r"><code>mod3&lt;-lme(fixed = as.numeric(Depressed.scale) ~ rank+as.factor(high_UCLA),
          data = UWEXP,
-         random = ~ rank+as.factor(high_UCLA) | PID, na.action=na.omit)
+         random = ~ rank | PID, na.action=na.omit)
 
 summary(mod3)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
 ##        AIC      BIC    logLik
-##   4739.433 4797.278 -2359.717
+##   5618.636 5659.127 -2802.318
 ## 
 ## Random effects:
-##  Formula: ~rank + as.factor(high_UCLA) | PID
+##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##                       StdDev     Corr         
-## (Intercept)           0.44322534 (Intr) rank  
-## rank                  0.04088109 -0.115       
-## as.factor(high_UCLA)1 0.62061525 -0.364 -0.165
-## Residual              0.57630216              
+##             StdDev     Corr  
+## (Intercept) 0.58426603 (Intr)
+## rank        0.04926446 -0.18 
+## Residual    0.69228638       
 ## 
-## Fixed effects: as.numeric(Depressed) ~ rank + as.factor(high_UCLA) 
-##                           Value  Std.Error   DF  t-value p-value
-## (Intercept)           0.2790726 0.04833962 2259 5.773166  0.0000
-## rank                  0.0205191 0.00421764 2259 4.865070  0.0000
-## as.factor(high_UCLA)1 0.3831493 0.12909928  144 2.967865  0.0035
+## Fixed effects: as.numeric(Depressed.scale) ~ rank + as.factor(high_UCLA) 
+##                            Value  Std.Error   DF   t-value p-value
+## (Intercept)           -0.2934379 0.06190585 2259 -4.740067   0e+00
+## rank                   0.0246572 0.00507682 2259  4.856813   0e+00
+## as.factor(high_UCLA)1  0.4573568 0.13418826  144  3.408322   8e-04
 ##  Correlation: 
 ##                       (Intr) rank  
-## rank                  -0.328       
-## as.factor(high_UCLA)1 -0.316 -0.055
+## rank                  -0.355       
+## as.factor(high_UCLA)1 -0.403 -0.002
 ## 
 ## Standardized Within-Group Residuals:
 ##         Min          Q1         Med          Q3         Max 
-## -3.07708437 -0.43578252 -0.10853084  0.03986407  5.73331771 
+## -3.06680951 -0.43502677 -0.10828016  0.06732024  5.71492206 
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>mod4&lt;-lme(fixed = as.numeric(Anxious) ~ rank+as.factor(high_UCLA),
+<pre class="r"><code>mod4&lt;-lme(fixed = as.numeric(Anxious.scale) ~ rank+as.factor(high_UCLA),
          data = UWEXP,
-         random = ~ rank+as.factor(high_UCLA) | PID, na.action=na.omit)
+         random = ~ rank| PID, na.action=na.omit)
 
 summary(mod4)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
-##        AIC      BIC   logLik
-##   5353.699 5411.544 -2666.85
+##        AIC      BIC    logLik
+##   5688.937 5729.428 -2837.468
 ## 
 ## Random effects:
-##  Formula: ~rank + as.factor(high_UCLA) | PID
+##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##                       StdDev     Corr         
-## (Intercept)           0.50253304 (Intr) rank  
-## rank                  0.04426416 -0.128       
-## as.factor(high_UCLA)1 0.72204080 -0.381 -0.051
-## Residual              0.65623219              
+##             StdDev     Corr  
+## (Intercept) 0.58576343 (Intr)
+## rank        0.04750367 -0.136
+## Residual    0.70396265       
 ## 
-## Fixed effects: as.numeric(Anxious) ~ rank + as.factor(high_UCLA) 
-##                           Value  Std.Error   DF   t-value p-value
-## (Intercept)           0.6434116 0.05480778 2259 11.739420  0.0000
-## rank                  0.0136526 0.00464616 2259  2.938479  0.0033
-## as.factor(high_UCLA)1 0.2360140 0.15089561  144  1.564088  0.1200
+## Fixed effects: as.numeric(Anxious.scale) ~ rank + as.factor(high_UCLA) 
+##                             Value  Std.Error   DF   t-value p-value
+## (Intercept)           -0.16595692 0.06239189 2259 -2.659912  0.0079
+## rank                   0.01463494 0.00498548 2259  2.935514  0.0034
+## as.factor(high_UCLA)1  0.25215833 0.13630157  144  1.850003  0.0664
 ##  Correlation: 
 ##                       (Intr) rank  
-## rank                  -0.344       
-## as.factor(high_UCLA)1 -0.314 -0.018
+## rank                  -0.335       
+## as.factor(high_UCLA)1 -0.406 -0.002
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.5417221 -0.5484090 -0.1585789  0.4834220  3.7887713 
+## -3.3879157 -0.5466850 -0.1620244  0.4850872  3.7909852 
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>mod5&lt;-lme(fixed = as.numeric(neg.aff) ~ rank+as.factor(high_UCLA),
+<pre class="r"><code>mod5&lt;-lme(fixed = as.numeric(neg.aff.scale) ~ rank+as.factor(high_UCLA),
          data = UWEXP,
-         random = ~ rank+as.factor(high_UCLA) | PID, na.action=na.omit)
+         random = ~ rank | PID, na.action=na.omit)
 
 summary(mod5)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
 ##        AIC      BIC    logLik
-##   3620.937 3678.782 -1800.469
+##   5481.224 5521.715 -2733.612
 ## 
 ## Random effects:
-##  Formula: ~rank + as.factor(high_UCLA) | PID
+##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##                       StdDev     Corr         
-## (Intercept)           0.34619383 (Intr) rank  
-## rank                  0.03366526 -0.008       
-## as.factor(high_UCLA)1 0.49201996 -0.374 -0.093
-## Residual              0.45526511              
+##             StdDev     Corr  
+## (Intercept) 0.55660741 (Intr)
+## rank        0.04967116 -0.053
+## Residual    0.67079603       
 ## 
-## Fixed effects: as.numeric(neg.aff) ~ rank + as.factor(high_UCLA) 
-##                           Value  Std.Error   DF  t-value p-value
-## (Intercept)           0.3685722 0.03807191 2259 9.680950  0.0000
-## rank                  0.0200073 0.00342667 2259 5.838691  0.0000
-## as.factor(high_UCLA)1 0.2775953 0.10565271  144 2.627432  0.0095
+## Fixed effects: as.numeric(neg.aff.scale) ~ rank + as.factor(high_UCLA) 
+##                            Value  Std.Error   DF   t-value p-value
+## (Intercept)           -0.3214650 0.05960715 2259 -5.393061  0.0000
+## rank                   0.0294478 0.00505386 2259  5.826783  0.0000
+## as.factor(high_UCLA)1  0.4073221 0.13310832  144  3.060080  0.0026
 ##  Correlation: 
 ##                       (Intr) rank  
-## rank                  -0.256       
-## as.factor(high_UCLA)1 -0.329 -0.031
+## rank                  -0.270       
+## as.factor(high_UCLA)1 -0.415 -0.002
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.7146006 -0.5189204 -0.1398848  0.3890818  5.3812375 
+## -3.6752242 -0.5164848 -0.1366247  0.3889744  5.3793078 
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>mod6&lt;-lme(fixed = as.numeric(Lonely) ~ rank+as.factor(high_UCLA),
+<pre class="r"><code>mod6&lt;-lme(fixed = as.numeric(Lonely.scale) ~ rank+as.factor(high_UCLA),
          data = UWEXP,
-         random = ~ rank+as.factor(high_UCLA) | PID, na.action=na.omit)
+         random = ~ rank | PID, na.action=na.omit)
 
 summary(mod6)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
 ##        AIC      BIC    logLik
-##   5471.724 5529.569 -2725.862
+##   5509.201 5549.693 -2747.601
 ## 
 ## Random effects:
-##  Formula: ~rank + as.factor(high_UCLA) | PID
+##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##                       StdDev    Corr         
-## (Intercept)           0.6290377 (Intr) rank  
-## rank                  0.0452277 -0.271       
-## as.factor(high_UCLA)1 0.8083011 -0.254 -0.109
-## Residual              0.6673552              
+##             StdDev     Corr  
+## (Intercept) 0.69397351 (Intr)
+## rank        0.04562203 -0.288
+## Residual    0.67272480       
 ## 
-## Fixed effects: as.numeric(Lonely) ~ rank + as.factor(high_UCLA) 
-##                           Value  Std.Error   DF   t-value p-value
-## (Intercept)           0.6724823 0.06456220 2259 10.416038  0.0000
-## rank                  0.0020247 0.00473768 2259  0.427371  0.6691
-## as.factor(high_UCLA)1 0.4280669 0.17778799  144  2.407738  0.0173
+## Fixed effects: as.numeric(Lonely.scale) ~ rank + as.factor(high_UCLA) 
+##                            Value  Std.Error   DF    t-value p-value
+## (Intercept)           -0.1053664 0.06987333 2259 -1.5079626  0.1317
+## rank                   0.0020584 0.00477748 2259  0.4308471  0.6666
+## as.factor(high_UCLA)1  0.4378707 0.14837648  144  2.9510791  0.0037
 ##  Correlation: 
 ##                       (Intr) rank  
-## rank                  -0.403       
-## as.factor(high_UCLA)1 -0.290 -0.035
+## rank                  -0.401       
+## as.factor(high_UCLA)1 -0.394 -0.003
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -4.4262499 -0.5150265 -0.1182015  0.4957491  5.1433352 
+## -4.4532782 -0.5130303 -0.1051712  0.4912634  5.1432937 
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
@@ -2812,7 +2771,7 @@ UWEXP$low_SES&lt;-NA
 UWEXP$low_SES[UWEXP$PID %in% ID==&quot;TRUE&quot;]&lt;-1
 UWEXP$low_SES[UWEXP$PID %in% ID==&quot;FALSE&quot;]&lt;-0
 
-mod1&lt;-lme(fixed = as.numeric(PHQ4) ~ rank+as.factor(low_SES),
+mod1&lt;-lme(fixed = as.numeric(PHQ4.scale) ~ rank+as.factor(low_SES),
          data = UWEXP,
          random = ~ rank| PID, na.action=na.omit)
 
@@ -2820,21 +2779,21 @@ summary(mod1)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
 ##        AIC      BIC    logLik
-##   4915.153 4950.778 -2450.576
+##   2509.363 2544.988 -1247.681
 ## 
 ## Random effects:
 ##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##             StdDev    Corr  
-## (Intercept) 1.8669228 (Intr)
-## rank        0.1312249 0.07  
-## Residual    1.4853764       
+##             StdDev     Corr  
+## (Intercept) 0.68457528 (Intr)
+## rank        0.04811838 0.07  
+## Residual    0.54466717       
 ## 
-## Fixed effects: as.numeric(PHQ4) ~ rank + as.factor(low_SES) 
-##                         Value Std.Error   DF   t-value p-value
-## (Intercept)         2.1723900 0.1899951 1055 11.433924  0.0000
-## rank                0.0651751 0.0142607 1055  4.570250  0.0000
-## as.factor(low_SES)1 1.2040156 0.5053492  144  2.382542  0.0185
+## Fixed effects: as.numeric(PHQ4.scale) ~ rank + as.factor(low_SES) 
+##                          Value  Std.Error   DF   t-value p-value
+## (Intercept)         -0.2506973 0.06966863 1055 -3.598424  0.0003
+## rank                 0.0238988 0.00522921 1055  4.570249  0.0000
+## as.factor(low_SES)1  0.4414960 0.18530467  144  2.382541  0.0185
 ##  Correlation: 
 ##                     (Intr) rank  
 ## rank                -0.206       
@@ -2842,33 +2801,33 @@ summary(mod1)</code></pre>
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.1366994 -0.5402774 -0.1025918  0.4398134  5.0280035 
+## -3.1366996 -0.5402775 -0.1025917  0.4398134  5.0280035 
 ## 
 ## Number of Observations: 1202
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>mod2&lt;-lme(fixed = as.numeric(PSS4) ~ rank+as.factor(low_SES),
+<pre class="r"><code>mod2&lt;-lme(fixed = as.numeric(PSS4.scale) ~ rank+as.factor(low_SES),
          data = UWEXP,
          random = ~ rank|PID, na.action=na.omit)
 
 summary(mod2)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
-##        AIC      BIC   logLik
-##   4973.699 5009.318 -2479.85
+##        AIC      BIC    logLik
+##   2521.977 2557.596 -1253.989
 ## 
 ## Random effects:
 ##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##             StdDev    Corr  
-## (Intercept) 2.1759746 (Intr)
-## rank        0.1328329 -0.235
-## Residual    1.5158252       
+##             StdDev     Corr  
+## (Intercept) 0.78209453 (Intr)
+## rank        0.04774317 -0.235
+## Residual    0.54482193       
 ## 
-## Fixed effects: as.numeric(PSS4) ~ rank + as.factor(low_SES) 
-##                        Value Std.Error   DF   t-value p-value
-## (Intercept)         5.824718 0.2171030 1055 26.829284  0.0000
-## rank                0.040400 0.0143891 1055  2.807665  0.0051
-## as.factor(low_SES)1 1.128447 0.5393390  143  2.092277  0.0382
+## Fixed effects: as.numeric(PSS4.scale) ~ rank + as.factor(low_SES) 
+##                          Value  Std.Error   DF   t-value p-value
+## (Intercept)         -0.1761241 0.07803173 1055 -2.257083  0.0242
+## rank                 0.0145206 0.00517177 1055  2.807665  0.0051
+## as.factor(low_SES)1  0.4055893 0.19385064  143  2.092277  0.0382
 ##  Correlation: 
 ##                     (Intr) rank  
 ## rank                -0.396       
@@ -2876,11 +2835,11 @@ summary(mod2)</code></pre>
 ## 
 ## Standardized Within-Group Residuals:
 ##         Min          Q1         Med          Q3         Max 
-## -3.30949058 -0.58262699 -0.05496157  0.50580239  3.56039626 
+## -3.30949053 -0.58262703 -0.05496156  0.50580238  3.56039633 
 ## 
 ## Number of Observations: 1201
 ## Number of Groups: 145</code></pre>
-<pre class="r"><code>mod3&lt;-lme(fixed = as.numeric(Depressed) ~ rank+as.factor(low_SES),
+<pre class="r"><code>mod3&lt;-lme(fixed = as.numeric(Depressed.scale) ~ rank+as.factor(low_SES),
          data = UWEXP,
          random = ~ rank| PID, na.action=na.omit)
 
@@ -2888,33 +2847,33 @@ summary(mod3)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
 ##        AIC      BIC    logLik
-##   4745.007 4785.498 -2365.503
+##   5626.857 5667.348 -2806.428
 ## 
 ## Random effects:
 ##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.50066150 (Intr)
-## rank        0.04105342 -0.163
-## Residual    0.57622882       
+## (Intercept) 0.60149722 (Intr)
+## rank        0.04932164 -0.163
+## Residual    0.69228247       
 ## 
-## Fixed effects: as.numeric(Depressed) ~ rank + as.factor(low_SES) 
-##                         Value  Std.Error   DF  t-value p-value
-## (Intercept)         0.3199676 0.05135469 2259 6.230542  0.0000
-## rank                0.0205689 0.00422918 2259 4.863560  0.0000
-## as.factor(low_SES)1 0.2153444 0.13061003  144 1.648759  0.1014
+## Fixed effects: as.numeric(Depressed.scale) ~ rank + as.factor(low_SES) 
+##                          Value  Std.Error   DF   t-value p-value
+## (Intercept)         -0.2437548 0.06169774 2259 -3.950790  0.0001
+## rank                 0.0247115 0.00508095 2259  4.863562  0.0000
+## as.factor(low_SES)1  0.2587152 0.15691546  144  1.648755  0.1014
 ##  Correlation: 
 ##                     (Intr) rank  
 ## rank                -0.349       
 ## as.factor(low_SES)1 -0.346  0.001
 ## 
 ## Standardized Within-Group Residuals:
-##        Min         Q1        Med         Q3        Max 
-## -3.0746273 -0.4355330 -0.1053920  0.0675184  5.7055007 
+##         Min          Q1         Med          Q3         Max 
+## -3.07462760 -0.43553307 -0.10539279  0.06751884  5.70550094 
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>mod4&lt;-lme(fixed = as.numeric(Anxious) ~ rank+as.factor(low_SES),
+<pre class="r"><code>mod4&lt;-lme(fixed = as.numeric(Anxious.scale) ~ rank+as.factor(low_SES),
          data = UWEXP,
          random = ~ rank | PID, na.action=na.omit)
 
@@ -2922,21 +2881,21 @@ summary(mod4)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
 ##        AIC      BIC    logLik
-##   5353.544 5394.035 -2669.772
+##   5691.086 5731.577 -2838.543
 ## 
 ## Random effects:
 ##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.55051143 (Intr)
-## rank        0.04429554 -0.129
-## Residual    0.65620470       
+## (Intercept) 0.59057072 (Intr)
+## rank        0.04751832 -0.129
+## Residual    0.70394902       
 ## 
-## Fixed effects: as.numeric(Anxious) ~ rank + as.factor(low_SES) 
-##                         Value  Std.Error   DF   t-value p-value
-## (Intercept)         0.6673656 0.05701597 2259 11.704889  0.0000
-## rank                0.0136688 0.00464829 2259  2.940612  0.0033
-## as.factor(low_SES)1 0.1440581 0.14558503  144  0.989512  0.3241
+## Fixed effects: as.numeric(Anxious.scale) ~ rank + as.factor(low_SES) 
+##                           Value  Std.Error   DF    t-value p-value
+## (Intercept)         -0.14014457 0.06116473 2259 -2.2912643  0.0220
+## rank                 0.01466334 0.00498649 2259  2.9406155  0.0033
+## as.factor(low_SES)1  0.15453964 0.15617859  144  0.9895059  0.3241
 ##  Correlation: 
 ##                     (Intr) rank  
 ## rank                -0.339       
@@ -2944,11 +2903,11 @@ summary(mod4)</code></pre>
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.3757733 -0.5442302 -0.1573912  0.4836694  3.7887750 
+## -3.3757802 -0.5442304 -0.1573923  0.4836697  3.7887765 
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>mod5&lt;-lme(fixed = as.numeric(neg.aff) ~ rank+as.factor(low_SES),
+<pre class="r"><code>mod5&lt;-lme(fixed = as.numeric(neg.aff.scale) ~ rank+as.factor(low_SES),
          data = UWEXP,
          random = ~ rank | PID, na.action=na.omit)
 
@@ -2956,21 +2915,21 @@ summary(mod5)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
 ##        AIC      BIC    logLik
-##   3626.412 3666.903 -1806.206
+##   5489.453 5529.944 -2737.726
 ## 
 ## Random effects:
 ##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.39073447 (Intr)
-## rank        0.03374437 -0.041
-## Residual    0.45522363       
+## (Intercept) 0.57575308 (Intr)
+## rank        0.04972279 -0.041
+## Residual    0.67077760       
 ## 
-## Fixed effects: as.numeric(neg.aff) ~ rank + as.factor(low_SES) 
-##                         Value  Std.Error   DF   t-value p-value
-## (Intercept)         0.4087323 0.04036260 2259 10.126512   0.000
-## rank                0.0199997 0.00343226 2259  5.826975   0.000
-## as.factor(low_SES)1 0.0807236 0.10562619  144  0.764238   0.446
+## Fixed effects: as.numeric(neg.aff.scale) ~ rank + as.factor(low_SES) 
+##                           Value  Std.Error   DF   t-value p-value
+## (Intercept)         -0.26202315 0.05947486 2259 -4.405612   0.000
+## rank                 0.02946983 0.00505749 2259  5.826972   0.000
+## as.factor(low_SES)1  0.11894720 0.15564171  144  0.764237   0.446
 ##  Correlation: 
 ##                     (Intr) rank  
 ## rank                -0.264       
@@ -2978,33 +2937,33 @@ summary(mod5)</code></pre>
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.7033507 -0.5124810 -0.1413530  0.3943049  5.3989348 
+## -3.7033520 -0.5124811 -0.1413529  0.3943049  5.3989353 
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
-<pre class="r"><code>mod6&lt;-lme(fixed = as.numeric(Lonely) ~ rank+as.factor(low_SES),
+<pre class="r"><code>mod6&lt;-lme(fixed = as.numeric(Lonely.scale) ~ rank+as.factor(low_SES),
          data = UWEXP,
          random = ~ rank | PID, na.action=na.omit)
 
 summary(mod6)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: UWEXP 
-##      AIC      BIC   logLik
-##   5478.5 5518.992 -2732.25
+##        AIC      BIC    logLik
+##   5517.186 5557.678 -2751.593
 ## 
 ## Random effects:
 ##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.71483488 (Intr)
-## rank        0.04525256 -0.301
-## Residual    0.66735477       
+## (Intercept) 0.72060827 (Intr)
+## rank        0.04561763 -0.301
+## Residual    0.67274890       
 ## 
-## Fixed effects: as.numeric(Lonely) ~ rank + as.factor(low_SES) 
-##                         Value  Std.Error   DF   t-value p-value
-## (Intercept)         0.7430331 0.06973606 2259 10.654935  0.0000
-## rank                0.0020889 0.00473862 2259  0.440830  0.6594
-## as.factor(low_SES)1 0.0743649 0.17197141  144  0.432426  0.6661
+## Fixed effects: as.numeric(Lonely.scale) ~ rank + as.factor(low_SES) 
+##                           Value  Std.Error   DF    t-value p-value
+## (Intercept)         -0.03446682 0.07029937 2259 -0.4902864  0.6240
+## rank                 0.00210580 0.00477687 2259  0.4408326  0.6594
+## as.factor(low_SES)1  0.07496611 0.17336066  144  0.4324286  0.6661
 ##  Correlation: 
 ##                     (Intr) rank  
 ## rank                -0.417       
@@ -3012,7 +2971,7 @@ summary(mod6)</code></pre>
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -4.4334703 -0.5131970 -0.1049174  0.4893336  5.1404552 
+## -4.4334701 -0.5131975 -0.1049179  0.4893333  5.1404507 
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
