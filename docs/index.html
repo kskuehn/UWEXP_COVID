@@ -3797,32 +3797,6 @@ summary(mod6)</code></pre>
 <h1>Coping</h1>
 <pre class="r"><code>UWEXP&lt;-read.csv(&quot;/Users/kevinkuehn/Documents/UWEXP/COVID/UWEXP_COVID/2020ESM.csv&quot;)
 
-UWEXP$disengagement&lt;-rowSums(UWEXP[,c(&#39;Avoidance&#39;, &#39;Drinking.to.cope&#39;, &#39;Gave.up&#39;, &#39;Distraction&#39;, &#39;Eating&#39;, &#39;Not.real&#39;)], na.rm=T)</code></pre>
-<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;rowSums&#39;: undefined columns selected</code></pre>
-<pre class="r"><code>UWEXP$problem.focused&lt;-rowSums(UWEXP[,c(&#39;Problem.Solving&#39;, &#39;Approach&#39;, &#39;Interpersonal.Support&#39;, &#39;Positive.reappraisal&#39;, &#39;Religion&#39;, &#39;Advice&#39;, &#39;Expertise&#39;, &#39;Humor&#39;, &#39;Acceptance&#39;, &#39;Physical.Activity&#39;)], na.rm=T)</code></pre>
-<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;rowSums&#39;: undefined columns selected</code></pre>
-<pre class="r"><code>UWEXP$disengagement&lt;- -UWEXP$disengagement</code></pre>
-<pre><code>## Error in -UWEXP$disengagement: invalid argument to unary operator</code></pre>
-<pre class="r"><code>UWEXP$coping.prop&lt;-UWEXP$problem.focused+UWEXP$disengagement</code></pre>
-<pre><code>## Error in `$&lt;-.data.frame`(`*tmp*`, coping.prop, value = integer(0)): replacement has 0 rows, data has 2406</code></pre>
-<pre class="r"><code>CCP &lt;- within(UWEXP, {
-  coping.prop.CWP&lt;-ave(UWEXP$coping.prop, UWEXP$PID, FUN=function(x) x-mean(x, na.rm=T))
-})
-
-UWEXP$coping.prop.CWP&lt;-CCP$coping.prop.CWP
-
-UWEXP$coping.prop.GMC&lt;-NULL
-UWEXP$coping.prop.GMC.x&lt;-NULL
-UWEXP$coping.prop.GMC.x&lt;-NULL
-UWEXP$coping.prop.GMC.y&lt;-NULL
-UWEXP$coping.prop.GMC.y&lt;-NULL
-
-grpmeans&lt;-aggregate(UWEXP$coping.prop,list(UWEXP$PID),mean,na.rm=TRUE)
-names(grpmeans)&lt;-c(&quot;PID&quot;,&quot;coping.prop.GMC&quot;)
-UWEXP&lt;-merge(UWEXP,grpmeans,by=&quot;PID&quot;)
-
-UWEXP$coping.prop.GMC&lt;-UWEXP$coping.prop.GMC-mean(UWEXP$coping.prop.GMC)
-
 mod1&lt;-lme(fixed = as.numeric(PHQ4) ~ coping.prop.CWP+coping.prop.GMC+rank,
          data = UWEXP,
          random = ~ rank | PID, na.action=na.omit)
@@ -3837,25 +3811,25 @@ summary(mod1)</code></pre>
 ##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev    Corr  
-## (Intercept) 1.8698951 (Intr)
+## (Intercept) 1.8698958 (Intr)
 ## rank        0.1312939 0.042 
-## Residual    1.4859566       
+## Residual    1.4859565       
 ## 
 ## Fixed effects: as.numeric(PHQ4) ~ coping.prop.CWP + coping.prop.GMC + rank 
 ##                      Value  Std.Error   DF   t-value p-value
-## (Intercept)      2.3154171 0.17781672 1054 13.021368  0.0000
-## coping.prop.CWP -0.0463884 0.04516538 1054 -1.027080  0.3046
-## coping.prop.GMC -0.4694132 0.19250364  144 -2.438464  0.0160
+## (Intercept)      2.7155694 0.23881528 1054 11.371004  0.0000
+## coping.prop.CWP -0.0463884 0.04516537 1054 -1.027079  0.3046
+## coping.prop.GMC -0.4694132 0.19250369  144 -2.438463  0.0160
 ## rank             0.0657230 0.01428124 1054  4.602056  0.0000
 ##  Correlation: 
 ##                 (Intr) c..CWP c..GMC
-## coping.prop.CWP  0.052              
-## coping.prop.GMC  0.026  0.034       
-## rank            -0.242 -0.043  0.002
+## coping.prop.CWP  0.016              
+## coping.prop.GMC -0.668  0.034       
+## rank            -0.182 -0.043  0.002
 ## 
 ## Standardized Within-Group Residuals:
 ##         Min          Q1         Med          Q3         Max 
-## -3.11931558 -0.54547987 -0.09369301  0.44932324  4.96357190 
+## -3.11931586 -0.54547988 -0.09369299  0.44932326  4.96357170 
 ## 
 ## Number of Observations: 1202
 ## Number of Groups: 146</code></pre>
@@ -3872,26 +3846,26 @@ summary(mod2)</code></pre>
 ## Random effects:
 ##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##             StdDev   Corr  
-## (Intercept) 2.167492 (Intr)
-## rank        0.133985 -0.262
-## Residual    1.514442       
+##             StdDev    Corr  
+## (Intercept) 2.1674987 (Intr)
+## rank        0.1339852 -0.262
+## Residual    1.5144409       
 ## 
 ## Fixed effects: as.numeric(PSS4) ~ coping.prop.CWP + coping.prop.GMC + rank 
 ##                     Value  Std.Error   DF   t-value p-value
-## (Intercept)      5.979616 0.20370371 1054 29.354479  0.0000
-## coping.prop.CWP -0.052727 0.04595489 1054 -1.147357  0.2515
-## coping.prop.GMC -0.579232 0.20424143  143 -2.836014  0.0052
-## rank             0.039550 0.01447291 1054  2.732661  0.0064
+## (Intercept)      6.473383 0.26513314 1054 24.415595  0.0000
+## coping.prop.CWP -0.052727 0.04595487 1054 -1.147358  0.2515
+## coping.prop.GMC -0.579232 0.20424196  143 -2.836007  0.0052
+## rank             0.039550 0.01447291 1054  2.732660  0.0064
 ##  Correlation: 
 ##                 (Intr) c..CWP c..GMC
-## coping.prop.CWP -0.049              
-## coping.prop.GMC  0.021 -0.024       
-## rank            -0.439  0.044 -0.003
+## coping.prop.CWP -0.022              
+## coping.prop.GMC -0.640 -0.024       
+## rank            -0.335  0.044 -0.003
 ## 
 ## Standardized Within-Group Residuals:
 ##         Min          Q1         Med          Q3         Max 
-## -3.27823638 -0.58361867 -0.04947001  0.49622793  3.57093563 
+## -3.27823882 -0.58361907 -0.04947078  0.49622820  3.57093791 
 ## 
 ## Number of Observations: 1201
 ## Number of Groups: 145</code></pre>
@@ -3908,26 +3882,26 @@ summary(mod3)</code></pre>
 ## Random effects:
 ##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##             StdDev     Corr  
-## (Intercept) 0.50224573 (Intr)
-## rank        0.04103562 -0.187
-## Residual    0.57636962       
+##             StdDev    Corr  
+## (Intercept) 0.5022463 (Intr)
+## rank        0.0410356 -0.187
+## Residual    0.5763696       
 ## 
 ## Fixed effects: as.numeric(Depressed) ~ coping.prop.CWP + coping.prop.GMC + rank 
 ##                      Value  Std.Error   DF   t-value p-value
-## (Intercept)      0.3470070 0.04831645 2258  7.181965  0.0000
-## coping.prop.CWP -0.0033005 0.01180161 2258 -0.279661  0.7798
-## coping.prop.GMC -0.1016602 0.04971155  144 -2.045001  0.0427
-## rank             0.0205525 0.00422812 2258  4.860907  0.0000
+## (Intercept)      0.4336675 0.06353560 2258  6.825582  0.0000
+## coping.prop.CWP -0.0033004 0.01180161 2258 -0.279661  0.7798
+## coping.prop.GMC -0.1016602 0.04971160  144 -2.044999  0.0427
+## rank             0.0205525 0.00422811 2258  4.860909  0.0000
 ##  Correlation: 
 ##                 (Intr) c..CWP c..GMC
-## coping.prop.CWP  0.003              
-## coping.prop.GMC  0.023  0.002       
-## rank            -0.388 -0.003  0.000
+## coping.prop.CWP  0.001              
+## coping.prop.GMC -0.650  0.002       
+## rank            -0.295 -0.003  0.000
 ## 
 ## Standardized Within-Group Residuals:
 ##         Min          Q1         Med          Q3         Max 
-## -3.07227409 -0.43924881 -0.10587102  0.06441006  5.70968357 
+## -3.07227411 -0.43924887 -0.10587082  0.06440985  5.70968373 
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
@@ -3945,25 +3919,25 @@ summary(mod4)</code></pre>
 ##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev    Corr  
-## (Intercept) 0.5530931 (Intr)
-## rank        0.0439412 -0.131
+## (Intercept) 0.5530924 (Intr)
+## rank        0.0439413 -0.131
 ## Residual    0.6557292       
 ## 
 ## Fixed effects: as.numeric(Anxious) ~ coping.prop.CWP + coping.prop.GMC + rank 
 ##                      Value  Std.Error   DF   t-value p-value
-## (Intercept)      0.6864600 0.05365865 2258 12.793091  0.0000
-## coping.prop.CWP  0.0306391 0.01340093 2258  2.286340  0.0223
-## coping.prop.GMC -0.0427248 0.05583083  144 -0.765254  0.4454
-## rank             0.0136178 0.00462311 2258  2.945602  0.0033
+## (Intercept)      0.7228808 0.07091071 2258 10.194241  0.0000
+## coping.prop.CWP  0.0306391 0.01340093 2258  2.286339  0.0223
+## coping.prop.GMC -0.0427248 0.05583078  144 -0.765255  0.4454
+## rank             0.0136178 0.00462311 2258  2.945598  0.0033
 ##  Correlation: 
 ##                 (Intr) c..CWP c..GMC
-## coping.prop.CWP  0.003              
-## coping.prop.GMC  0.023  0.002       
-## rank            -0.362 -0.003  0.001
+## coping.prop.CWP  0.001              
+## coping.prop.GMC -0.654  0.002       
+## rank            -0.275 -0.003  0.001
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.2938397 -0.5443491 -0.1580458  0.4760715  3.8758850 
+## -3.2938394 -0.5443492 -0.1580463  0.4760714  3.8758851 
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
@@ -3981,25 +3955,25 @@ summary(mod5)</code></pre>
 ##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.71352859 (Intr)
-## rank        0.04524775 -0.296
-## Residual    0.66747740       
+## (Intercept) 0.71352799 (Intr)
+## rank        0.04524724 -0.296
+## Residual    0.66747769       
 ## 
 ## Fixed effects: as.numeric(Lonely) ~ coping.prop.CWP + coping.prop.GMC + rank 
 ##                      Value  Std.Error   DF   t-value p-value
-## (Intercept)      0.7529117 0.06559543 2258 11.478113  0.0000
+## (Intercept)      0.7597114 0.08528582 2258  8.907828  0.0000
 ## coping.prop.CWP -0.0064853 0.01368009 2258 -0.474069  0.6355
-## coping.prop.GMC -0.0079767 0.06583978  144 -0.121153  0.9037
-## rank             0.0020879 0.00473877 2258  0.440606  0.6595
+## coping.prop.GMC -0.0079766 0.06583980  144 -0.121152  0.9037
+## rank             0.0020879 0.00473874 2258  0.440608  0.6595
 ##  Correlation: 
 ##                 (Intr) c..CWP c..GMC
-## coping.prop.CWP  0.003              
-## coping.prop.GMC  0.024  0.001       
-## rank            -0.438 -0.003 -0.004
+## coping.prop.CWP  0.001              
+## coping.prop.GMC -0.639  0.001       
+## rank            -0.334 -0.003 -0.004
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -4.4516360 -0.5121991 -0.1077096  0.4899166  5.1410459 
+## -4.4516368 -0.5121999 -0.1077094  0.4899163  5.1410437 
 ## 
 ## Number of Observations: 2406
 ## Number of Groups: 146</code></pre>
@@ -4017,25 +3991,25 @@ summary(mod6)</code></pre>
 ##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.77511286 (Intr)
-## rank        0.04986729 -0.157
-## Residual    0.88852540       
+## (Intercept) 0.77511207 (Intr)
+## rank        0.04986693 -0.157
+## Residual    0.88852568       
 ## 
 ## Fixed effects: as.numeric(Severity) ~ coping.prop.CWP + coping.prop.GMC + rank 
 ##                      Value  Std.Error   DF   t-value p-value
-## (Intercept)      1.8656657 0.07520725 2215 24.806994  0.0000
-## coping.prop.CWP  0.2194262 0.01822920 2215 12.037070  0.0000
-## coping.prop.GMC  0.3937915 0.07667654  143  5.135750  0.0000
-## rank            -0.0183056 0.00568282 2215 -3.221215  0.0013
+## (Intercept)      1.5299769 0.09876417 2215 15.491215  0.0000
+## coping.prop.CWP  0.2194262 0.01822921 2215 12.037070  0.0000
+## coping.prop.GMC  0.3937919 0.07667647  143  5.135760  0.0000
+## rank            -0.0183056 0.00568280 2215 -3.221228  0.0013
 ##  Correlation: 
 ##                 (Intr) c..CWP c..GMC
-## coping.prop.CWP -0.006              
-## coping.prop.GMC  0.018 -0.002       
-## rank            -0.405  0.006  0.002
+## coping.prop.CWP -0.003              
+## coping.prop.GMC -0.648 -0.002       
+## rank            -0.310  0.006  0.002
 ## 
 ## Standardized Within-Group Residuals:
 ##         Min          Q1         Med          Q3         Max 
-## -3.60376383 -0.57347299 -0.05872332  0.55676424  4.14754794 
+## -3.60376157 -0.57347082 -0.05872255  0.55676461  4.14754647 
 ## 
 ## Number of Observations: 2362
 ## Number of Groups: 145</code></pre>
@@ -4064,18 +4038,18 @@ summary(mod7)</code></pre>
 ## 
 ## Fixed effects:
 ##                 Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept)     -0.13120    0.15616  -0.840 0.400802    
+## (Intercept)     -0.45436    0.21678  -2.096 0.036086 *  
 ## coping.prop.CWP  0.97839    0.07586  12.897  &lt; 2e-16 ***
-## coping.prop.GMC  0.37905    0.20163   1.880 0.060121 .  
-## rank             0.14121    0.04201   3.361 0.000775 ***
+## coping.prop.GMC  0.37907    0.20164   1.880 0.060114 .  
+## rank             0.14122    0.04201   3.362 0.000775 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Correlation of Fixed Effects:
 ##             (Intr) c..CWP c..GMC
-## cpng.pr.CWP  0.084              
-## cpng.pr.GMC  0.129  0.107       
-## rank        -0.420  0.033 -0.101</code></pre>
+## cpng.pr.CWP -0.024              
+## cpng.pr.GMC -0.700  0.107       
+## rank        -0.223  0.033 -0.101</code></pre>
 <pre class="r"><code>mod8&lt;-lme(fixed = as.numeric(Coping.success) ~ coping.prop.CWP + coping.prop.GMC + rank,
          data = UWEXP,
          random = ~ rank | PID, na.action=na.omit)
@@ -4089,26 +4063,26 @@ summary(mod8)</code></pre>
 ## Random effects:
 ##  Formula: ~rank | PID
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##             StdDev    Corr  
-## (Intercept) 0.8381889 (Intr)
-## rank        0.0609757 -0.51 
-## Residual    0.9776978       
+##             StdDev     Corr  
+## (Intercept) 0.83819418 (Intr)
+## rank        0.06097567 -0.51 
+## Residual    0.97769751       
 ## 
 ## Fixed effects: as.numeric(Coping.success) ~ coping.prop.CWP + coping.prop.GMC +      rank 
 ##                      Value  Std.Error   DF   t-value p-value
-## (Intercept)      2.3553609 0.08175128 2214 28.811305       0
-## coping.prop.CWP  0.3783648 0.02015317 2214 18.774450       0
-## coping.prop.GMC  0.8392645 0.07097784  143 11.824316       0
-## rank            -0.0476502 0.00663438 2214 -7.182311       0
+## (Intercept)      1.6399276 0.10083461 2214 16.263540       0
+## coping.prop.CWP  0.3783648 0.02015317 2214 18.774457       0
+## coping.prop.GMC  0.8392650 0.07097822  143 11.824260       0
+## rank            -0.0476502 0.00663438 2214 -7.182314       0
 ##  Correlation: 
 ##                 (Intr) c..CWP c..GMC
-## coping.prop.CWP -0.006              
-## coping.prop.GMC  0.018 -0.002       
-## rank            -0.626  0.006 -0.005
+## coping.prop.CWP -0.004              
+## coping.prop.GMC -0.586 -0.002       
+## rank            -0.505  0.006 -0.005
 ## 
 ## Standardized Within-Group Residuals:
-##        Min         Q1        Med         Q3        Max 
-## -3.3645979 -0.5865961 -0.0536924  0.5720579  3.8100259 
+##         Min          Q1         Med          Q3         Max 
+## -3.36460153 -0.58659565 -0.05369267  0.57205649  3.81002735 
 ## 
 ## Number of Observations: 2361
 ## Number of Groups: 145</code></pre>
@@ -4129,9 +4103,9 @@ anova(Levene.Model.F) #displays the results</code></pre>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: Model.F.Res2
-##             Df  Sum Sq Mean Sq F value    Pr(&gt;F)    
-## PID        145  199.29 1.37442  2.9871 &lt; 2.2e-16 ***
-## Residuals 2260 1039.88 0.46012                      
+##             Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## PID        145 252.51 1.74145  3.9889 &lt; 2.2e-16 ***
+## Residuals 2260 986.66 0.43657                      
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>vars&lt;-c(&quot;PID&quot;, &quot;rank&quot;, &quot;Depressed&quot;)
@@ -4147,8 +4121,8 @@ anova(Levene.Model.F) #displays the results</code></pre>
 ## 
 ## Response: Model.F.Res2
 ##             Df  Sum Sq Mean Sq F value    Pr(&gt;F)    
-## PID        145  220.64 1.52165  2.8698 &lt; 2.2e-16 ***
-## Residuals 2260 1198.31 0.53022                      
+## PID        145  271.69 1.87372  3.6911 &lt; 2.2e-16 ***
+## Residuals 2260 1147.26 0.50764                      
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>vars&lt;-c(&quot;PID&quot;, &quot;rank&quot;, &quot;Lonely&quot;)
@@ -4164,8 +4138,8 @@ anova(Levene.Model.F) #displays the results</code></pre>
 ## 
 ## Response: Model.F.Res2
 ##             Df  Sum Sq Mean Sq F value    Pr(&gt;F)    
-## PID        145  251.15 1.73208  2.4342 &lt; 2.2e-16 ***
-## Residuals 2260 1608.13 0.71156                      
+## PID        145  304.84 2.10236  3.0566 &lt; 2.2e-16 ***
+## Residuals 2260 1554.44 0.68781                      
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>vars&lt;-c(&quot;PID&quot;, &quot;rank&quot;, &quot;neg.aff&quot;)
@@ -4181,8 +4155,8 @@ anova(Levene.Model.F) #displays the results</code></pre>
 ## 
 ## Response: Model.F.Res2
 ##             Df Sum Sq Mean Sq F value    Pr(&gt;F)    
-## PID        145  73.15 0.50449  2.8872 &lt; 2.2e-16 ***
-## Residuals 2260 394.90 0.17474                      
+## PID        145  93.24 0.64304  3.8773 &lt; 2.2e-16 ***
+## Residuals 2260 374.81 0.16585                      
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>UWEXP$date&lt;- as.Date(UWEXP$date, &quot;%m/%d/%Y&quot;)
