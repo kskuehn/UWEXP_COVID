@@ -35,8 +35,33 @@ Analysis scripts are here: https://kskuehn.github.io/UWEXP_COVID/
     Q_PSS: Perceived Stress Scale Scores
     Q_UCLA: UCLA Loneliness Scale scores
 
+## Pooled.ESM.CSV: 
+  2019 and 2020 experience sampling data from the 95 participants who took part in both years
+   ### Variables included in this file:
+    PID
+    rank	
+    Anxious	
+    Depressed	
+    Frustrated	
+    Scared	
+    Lonely	
+    neg.aff	
+    PSS4.scale	
+    PHQ4.scale	
+    Q_BDI2	
+    Q_STAI	
+    Q_UCLA	
+    cohort	
+    BDI.scale	
+    STAI.scale	
+    UCLA.scale	
+    Depressed.scale	
+    Anxious.scale	
+    neg.aff.scale	
+    Lonely.scale
+  
 ## 2020ESM.csv: 
-  2020 experience sampling data. Includes some responses from 2020 pre survey (high_BDI2, high_STAI, high_UCLA) which represents participants who reported levels     more than one standard deviation above the mean. 
+  2020 experience sampling data 
    ### Variables included in this file:
     PID
     date
