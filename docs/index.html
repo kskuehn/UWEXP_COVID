@@ -1961,30 +1961,30 @@ summary(mod1)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   3094.994 3126.558 -1541.497
+##   3067.494 3098.998 -1527.747
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.43619861 (Intr)
-## rank        0.04108973 0.052 
-## Residual    0.64217443       
+## (Intercept) 0.43754317 (Intr)
+## rank        0.04066922 0.037 
+## Residual    0.64352724       
 ## 
 ## Fixed effects: as.numeric(PHQ4.scale) ~ BDI.scale 
 ##                  Value  Std.Error   DF   t-value p-value
-## (Intercept) -0.0770388 0.05370476 1329 -1.434487  0.1517
-## BDI.scale    0.3983768 0.03555757 1329 11.203712  0.0000
+## (Intercept) -0.0754925 0.05410264 1317 -1.395358  0.1631
+## BDI.scale    0.3995806 0.03575620 1317 11.175142  0.0000
 ##  Correlation: 
 ##           (Intr)
 ## BDI.scale -0.007
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -5.0643057 -0.5585304 -0.1073744  0.4937504  5.1595550 
+## -5.0478538 -0.5561243 -0.1065297  0.4970955  5.1495638 
 ## 
-## Number of Observations: 1425
-## Number of Groups: 95</code></pre>
+## Number of Observations: 1411
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>mod2&lt;-lme(fixed = as.numeric(PSS4.scale) ~ BDI.scale,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -1993,30 +1993,30 @@ summary(mod2)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   2860.053 2891.449 -1424.026
+##   2839.315 2870.655 -1413.658
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.54278182 (Intr)
-## rank        0.02966254 0.143 
-## Residual    0.60312849       
+## (Intercept) 0.54486083 (Intr)
+## rank        0.02987153 0.149 
+## Residual    0.60458919       
 ## 
 ## Fixed effects: as.numeric(PSS4.scale) ~ BDI.scale 
 ##                  Value  Std.Error   DF  t-value p-value
-## (Intercept) 0.00833313 0.06273879 1290 0.132823  0.8944
-## BDI.scale   0.29544385 0.03655172 1290 8.082899  0.0000
+## (Intercept) 0.00604482 0.06365506 1279 0.094962  0.9244
+## BDI.scale   0.29553616 0.03683851 1279 8.022478  0.0000
 ##  Correlation: 
 ##           (Intr)
 ## BDI.scale -0.01 
 ## 
 ## Standardized Within-Group Residuals:
-##        Min         Q1        Med         Q3        Max 
-## -3.8941354 -0.5906023 -0.0370062  0.5598021  4.4697060 
+##         Min          Q1         Med          Q3         Max 
+## -3.88199665 -0.59134875 -0.04120956  0.55913862  4.45928330 
 ## 
-## Number of Observations: 1386
-## Number of Groups: 95</code></pre>
+## Number of Observations: 1373
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>mod3&lt;-lme(fixed = as.numeric(Depressed.scale) ~ BDI.scale,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -2025,30 +2025,30 @@ summary(mod3)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   6813.033 6848.682 -3400.516
+##   6763.727 6799.319 -3375.863
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##             StdDev    Corr  
-## (Intercept) 0.4458293 (Intr)
-## rank        0.0485876 -0.157
-## Residual    0.7591028       
+##             StdDev     Corr  
+## (Intercept) 0.44836442 (Intr)
+## rank        0.04786079 -0.188
+## Residual    0.76206051       
 ## 
 ## Fixed effects: as.numeric(Depressed.scale) ~ BDI.scale 
-##                  Value  Std.Error   DF   t-value p-value
-## (Intercept) -0.0793385 0.05071152 2718 -1.564507  0.1178
-## BDI.scale    0.3270249 0.03131747 2718 10.442251  0.0000
+##                 Value  Std.Error   DF   t-value p-value
+## (Intercept) -0.076695 0.05090715 2693 -1.506566   0.132
+## BDI.scale    0.327627 0.03149440 2693 10.402706   0.000
 ##  Correlation: 
 ##           (Intr)
-## BDI.scale -0.009
+## BDI.scale -0.008
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -2.9362865 -0.4831487 -0.1608379  0.2487958  5.7306201 
+## -2.9245955 -0.4821355 -0.1614358  0.2483298  5.7204098 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>mod4&lt;-lme(fixed = as.numeric(Anxious.scale) ~ BDI.scale,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -2057,30 +2057,30 @@ summary(mod4)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   6788.518 6824.168 -3388.259
+##   6719.885 6755.477 -3353.943
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.49209478 (Intr)
-## rank        0.04503902 -0.153
-## Residual    0.75505640       
+## (Intercept) 0.49496325 (Intr)
+## rank        0.04498693 -0.162
+## Residual    0.75473791       
 ## 
 ## Fixed effects: as.numeric(Anxious.scale) ~ BDI.scale 
 ##                   Value  Std.Error   DF   t-value p-value
-## (Intercept) -0.01690793 0.05461418 2718 -0.309589  0.7569
-## BDI.scale    0.17753119 0.03191236 2718  5.563085  0.0000
+## (Intercept) -0.01911959 0.05523595 2693 -0.346144  0.7293
+## BDI.scale    0.17788527 0.03207092 2693  5.546622  0.0000
 ##  Correlation: 
 ##           (Intr)
-## BDI.scale -0.008
+## BDI.scale -0.007
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.4483006 -0.5915858 -0.1683705  0.5296152  4.4357079 
+## -3.4488954 -0.5921913 -0.1688370  0.5286446  4.4405657 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>mod5&lt;-lme(fixed = as.numeric(Lonely.scale) ~ BDI.scale,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -2089,30 +2089,30 @@ summary(mod5)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   6879.415 6915.065 -3433.707
+##   6813.563 6849.155 -3400.782
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.61732567 (Intr)
-## rank        0.03876767 -0.289
-## Residual    0.76686629       
+## (Intercept) 0.62127862 (Intr)
+## rank        0.03894555 -0.301
+## Residual    0.76700909       
 ## 
 ## Fixed effects: as.numeric(Lonely.scale) ~ BDI.scale 
 ##                  Value  Std.Error   DF  t-value p-value
-## (Intercept) 0.00303432 0.06302262 2718 0.048147  0.9616
-## BDI.scale   0.26534689 0.03350358 2718 7.919955  0.0000
+## (Intercept) 0.00272299 0.06373921 2693 0.042721  0.9659
+## BDI.scale   0.26533117 0.03367750 2693 7.878588  0.0000
 ##  Correlation: 
 ##           (Intr)
 ## BDI.scale -0.004
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.4753389 -0.5562853 -0.1351852  0.4192932  4.7354828 
+## -3.4733582 -0.5594255 -0.1337686  0.4215014  4.7344405 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>mod6&lt;-lme(fixed = as.numeric(neg.aff.scale) ~ BDI.scale,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -2121,30 +2121,30 @@ summary(mod6)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   7319.587 7355.237 -3653.794
+##   7295.374 7330.966 -3641.687
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.37122582 (Intr)
-## rank        0.02904837 0.223 
-## Residual    0.84549515       
+## (Intercept) 0.35471416 (Intr)
+## rank        0.02809416 0.096 
+## Residual    0.85510292       
 ## 
 ## Fixed effects: as.numeric(neg.aff.scale) ~ BDI.scale 
 ##                 Value  Std.Error   DF   t-value p-value
-## (Intercept) 0.0575948 0.04757000 2718  1.210737  0.2261
-## BDI.scale   0.3503045 0.03263495 2718 10.734030  0.0000
+## (Intercept) 0.0454281 0.04533369 2693  1.002083  0.3164
+## BDI.scale   0.3490395 0.03224662 2693 10.824064  0.0000
 ##  Correlation: 
 ##           (Intr)
-## BDI.scale -0.009
+## BDI.scale -0.008
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -2.5080642 -0.5295146 -0.2145020  0.1977975  6.6565189 
+## -2.4934800 -0.5285023 -0.2184624  0.1883094  6.6838083 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>mod1&lt;-lme(fixed = as.numeric(PHQ4.scale) ~ STAI.scale,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -2153,30 +2153,30 @@ summary(mod1)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   3078.125 3109.689 -1533.063
+##   3049.535 3081.039 -1518.768
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.44003050 (Intr)
-## rank        0.04074242 -0.002
-## Residual    0.63854717       
+## (Intercept) 0.43930885 (Intr)
+## rank        0.04026162 -0.028
+## Residual    0.63991697       
 ## 
 ## Fixed effects: as.numeric(PHQ4.scale) ~ STAI.scale 
-##                  Value Std.Error   DF   t-value p-value
-## (Intercept) -0.0740243 0.0532878 1329 -1.389142   0.165
-## STAI.scale   0.4321518 0.0359052 1329 12.035913   0.000
+##                  Value  Std.Error   DF   t-value p-value
+## (Intercept) -0.0723761 0.05333249 1317 -1.357074   0.175
+## STAI.scale   0.4360450 0.03601315 1317 12.107938   0.000
 ##  Correlation: 
 ##            (Intr)
-## STAI.scale -0.013
+## STAI.scale -0.014
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -5.0429912 -0.5256034 -0.1055791  0.4925136  5.1407258 
+## -5.0272441 -0.5263346 -0.1052433  0.4904834  5.1288925 
 ## 
-## Number of Observations: 1425
-## Number of Groups: 95</code></pre>
+## Number of Observations: 1411
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>mod2&lt;-lme(fixed = as.numeric(PSS4.scale) ~ STAI.scale,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -2185,30 +2185,30 @@ summary(mod2)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   2806.778 2838.175 -1397.389
+##   2785.695 2817.035 -1386.847
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.48438505 (Intr)
-## rank        0.03075735 0.142 
-## Residual    0.59371134       
+## (Intercept) 0.48266095 (Intr)
+## rank        0.03099885 0.15  
+## Residual    0.59512579       
 ## 
 ## Fixed effects: as.numeric(PSS4.scale) ~ STAI.scale 
 ##                  Value  Std.Error   DF   t-value p-value
-## (Intercept) -0.0036095 0.05730628 1290 -0.062986  0.9498
-## STAI.scale   0.4100544 0.03563824 1290 11.506024  0.0000
+## (Intercept) -0.0076932 0.05782935 1279 -0.133033  0.8942
+## STAI.scale   0.4125909 0.03585547 1279 11.507057  0.0000
 ##  Correlation: 
 ##            (Intr)
-## STAI.scale -0.024
+## STAI.scale -0.027
 ## 
 ## Standardized Within-Group Residuals:
 ##         Min          Q1         Med          Q3         Max 
-## -4.08101347 -0.59162448 -0.04263978  0.53738140  4.17050733 
+## -4.07138185 -0.59418938 -0.04368878  0.53884919  4.15995458 
 ## 
-## Number of Observations: 1386
-## Number of Groups: 95</code></pre>
+## Number of Observations: 1373
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>mod3&lt;-lme(fixed = as.numeric(Depressed.scale) ~ STAI.scale,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -2217,30 +2217,30 @@ summary(mod3)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   6789.153 6824.803 -3388.577
+##   6738.353 6773.945 -3363.177
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.45706675 (Intr)
-## rank        0.04873928 -0.192
-## Residual    0.75542428       
+## (Intercept) 0.45736364 (Intr)
+## rank        0.04798649 -0.232
+## Residual    0.75833964       
 ## 
 ## Fixed effects: as.numeric(Depressed.scale) ~ STAI.scale 
 ##                  Value  Std.Error   DF   t-value p-value
-## (Intercept) -0.0806834 0.05112302 2718 -1.578221  0.1146
-## STAI.scale   0.3671177 0.03185274 2718 11.525465  0.0000
+## (Intercept) -0.0779969 0.05092461 2693 -1.531615  0.1257
+## STAI.scale   0.3699848 0.03194935 2693 11.580354  0.0000
 ##  Correlation: 
 ##            (Intr)
-## STAI.scale -0.018
+## STAI.scale -0.019
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -2.9861351 -0.4994814 -0.1528721  0.2372760  5.6276559 
+## -2.9730863 -0.5008044 -0.1542505  0.2377460  5.6177173 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>mod4&lt;-lme(fixed = as.numeric(Anxious.scale) ~ STAI.scale,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -2249,30 +2249,30 @@ summary(mod4)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   6785.669 6821.319 -3386.834
+##   6716.421 6752.013 -3352.211
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##             StdDev     Corr  
-## (Intercept) 0.48028955 (Intr)
-## rank        0.04451447 -0.162
-## Residual    0.75548569       
+##             StdDev    Corr  
+## (Intercept) 0.4815426 (Intr)
+## rank        0.0444470 -0.177
+## Residual    0.7551870       
 ## 
 ## Fixed effects: as.numeric(Anxious.scale) ~ STAI.scale 
-##                  Value  Std.Error   DF   t-value p-value
-## (Intercept) -0.0192535 0.05337606 2718 -0.360714  0.7183
-## STAI.scale   0.1907874 0.03230450 2718  5.905908  0.0000
+##                   Value  Std.Error   DF   t-value p-value
+## (Intercept) -0.02204626 0.05375266 2693 -0.410143  0.6817
+## STAI.scale   0.19339330 0.03242814 2693  5.963749  0.0000
 ##  Correlation: 
 ##            (Intr)
-## STAI.scale -0.017
+## STAI.scale -0.018
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.4721862 -0.5912316 -0.1640875  0.5350053  4.3801005 
+## -3.4718103 -0.5918648 -0.1637367  0.5333948  4.3842966 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>mod5&lt;-lme(fixed = as.numeric(Lonely.scale) ~ STAI.scale,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -2280,31 +2280,31 @@ summary(mod4)</code></pre>
 summary(mod5)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
-##        AIC      BIC    logLik
-##   6881.303 6916.953 -3434.651
+##       AIC      BIC    logLik
+##   6814.99 6850.582 -3401.495
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##             StdDev    Corr  
-## (Intercept) 0.6153182 (Intr)
-## rank        0.0385222 -0.287
-## Residual    0.7673182       
+##             StdDev     Corr  
+## (Intercept) 0.61781801 (Intr)
+## rank        0.03869845 -0.3  
+## Residual    0.76745740       
 ## 
 ## Fixed effects: as.numeric(Lonely.scale) ~ STAI.scale 
-##                  Value  Std.Error   DF  t-value p-value
-## (Intercept) 0.00090456 0.06286741 2718 0.014388  0.9885
-## STAI.scale  0.26735106 0.03429069 2718 7.796609  0.0000
+##                   Value  Std.Error   DF   t-value p-value
+## (Intercept) -0.00041577 0.06343728 2693 -0.006554  0.9948
+## STAI.scale   0.26826119 0.03445207 2693  7.786505  0.0000
 ##  Correlation: 
 ##            (Intr)
-## STAI.scale -0.009
+## STAI.scale -0.01 
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.4386719 -0.5349634 -0.1446949  0.3967438  4.8674736 
+## -3.4371937 -0.5396933 -0.1428648  0.3973107  4.8660576 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>mod6&lt;-lme(fixed = as.numeric(neg.aff.scale) ~ STAI.scale,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -2313,30 +2313,30 @@ summary(mod6)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   7204.063 7239.713 -3596.032
+##   7175.612 7211.204 -3581.806
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##             StdDev     Corr  
-## (Intercept) 0.44309590 (Intr)
-## rank        0.02757276 0.053 
-## Residual    0.82557485       
+##             StdDev    Corr  
+## (Intercept) 0.4150568 (Intr)
+## rank        0.0268555 -0.084
+## Residual    0.8348397       
 ## 
 ## Fixed effects: as.numeric(neg.aff.scale) ~ STAI.scale 
-##                Value  Std.Error   DF   t-value p-value
-## (Intercept) 0.044513 0.05192902 2718  0.857188  0.3914
-## STAI.scale  0.512642 0.03377434 2718 15.178444  0.0000
+##                 Value  Std.Error   DF   t-value p-value
+## (Intercept) 0.0295656 0.04815539 2693  0.613962  0.5393
+## STAI.scale  0.5096711 0.03308526 2693 15.404778  0.0000
 ##  Correlation: 
 ##            (Intr)
-## STAI.scale -0.016
+## STAI.scale -0.015
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -2.7781219 -0.5313452 -0.2041672  0.2187190  6.5997858 
+## -2.7548357 -0.5303502 -0.2047858  0.2094230  6.6375924 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>mod1&lt;-lme(fixed = as.numeric(PHQ4.scale) ~ UCLA.scale,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -2345,30 +2345,30 @@ summary(mod1)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   3146.171 3177.734 -1567.086
+##   3118.028 3149.532 -1553.014
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.56711649 (Intr)
-## rank        0.03999588 0.083 
-## Residual    0.64615279       
+## (Intercept) 0.56822316 (Intr)
+## rank        0.03961554 0.067 
+## Residual    0.64752490       
 ## 
 ## Fixed effects: as.numeric(PHQ4.scale) ~ UCLA.scale 
-##                   Value  Std.Error   DF   t-value p-value
-## (Intercept) -0.08185531 0.06580332 1329 -1.243939  0.2137
-## UCLA.scale   0.25419153 0.03505808 1329  7.250583  0.0000
+##                  Value  Std.Error   DF   t-value p-value
+## (Intercept) -0.0797701 0.06633088 1317 -1.202609  0.2293
+## UCLA.scale   0.2558779 0.03527299 1317  7.254217  0.0000
 ##  Correlation: 
 ##            (Intr)
-## UCLA.scale -0.011
+## UCLA.scale -0.01 
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -4.4974240 -0.5258335 -0.1071547  0.4923751  5.2863426 
+## -4.4851226 -0.5241664 -0.1047579  0.4942762  5.2766580 
 ## 
-## Number of Observations: 1425
-## Number of Groups: 95</code></pre>
+## Number of Observations: 1411
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>mod2&lt;-lme(fixed = as.numeric(PSS4.scale) ~ UCLA.scale,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -2376,31 +2376,31 @@ summary(mod1)</code></pre>
 summary(mod2)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
-##       AIC      BIC    logLik
-##   2885.09 2916.486 -1436.545
+##        AIC      BIC    logLik
+##   2863.827 2895.167 -1425.914
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.63912593 (Intr)
-## rank        0.02786968 0.158 
-## Residual    0.60418220       
+## (Intercept) 0.64103290 (Intr)
+## rank        0.02807397 0.164 
+## Residual    0.60567754       
 ## 
 ## Fixed effects: as.numeric(PSS4.scale) ~ UCLA.scale 
 ##                  Value  Std.Error   DF  t-value p-value
-## (Intercept) 0.00681726 0.07184823 1290 0.094884  0.9244
-## UCLA.scale  0.18989020 0.03447727 1290 5.507693  0.0000
+## (Intercept) 0.00445118 0.07284881 1279 0.061102  0.9513
+## UCLA.scale  0.19060393 0.03473537 1279 5.487315  0.0000
 ##  Correlation: 
 ##            (Intr)
-## UCLA.scale -0.016
+## UCLA.scale -0.015
 ## 
 ## Standardized Within-Group Residuals:
 ##         Min          Q1         Med          Q3         Max 
-## -3.58487593 -0.58805659 -0.03199122  0.55540148  4.46662482 
+## -3.57592984 -0.58729058 -0.03586004  0.55481093  4.45545317 
 ## 
-## Number of Observations: 1386
-## Number of Groups: 95</code></pre>
+## Number of Observations: 1373
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>mod3&lt;-lme(fixed = as.numeric(Depressed.scale) ~ UCLA.scale,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -2408,31 +2408,31 @@ summary(mod2)</code></pre>
 summary(mod3)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
-##       AIC     BIC   logLik
-##   6891.26 6926.91 -3439.63
+##        AIC      BIC    logLik
+##   6840.955 6876.547 -3414.478
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.51434529 (Intr)
-## rank        0.04817322 -0.197
-## Residual    0.76774114       
+## (Intercept) 0.51628627 (Intr)
+## rank        0.04751665 -0.23 
+## Residual    0.77076566       
 ## 
 ## Fixed effects: as.numeric(Depressed.scale) ~ UCLA.scale 
 ##                   Value  Std.Error   DF   t-value p-value
-## (Intercept) -0.06810302 0.05619531 2718 -1.211899  0.2257
-## UCLA.scale   0.14623742 0.02991346 2718  4.888683  0.0000
+## (Intercept) -0.06506094 0.05625956 2693 -1.156442  0.2476
+## UCLA.scale   0.14805812 0.03009253 2693  4.920096  0.0000
 ##  Correlation: 
 ##            (Intr)
-## UCLA.scale -0.013
+## UCLA.scale -0.012
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -2.9367070 -0.4985562 -0.1627800  0.2584861  5.7750677 
+## -2.9255694 -0.4995673 -0.1634591  0.2597815  5.7646135 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>mod4&lt;-lme(fixed = as.numeric(Anxious.scale) ~ UCLA.scale,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -2441,30 +2441,30 @@ summary(mod4)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   6814.118 6849.767 -3401.059
+##   6745.334 6780.926 -3366.667
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##             StdDev     Corr  
-## (Intercept) 0.52368638 (Intr)
-## rank        0.04422507 -0.075
-## Residual    0.75713108       
+##             StdDev    Corr  
+## (Intercept) 0.5264902 (Intr)
+## rank        0.0441757 -0.084
+## Residual    0.7568325       
 ## 
 ## Fixed effects: as.numeric(Anxious.scale) ~ UCLA.scale 
-##                   Value  Std.Error   DF    t-value p-value
-## (Intercept) -0.01874190 0.05860491 2718 -0.3198009  0.7491
-## UCLA.scale   0.05501915 0.02983599 2718  1.8440533  0.0653
+##                  Value  Std.Error   DF    t-value p-value
+## (Intercept) -0.0207720 0.05929812 2693 -0.3502977  0.7261
+## UCLA.scale   0.0551172 0.02998497 2693  1.8381612  0.0661
 ##  Correlation: 
 ##            (Intr)
-## UCLA.scale -0.014
+## UCLA.scale -0.013
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.4547135 -0.5966909 -0.1705573  0.5382849  4.4704295 
+## -3.4555642 -0.5968643 -0.1731785  0.5385603  4.4748670 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>mod5&lt;-lme(fixed = as.numeric(Lonely.scale) ~ UCLA.scale,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -2472,31 +2472,31 @@ summary(mod4)</code></pre>
 summary(mod5)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
-##        AIC      BIC    logLik
-##   6916.123 6951.773 -3452.062
+##        AIC    BIC    logLik
+##   6849.808 6885.4 -3418.904
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.61469593 (Intr)
-## rank        0.03915178 -0.301
-## Residual    0.77219187       
+## (Intercept) 0.61778808 (Intr)
+## rank        0.03933002 -0.315
+## Residual    0.77237327       
 ## 
 ## Fixed effects: as.numeric(Lonely.scale) ~ UCLA.scale 
 ##                  Value  Std.Error   DF  t-value p-value
-## (Intercept) 0.00227527 0.06254498 2718 0.036378   0.971
-## UCLA.scale  0.15593869 0.03074980 2718 5.071210   0.000
+## (Intercept) 0.00204077 0.06311906 2693 0.032332  0.9742
+## UCLA.scale  0.15614243 0.03090038 2693 5.053090  0.0000
 ##  Correlation: 
 ##            (Intr)
-## UCLA.scale -0.01 
+## UCLA.scale -0.009
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.2841179 -0.5467546 -0.1378036  0.3998835  4.7268437 
+## -3.2826104 -0.5531845 -0.1347841  0.3994165  4.7257440 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>mod6&lt;-lme(fixed = as.numeric(neg.aff.scale) ~ UCLA.scale,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -2504,31 +2504,31 @@ summary(mod5)</code></pre>
 summary(mod6)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
-##        AIC      BIC    logLik
-##   7369.342 7404.992 -3678.671
+##       AIC      BIC   logLik
+##   7343.62 7379.212 -3665.81
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.44377270 (Intr)
-## rank        0.02670542 -0.011
-## Residual    0.85209584       
+## (Intercept) 0.42623554 (Intr)
+## rank        0.02609794 -0.139
+## Residual    0.86173382       
 ## 
 ## Fixed effects: as.numeric(neg.aff.scale) ~ UCLA.scale 
 ##                  Value  Std.Error   DF  t-value p-value
-## (Intercept) 0.04670889 0.05136219 2718 0.909402  0.3632
-## UCLA.scale  0.23883555 0.03137407 2718 7.612513  0.0000
+## (Intercept) 0.03155959 0.04850253 2693 0.650679  0.5153
+## UCLA.scale  0.24354247 0.03111517 2693 7.827131  0.0000
 ##  Correlation: 
 ##            (Intr)
-## UCLA.scale -0.013
+## UCLA.scale -0.012
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -2.2206084 -0.5222356 -0.2320020  0.1856080  6.8553194 
+## -2.2234718 -0.5213926 -0.2361639  0.1729804  6.8658921 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 </div>
 <div id="three-way-interaction-between-time-1-reports-day-and-year-of-the-study" class="section level1">
 <h1>Three way interaction between Time 1 reports, day and year of the study</h1>
@@ -2539,69 +2539,69 @@ summary(mod6)</code></pre>
 summary(mod1)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
-##        AIC      BIC    logLik
-##   3123.676 3186.751 -1549.838
+##       AIC      BIC    logLik
+##   3096.77 3159.726 -1536.385
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.42186817 (Intr)
-## rank        0.04006447 0.112 
-## Residual    0.63852443       
+## (Intercept) 0.42297214 (Intr)
+## rank        0.03970112 0.097 
+## Residual    0.63993763       
 ## 
 ## Fixed effects: as.numeric(PHQ4.scale) ~ rank + BDI.scale + cohort + rank:cohort +      cohort:BDI.scale + rank:BDI.scale + rank:BDI.scale:cohort 
 ##                            Value  Std.Error   DF   t-value p-value
-## (Intercept)           -0.1316120 0.12542627 1323 -1.049318  0.2942
-## rank                   0.0113196 0.01419549 1323  0.797410  0.4254
-## BDI.scale              0.6687866 0.12452624 1323  5.370648  0.0000
-## cohort                -0.0068508 0.07132598 1323 -0.096050  0.9235
-## rank:cohort            0.0060939 0.00792037 1323  0.769397  0.4418
-## BDI.scale:cohort      -0.1229538 0.07341917 1323 -1.674683  0.0942
-## rank:BDI.scale        -0.0321321 0.01424882 1323 -2.255070  0.0243
-## rank:BDI.scale:cohort  0.0124562 0.00813743 1323  1.530728  0.1261
+## (Intercept)           -0.1218157 0.12677297 1311 -0.960896  0.3368
+## rank                   0.0095213 0.01433856 1311  0.664033  0.5068
+## BDI.scale              0.6726468 0.12546448 1311  5.361253  0.0000
+## cohort                -0.0122077 0.07180482 1311 -0.170012  0.8650
+## rank:cohort            0.0068218 0.00797941 1311  0.854926  0.3927
+## BDI.scale:cohort      -0.1241533 0.07394540 1311 -1.678986  0.0934
+## rank:BDI.scale        -0.0325386 0.01435118 1311 -2.267315  0.0235
+## rank:BDI.scale:cohort  0.0126940 0.00819489 1311  1.549009  0.1216
 ##  Correlation: 
 ##                       (Intr) rank   BDI.sc cohort rnk:ch BDI.s: rn:BDI.
-## rank                  -0.780                                           
+## rank                  -0.782                                           
 ## BDI.scale             -0.035  0.021                                    
-## cohort                -0.895  0.788  0.029                             
-## rank:cohort            0.803 -0.919 -0.017 -0.873                      
-## BDI.scale:cohort       0.025 -0.017 -0.928 -0.018  0.013               
-## rank:BDI.scale         0.023 -0.019 -0.846 -0.019  0.017  0.796        
-## rank:BDI.scale:cohort -0.018  0.010  0.827  0.013 -0.007 -0.862 -0.938 
+## cohort                -0.896  0.790  0.029                             
+## rank:cohort            0.804 -0.920 -0.018 -0.874                      
+## BDI.scale:cohort       0.025 -0.017 -0.928 -0.019  0.013               
+## rank:BDI.scale         0.023 -0.019 -0.847 -0.020  0.017  0.796        
+## rank:BDI.scale:cohort -0.018  0.010  0.827  0.013 -0.007 -0.862 -0.939 
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -4.7411594 -0.5413272 -0.1407830  0.4963466  5.1974878 
+## -4.7178297 -0.5429556 -0.1406577  0.4974244  5.1899012 
 ## 
-## Number of Observations: 1425
-## Number of Groups: 95</code></pre>
+## Number of Observations: 1411
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>intervals(mod1)</code></pre>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
 ##                              lower         est.        upper
-## (Intercept)           -0.377668114 -0.131612034  0.114444047
-## rank                  -0.016528492  0.011319632  0.039167755
-## BDI.scale              0.424496208  0.668786637  0.913077065
-## cohort                -0.146775195 -0.006850831  0.133073533
-## rank:cohort           -0.009443945  0.006093911  0.021631768
-## BDI.scale:cohort      -0.266984534 -0.122953834  0.021076865
-## rank:BDI.scale        -0.060084843 -0.032132091 -0.004179339
-## rank:BDI.scale:cohort -0.003507484  0.012456186  0.028419857
+## (Intercept)           -0.370515718 -0.121815656  0.126884406
+## rank                  -0.018607759  0.009521273  0.037650305
+## BDI.scale              0.426513721  0.672646821  0.918779920
+## cohort                -0.153072578 -0.012207661  0.128657256
+## rank:cohort           -0.008832007  0.006821804  0.022475614
+## BDI.scale:cohort      -0.269217538 -0.124153300  0.020910938
+## rank:BDI.scale        -0.060692431 -0.032538647 -0.004384863
+## rank:BDI.scale:cohort -0.003382574  0.012693958  0.028770490
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Fixed effects:&quot;
 ## 
 ##  Random Effects:
 ##   Level: as.factor(PID) 
 ##                             lower       est.      upper
-## sd((Intercept))        0.33512083 0.42186817 0.53107041
-## sd(rank)               0.03028258 0.04006447 0.05300611
-## cor((Intercept),rank) -0.25228360 0.11195945 0.44841272
+## sd((Intercept))        0.32707685 0.42297214 0.54698286
+## sd(rank)               0.02892039 0.03970112 0.05450061
+## cor((Intercept),rank) -0.44035701 0.09747371 0.58382227
 ## 
 ##  Within-group standard error:
 ##     lower      est.     upper 
-## 0.6137496 0.6385244 0.6642993</code></pre>
+## 0.6148035 0.6399376 0.6660993</code></pre>
 <pre class="r"><code>mod2&lt;-lme(fixed = as.numeric(PSS4.scale) ~ rank + BDI.scale + cohort + rank:cohort + cohort:BDI.scale + rank:BDI.scale + rank:BDI.scale:cohort,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -2609,69 +2609,69 @@ summary(mod1)</code></pre>
 summary(mod2)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
-##        AIC      BIC    logLik
-##   2902.008 2964.749 -1439.004
+##        AIC      BIC   logLik
+##   2881.301 2943.927 -1428.65
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##             StdDev     Corr  
-## (Intercept) 0.52331961 (Intr)
-## rank        0.03120726 0.22  
-## Residual    0.60107505       
+##             StdDev    Corr  
+## (Intercept) 0.5253794 (Intr)
+## rank        0.0314412 0.225 
+## Residual    0.6025429       
 ## 
 ## Fixed effects: as.numeric(PSS4.scale) ~ rank + BDI.scale + cohort + rank:cohort +      cohort:BDI.scale + rank:BDI.scale + rank:BDI.scale:cohort 
 ##                            Value  Std.Error   DF    t-value p-value
-## (Intercept)            0.1110363 0.12347662 1284  0.8992500  0.3687
-## rank                  -0.0011083 0.01394945 1284 -0.0794494  0.9367
-## BDI.scale              0.3664950 0.12023557 1284  3.0481410  0.0023
-## cohort                -0.0889693 0.06911037 1284 -1.2873505  0.1982
-## rank:cohort            0.0060219 0.00778567 1284  0.7734600  0.4394
-## BDI.scale:cohort       0.0027615 0.07167513 1284  0.0385276  0.9693
-## rank:BDI.scale        -0.0256439 0.01430732 1284 -1.7923635  0.0733
-## rank:BDI.scale:cohort  0.0094410 0.00806592 1284  1.1704849  0.2420
+## (Intercept)            0.1097519 0.12493643 1273  0.8784621  0.3799
+## rank                  -0.0010630 0.01412570 1273 -0.0752537  0.9400
+## BDI.scale              0.3644891 0.12113946 1273  3.0088391  0.0027
+## cohort                -0.0887649 0.06959086 1273 -1.2755252  0.2024
+## rank:cohort            0.0059919 0.00785603 1273  0.7627116  0.4458
+## BDI.scale:cohort       0.0042972 0.07219783 1273  0.0595203  0.9525
+## rank:BDI.scale        -0.0255018 0.01441804 1273 -1.7687443  0.0772
+## rank:BDI.scale:cohort  0.0093245 0.00812654 1273  1.1474145  0.2514
 ##  Correlation: 
 ##                       (Intr) rank   BDI.sc cohort rnk:ch BDI.s: rn:BDI.
-## rank                  -0.741                                           
-## BDI.scale             -0.008 -0.007                                    
-## cohort                -0.856  0.776  0.006                             
-## rank:cohort            0.779 -0.938  0.009 -0.866                      
-## BDI.scale:cohort      -0.001  0.009 -0.921  0.006 -0.012               
+## rank                  -0.740                                           
+## BDI.scale             -0.008 -0.008                                    
+## cohort                -0.856  0.778  0.006                             
+## rank:cohort            0.779 -0.938  0.009 -0.867                      
+## BDI.scale:cohort      -0.001  0.009 -0.921  0.005 -0.012               
 ## rank:BDI.scale        -0.005  0.013 -0.838  0.005 -0.012  0.782        
-## rank:BDI.scale:cohort  0.007 -0.017  0.834 -0.009  0.018 -0.856 -0.950 
+## rank:BDI.scale:cohort  0.008 -0.017  0.835 -0.010  0.018 -0.857 -0.950 
 ## 
 ## Standardized Within-Group Residuals:
 ##         Min          Q1         Med          Q3         Max 
-## -3.62484817 -0.60291603 -0.04677512  0.57277615  4.48988328 
+## -3.61381505 -0.60349382 -0.04883774  0.57268151  4.47851968 
 ## 
-## Number of Observations: 1386
-## Number of Groups: 95</code></pre>
+## Number of Observations: 1373
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>intervals(mod2)</code></pre>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
 ##                              lower         est.       upper
-## (Intercept)           -0.131201722  0.111036345 0.353274413
-## rank                  -0.028474484 -0.001108275 0.026257935
-## BDI.scale              0.130615239  0.366494984 0.602374730
-## cohort                -0.224550921 -0.088969272 0.046612377
-## rank:cohort           -0.009252121  0.006021901 0.021295923
-## BDI.scale:cohort      -0.137851751  0.002761469 0.143374689
-## rank:BDI.scale        -0.053712204 -0.025643916 0.002424372
-## rank:BDI.scale:cohort -0.006382795  0.009441043 0.025264881
+## (Intercept)           -0.135352026  0.109751918 0.354855861
+## rank                  -0.028775215 -0.001063010 0.026649195
+## BDI.scale              0.126834202  0.364489131 0.602144060
+## cohort                -0.225290282 -0.088764894 0.047760494
+## rank:cohort           -0.009420303  0.005991885 0.021404072
+## BDI.scale:cohort      -0.137342569  0.004297237 0.145937043
+## rank:BDI.scale        -0.053787541 -0.025501817 0.002783906
+## rank:BDI.scale:cohort -0.006618377  0.009324514 0.025267405
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Fixed effects:&quot;
 ## 
 ##  Random Effects:
 ##   Level: as.factor(PID) 
-##                             lower       est.      upper
-## sd((Intercept))        0.42381599 0.52331961 0.64618472
-## sd(rank)               0.02247225 0.03120726 0.04333758
-## cor((Intercept),rank) -0.21279124 0.22037343 0.58114527
+##                             lower      est.      upper
+## sd((Intercept))        0.42484882 0.5253794 0.64969826
+## sd(rank)               0.02262982 0.0314412 0.04368348
+## cor((Intercept),rank) -0.20761053 0.2253586 0.58449390
 ## 
 ##  Within-group standard error:
 ##     lower      est.     upper 
-## 0.5773577 0.6010750 0.6257667</code></pre>
+## 0.5786687 0.6025429 0.6274020</code></pre>
 <pre class="r"><code>mod3&lt;-lme(fixed = as.numeric(Depressed.scale) ~ rank + BDI.scale + cohort + rank:cohort + cohort:BDI.scale + rank:BDI.scale + rank:BDI.scale:cohort,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -2680,68 +2680,68 @@ summary(mod3)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   6821.263 6892.537 -3398.631
+##   6771.975 6843.134 -3373.988
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.43975559 (Intr)
-## rank        0.04683491 -0.133
-## Residual    0.75406093       
+## (Intercept) 0.44284512 (Intr)
+## rank        0.04601555 -0.164
+## Residual    0.75695383       
 ## 
 ## Fixed effects: as.numeric(Depressed.scale) ~ rank + BDI.scale + cohort + rank:cohort +      cohort:BDI.scale + rank:BDI.scale + rank:BDI.scale:cohort 
 ##                            Value  Std.Error   DF   t-value p-value
-## (Intercept)           -0.0099530 0.10799078 2712 -0.092165  0.9266
-## rank                  -0.0019788 0.01258837 2712 -0.157193  0.8751
-## BDI.scale              0.8600272 0.10742956 2712  8.005498  0.0000
-## cohort                -0.0831045 0.06030229 2712 -1.378132  0.1683
-## rank:cohort            0.0129504 0.00674825 2712  1.919080  0.0551
-## BDI.scale:cohort      -0.2899895 0.06307789 2712 -4.597324  0.0000
-## rank:BDI.scale        -0.0705863 0.01252418 2712 -5.636000  0.0000
-## rank:BDI.scale:cohort  0.0370212 0.00705516 2712  5.247400  0.0000
+## (Intercept)           -0.0068232 0.10938894 2687 -0.062375  0.9503
+## rank                  -0.0032090 0.01271052 2687 -0.252472  0.8007
+## BDI.scale              0.8676646 0.10845760 2687  8.000036  0.0000
+## cohort                -0.0847466 0.06075340 2687 -1.394927  0.1632
+## rank:cohort            0.0132781 0.00680404 2687  1.951503  0.0511
+## BDI.scale:cohort      -0.2928582 0.06363667 2687 -4.602036  0.0000
+## rank:BDI.scale        -0.0715621 0.01263362 2687 -5.664416  0.0000
+## rank:BDI.scale:cohort  0.0374573 0.00711562 2687  5.264090  0.0000
 ##  Correlation: 
 ##                       (Intr) rank   BDI.sc cohort rnk:ch BDI.s: rn:BDI.
-## rank                  -0.756                                           
+## rank                  -0.762                                           
 ## BDI.scale             -0.024  0.011                                    
-## cohort                -0.865  0.750  0.021                             
-## rank:cohort            0.781 -0.889 -0.009 -0.870                      
-## BDI.scale:cohort       0.012 -0.004 -0.913 -0.006  0.001               
-## rank:BDI.scale         0.013 -0.008 -0.848 -0.012  0.009  0.777        
+## cohort                -0.865  0.753  0.021                             
+## rank:cohort            0.781 -0.892 -0.009 -0.871                      
+## BDI.scale:cohort       0.012 -0.004 -0.912 -0.007  0.001               
+## rank:BDI.scale         0.013 -0.008 -0.848 -0.012  0.009  0.778        
 ## rank:BDI.scale:cohort -0.005 -0.003  0.818  0.002  0.005 -0.863 -0.923 
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -2.9974404 -0.4984164 -0.1479099  0.2472068  5.7867794 
+## -2.9873326 -0.4987881 -0.1483068  0.2476048  5.7782027 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>intervals(mod3)</code></pre>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
 ##                               lower         est.       upper
-## (Intercept)           -0.2217055179 -0.009952977  0.20179956
-## rank                  -0.0266625696 -0.001978807  0.02270496
-## BDI.scale              0.6493750967  0.860027180  1.07067926
-## cohort                -0.2013476181 -0.083104524  0.03513857
-## rank:cohort           -0.0002818031  0.012950437  0.02618268
-## BDI.scale:cohort      -0.4136750410 -0.289989457 -0.16630387
-## rank:BDI.scale        -0.0951441671 -0.070586267 -0.04602837
-## rank:BDI.scale:cohort  0.0231872110  0.037021243  0.05085528
+## (Intercept)           -2.213182e-01 -0.006823154  0.20767185
+## rank                  -2.813243e-02 -0.003209048  0.02171433
+## BDI.scale              6.549959e-01  0.867664645  1.08033342
+## cohort                -2.038747e-01 -0.084746574  0.03438156
+## rank:cohort           -6.357818e-05  0.013278101  0.02661978
+## BDI.scale:cohort      -4.176400e-01 -0.292858221 -0.16807643
+## rank:BDI.scale        -9.633471e-02 -0.071562104 -0.04678950
+## rank:BDI.scale:cohort  2.350463e-02  0.037457277  0.05140993
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Fixed effects:&quot;
 ## 
 ##  Random Effects:
 ##   Level: as.factor(PID) 
 ##                             lower        est.      upper
-## sd((Intercept))        0.35798632  0.43975559 0.54020214
-## sd(rank)               0.03780936  0.04683491 0.05801496
-## cor((Intercept),rank) -0.40998340 -0.13346931 0.16551365
+## sd((Intercept))        0.36182758  0.44284512 0.54200346
+## sd(rank)               0.03723225  0.04601555 0.05687089
+## cor((Intercept),rank) -0.41104052 -0.16375504 0.10597760
 ## 
 ##  Within-group standard error:
 ##     lower      est.     upper 
-## 0.7339038 0.7540609 0.7747717</code></pre>
+## 0.7366392 0.7569538 0.7778287</code></pre>
 <pre class="r"><code>mod4&lt;-lme(fixed = as.numeric(Anxious.scale) ~ rank + BDI.scale + cohort + rank:cohort + cohort:BDI.scale + rank:BDI.scale + rank:BDI.scale:cohort,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -2750,68 +2750,68 @@ summary(mod4)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   6829.849 6901.123 -3402.925
+##   6760.887 6832.045 -3368.444
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##             StdDev    Corr  
-## (Intercept) 0.4940739 (Intr)
-## rank        0.0454440 -0.162
-## Residual    0.7536596       
+##             StdDev     Corr  
+## (Intercept) 0.49784719 (Intr)
+## rank        0.04528455 -0.172
+## Residual    0.75330824       
 ## 
 ## Fixed effects: as.numeric(Anxious.scale) ~ rank + BDI.scale + cohort + rank:cohort +      cohort:BDI.scale + rank:BDI.scale + rank:BDI.scale:cohort 
 ##                             Value  Std.Error   DF    t-value p-value
-## (Intercept)            0.20941514 0.11040802 2712  1.8967384  0.0580
-## rank                  -0.02579637 0.01252883 2712 -2.0589605  0.0396
-## BDI.scale              0.14874636 0.10824491 2712  1.3741649  0.1695
-## cohort                -0.15649225 0.06030005 2712 -2.5952260  0.0095
-## rank:cohort            0.01965525 0.00674516 2712  2.9139798  0.0036
-## BDI.scale:cohort       0.01870249 0.06321498 2712  0.2958554  0.7674
-## rank:BDI.scale        -0.00820254 0.01253535 2712 -0.6543525  0.5129
-## rank:BDI.scale:cohort  0.00575442 0.00705829 2712  0.8152708  0.4150
+## (Intercept)            0.21919117 0.11149334 2687  1.9659576  0.0494
+## rank                  -0.02820830 0.01262991 2687 -2.2334515  0.0256
+## BDI.scale              0.14765800 0.10882157 2687  1.3568817  0.1749
+## cohort                -0.16105107 0.06048131 2687 -2.6628236  0.0078
+## rank:cohort            0.02043530 0.00677202 2687  3.0176064  0.0026
+## BDI.scale:cohort       0.01920210 0.06350353 2687  0.3023784  0.7624
+## rank:BDI.scale        -0.00813346 0.01259586 2687 -0.6457250  0.5185
+## rank:BDI.scale:cohort  0.00577299 0.00708998 2687  0.8142464  0.4156
 ##  Correlation: 
 ##                       (Intr) rank   BDI.sc cohort rnk:ch BDI.s: rn:BDI.
-## rank                  -0.749                                           
+## rank                  -0.750                                           
 ## BDI.scale             -0.024  0.011                                    
-## cohort                -0.846  0.753  0.022                             
-## rank:cohort            0.764 -0.892 -0.009 -0.870                      
-## BDI.scale:cohort       0.011 -0.004 -0.908 -0.007  0.001               
+## cohort                -0.844  0.754  0.022                             
+## rank:cohort            0.763 -0.893 -0.010 -0.871                      
+## BDI.scale:cohort       0.011 -0.004 -0.907 -0.007  0.001               
 ## rank:BDI.scale         0.013 -0.008 -0.848 -0.012  0.009  0.777        
 ## rank:BDI.scale:cohort -0.005 -0.003  0.814  0.002  0.005 -0.864 -0.923 
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.3796738 -0.5810213 -0.1648291  0.5152131  4.4005759 
+## -3.3741777 -0.5809972 -0.1663103  0.5144393  4.4035230 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>intervals(mod4)</code></pre>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
-##                              lower         est.        upper
-## (Intercept)           -0.007077227  0.209415136  0.425907498
-## rank                  -0.050363392 -0.025796370 -0.001229347
-## BDI.scale             -0.063504498  0.148746361  0.360997220
-## cohort                -0.274730938 -0.156492248 -0.038253559
-## rank:cohort            0.006429082  0.019655248  0.032881413
-## BDI.scale:cohort      -0.105251915  0.018702491  0.142656898
-## rank:BDI.scale        -0.032782335 -0.008202536  0.016377263
-## rank:BDI.scale:cohort -0.008085751  0.005754416  0.019594583
+##                               lower         est.        upper
+## (Intercept)            0.0005697661  0.219191166  0.437812566
+## rank                  -0.0529736248 -0.028208296 -0.003442968
+## BDI.scale             -0.0657244734  0.147658000  0.361040474
+## cohort                -0.2796456817 -0.161051066 -0.042456451
+## rank:cohort            0.0071563985  0.020435304  0.033714208
+## BDI.scale:cohort      -0.1053186202  0.019202098  0.143722816
+## rank:BDI.scale        -0.0328320208 -0.008133462  0.016565096
+## rank:BDI.scale:cohort -0.0081293759  0.005772990  0.019675357
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Fixed effects:&quot;
 ## 
 ##  Random Effects:
 ##   Level: as.factor(PID) 
-##                             lower       est.      upper
-## sd((Intercept))        0.40828141  0.4940739 0.59789410
-## sd(rank)               0.03669437  0.0454440 0.05627995
-## cor((Intercept),rank) -0.41000886 -0.1617138 0.10889627
+##                             lower        est.      upper
+## sd((Intercept))        0.40971052  0.49784719 0.60494376
+## sd(rank)               0.03646562  0.04528455 0.05623626
+## cor((Intercept),rank) -0.43329468 -0.17245685 0.11503880
 ## 
 ##  Within-group standard error:
 ##     lower      est.     upper 
-## 0.7335200 0.7536596 0.7743521</code></pre>
+## 0.7330860 0.7533082 0.7740883</code></pre>
 <pre class="r"><code>mod5&lt;-lme(fixed = as.numeric(Lonely.scale) ~ rank + BDI.scale + cohort + rank:cohort + cohort:BDI.scale + rank:BDI.scale + rank:BDI.scale:cohort,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -2819,69 +2819,69 @@ summary(mod4)</code></pre>
 summary(mod5)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
-##        AIC      BIC    logLik
-##   6870.973 6942.247 -3423.486
+##        AIC      BIC   logLik
+##   6804.739 6875.898 -3390.37
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.62886337 (Intr)
-## rank        0.03743955 -0.292
-## Residual    0.75867398       
+## (Intercept) 0.63296640 (Intr)
+## rank        0.03756107 -0.305
+## Residual    0.75872223       
 ## 
 ## Fixed effects: as.numeric(Lonely.scale) ~ rank + BDI.scale + cohort + rank:cohort +      cohort:BDI.scale + rank:BDI.scale + rank:BDI.scale:cohort 
 ##                            Value  Std.Error   DF   t-value p-value
-## (Intercept)           -0.3607866 0.11794862 2712 -3.058846  0.0022
-## rank                   0.0057373 0.01231043 2712  0.466050  0.6412
-## BDI.scale              0.6049994 0.11017342 2712  5.491337  0.0000
-## cohort                 0.2373401 0.06070564 2712  3.909688  0.0001
-## rank:cohort           -0.0027189 0.00677769 2712 -0.401151  0.6883
-## BDI.scale:cohort      -0.1518147 0.06372512 2712 -2.382337  0.0173
-## rank:BDI.scale        -0.0404510 0.01254810 2712 -3.223673  0.0013
-## rank:BDI.scale:cohort  0.0181087 0.00707701 2712  2.558808  0.0106
+## (Intercept)           -0.3682962 0.11922360 2687 -3.089121  0.0020
+## rank                   0.0063054 0.01242618 2687  0.507430  0.6119
+## BDI.scale              0.6093687 0.11081781 2687  5.498834  0.0000
+## cohort                 0.2395436 0.06091504 2687  3.932421  0.0001
+## rank:cohort           -0.0029751 0.00681106 2687 -0.436804  0.6623
+## BDI.scale:cohort      -0.1531914 0.06404991 2687 -2.391751  0.0168
+## rank:BDI.scale        -0.0410601 0.01261760 2687 -3.254195  0.0012
+## rank:BDI.scale:cohort  0.0183390 0.00711328 2687  2.578130  0.0100
 ##  Correlation: 
 ##                       (Intr) rank   BDI.sc cohort rnk:ch BDI.s: rn:BDI.
-## rank                  -0.746                                           
+## rank                  -0.747                                           
 ## BDI.scale             -0.024  0.011                                    
-## cohort                -0.797  0.770  0.023                             
-## rank:cohort            0.720 -0.913 -0.009 -0.870                      
+## cohort                -0.795  0.771  0.023                             
+## rank:cohort            0.719 -0.914 -0.009 -0.871                      
 ## BDI.scale:cohort       0.011 -0.004 -0.900 -0.007  0.001               
 ## rank:BDI.scale         0.012 -0.007 -0.847 -0.012  0.007  0.781        
-## rank:BDI.scale:cohort -0.005 -0.002  0.809  0.002  0.005 -0.864 -0.930 
+## rank:BDI.scale:cohort -0.005 -0.002  0.809  0.002  0.004 -0.864 -0.930 
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.4133340 -0.5349729 -0.1319522  0.4339899  4.7062123 
+## -3.4143205 -0.5387069 -0.1286767  0.4410564  4.7058646 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>intervals(mod5)</code></pre>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
 ##                              lower         est.       upper
-## (Intercept)           -0.592064901 -0.360786643 -0.12950839
-## rank                  -0.018401493  0.005737281  0.02987605
-## BDI.scale              0.388967015  0.604999369  0.82103172
-## cohort                 0.118306104  0.237340101  0.35637410
-## rank:cohort           -0.016008843 -0.002718879  0.01057109
-## BDI.scale:cohort      -0.276769416 -0.151814714 -0.02686001
-## rank:BDI.scale        -0.065055775 -0.040450971 -0.01584617
-## rank:BDI.scale:cohort  0.004231829  0.018108699  0.03198557
+## (Intercept)           -0.602075447 -0.368296172 -0.13451690
+## rank                  -0.018060430  0.006305414  0.03067126
+## BDI.scale              0.392071897  0.609368686  0.82666548
+## cohort                 0.120098484  0.239543571  0.35898866
+## rank:cohort           -0.016330541 -0.002975095  0.01038035
+## BDI.scale:cohort      -0.278783507 -0.153191413 -0.02759932
+## rank:BDI.scale        -0.065801304 -0.041060124 -0.01631894
+## rank:BDI.scale:cohort  0.004390906  0.018338955  0.03228700
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Fixed effects:&quot;
 ## 
 ##  Random Effects:
 ##   Level: as.factor(PID) 
 ##                             lower        est.       upper
-## sd((Intercept))        0.52758975  0.62886337  0.74957699
-## sd(rank)               0.02954893  0.03743955  0.04743725
-## cor((Intercept),rank) -0.52782809 -0.29243618 -0.01532553
+## sd((Intercept))        0.53035466  0.63296640  0.75543122
+## sd(rank)               0.02962182  0.03756107  0.04762820
+## cor((Intercept),rank) -0.53915351 -0.30538059 -0.02791715
 ## 
 ##  Within-group standard error:
 ##     lower      est.     upper 
-## 0.7384161 0.7586740 0.7794876</code></pre>
+## 0.7383707 0.7587222 0.7796347</code></pre>
 <pre class="r"><code>mod6&lt;-lme(fixed = as.numeric(neg.aff.scale) ~ rank + BDI.scale + cohort + rank:cohort + cohort:BDI.scale + rank:BDI.scale + rank:BDI.scale:cohort,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -2890,68 +2890,68 @@ summary(mod6)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   6495.547 6566.821 -3235.774
+##   6470.801 6541.959 -3223.401
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.37327324 (Intr)
-## rank        0.02955216 -0.04 
-## Residual    0.71972829       
+## (Intercept) 0.36396432 (Intr)
+## rank        0.02915622 -0.124
+## Residual    0.72618586       
 ## 
 ## Fixed effects: as.numeric(neg.aff.scale) ~ rank + BDI.scale + cohort + rank:cohort +      cohort:BDI.scale + rank:BDI.scale + rank:BDI.scale:cohort 
 ##                            Value  Std.Error   DF    t-value p-value
-## (Intercept)            1.1578628 0.10107949 2712  11.454973  0.0000
-## rank                   0.0208763 0.01148935 2712   1.817017  0.0693
-## BDI.scale              0.9574893 0.10061512 2712   9.516355  0.0000
-## cohort                -0.8041979 0.05742200 2712 -14.005048  0.0000
-## rank:cohort           -0.0053335 0.00641138 2712  -0.831885  0.4055
-## BDI.scale:cohort      -0.4316282 0.05954547 2712  -7.248715  0.0000
-## rank:BDI.scale        -0.0188870 0.01169724 2712  -1.614655  0.1065
-## rank:BDI.scale:cohort  0.0102242 0.00663391 2712   1.541197  0.1234
+## (Intercept)            1.1863435 0.10237777 2687  11.587901  0.0000
+## rank                   0.0184572 0.01168091 2687   1.580120  0.1142
+## BDI.scale              0.9733880 0.10202929 2687   9.540280  0.0000
+## cohort                -0.8197262 0.05818552 2687 -14.088146  0.0000
+## rank:cohort           -0.0044149 0.00650491 2687  -0.678705  0.4974
+## BDI.scale:cohort      -0.4389539 0.06038747 2687  -7.268956  0.0000
+## rank:BDI.scale        -0.0194283 0.01186515 2687  -1.637425  0.1017
+## rank:BDI.scale:cohort  0.0104946 0.00672727 2687   1.560011  0.1189
 ##  Correlation: 
 ##                       (Intr) rank   BDI.sc cohort rnk:ch BDI.s: rn:BDI.
-## rank                  -0.785                                           
+## rank                  -0.798                                           
 ## BDI.scale             -0.022  0.008                                    
-## cohort                -0.881  0.782  0.018                             
-## rank:cohort            0.796 -0.928 -0.006 -0.870                      
+## cohort                -0.886  0.784  0.018                             
+## rank:cohort            0.801 -0.930 -0.006 -0.871                      
 ## BDI.scale:cohort       0.012 -0.004 -0.922 -0.006  0.001               
-## rank:BDI.scale         0.010 -0.004 -0.845 -0.008  0.004  0.788        
-## rank:BDI.scale:cohort -0.005 -0.003  0.828  0.002  0.005 -0.861 -0.942 
+## rank:BDI.scale         0.010 -0.004 -0.847 -0.008  0.004  0.788        
+## rank:BDI.scale:cohort -0.005 -0.003  0.829  0.002  0.005 -0.861 -0.942 
 ## 
 ## Standardized Within-Group Residuals:
 ##         Min          Q1         Med          Q3         Max 
-## -4.10353388 -0.49410291 -0.04706513  0.31416623  6.64053861 
+## -4.10794030 -0.49169039 -0.04672144  0.31191881  6.67516270 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>intervals(mod6)</code></pre>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
 ##                              lower         est.        upper
-## (Intercept)            0.959662154  1.157862765  1.356063376
-## rank                  -0.001652425  0.020876347  0.043405120
-## BDI.scale              0.760199202  0.957489272  1.154779341
-## cohort                -0.916793244 -0.804197933 -0.691602622
-## rank:cohort           -0.017905211 -0.005333531  0.007238150
-## BDI.scale:cohort      -0.548387270 -0.431628178 -0.314869085
-## rank:BDI.scale        -0.041823425 -0.018887011  0.004049404
-## rank:BDI.scale:cohort -0.002783865  0.010224159  0.023232183
+## (Intercept)            0.985596298  1.186343468  1.387090638
+## rank                  -0.004447238  0.018457236  0.041361709
+## BDI.scale              0.773324129  0.973387985  1.173451841
+## cohort                -0.933819074 -0.819726152 -0.705633230
+## rank:cohort           -0.017170055 -0.004414917  0.008340221
+## BDI.scale:cohort      -0.557364451 -0.438953852 -0.320543254
+## rank:BDI.scale        -0.042694058 -0.019428302  0.003837454
+## rank:BDI.scale:cohort -0.002696537  0.010494619  0.023685775
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Fixed effects:&quot;
 ## 
 ##  Random Effects:
 ##   Level: as.factor(PID) 
 ##                             lower        est.      upper
-## sd((Intercept))        0.30522037  0.37327324 0.45649937
-## sd(rank)               0.02208015  0.02955216 0.03955273
-## cor((Intercept),rank) -0.22305707 -0.03987294 0.14603124
+## sd((Intercept))        0.28973013  0.36396432 0.45721867
+## sd(rank)               0.02113928  0.02915622 0.04021354
+## cor((Intercept),rank) -0.46756145 -0.12388925 0.25231810
 ## 
 ##  Within-group standard error:
 ##     lower      est.     upper 
-## 0.7004757 0.7197283 0.7395101</code></pre>
+## 0.7066483 0.7261859 0.7462636</code></pre>
 <pre class="r"><code>mod1&lt;-lme(fixed = as.numeric(PHQ4.scale) ~ rank + STAI.scale + cohort + rank:cohort + cohort:STAI.scale + rank:STAI.scale + rank:STAI.scale:cohort,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -2960,68 +2960,68 @@ summary(mod1)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   3103.551 3166.626 -1539.775
+##   3075.448 3138.404 -1525.724
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.43330718 (Intr)
-## rank        0.03521778 0.073 
-## Residual    0.63660353       
+## (Intercept) 0.43195783 (Intr)
+## rank        0.03478923 0.044 
+## Residual    0.63804966       
 ## 
 ## Fixed effects: as.numeric(PHQ4.scale) ~ rank + STAI.scale + cohort + rank:cohort +      cohort:STAI.scale + rank:STAI.scale + rank:STAI.scale:cohort 
 ##                             Value  Std.Error   DF   t-value p-value
-## (Intercept)            -0.2193461 0.12622775 1323 -1.737701  0.0825
-## rank                    0.0096078 0.01409299 1323  0.681746  0.4955
-## STAI.scale              0.5732751 0.11996416 1323  4.778720  0.0000
-## cohort                  0.0495134 0.07158126 1323  0.691709  0.4892
-## rank:cohort             0.0073391 0.00794454 1323  0.923797  0.3558
-## STAI.scale:cohort      -0.0784098 0.07337257 1323 -1.068653  0.2854
-## rank:STAI.scale        -0.0164991 0.01344584 1323 -1.227079  0.2200
-## rank:STAI.scale:cohort  0.0115040 0.00796485 1323  1.444349  0.1489
+## (Intercept)            -0.2138129 0.12755637 1311 -1.676223  0.0939
+## rank                    0.0077921 0.01424154 1311  0.547140  0.5844
+## STAI.scale              0.5737555 0.12092915 1311  4.744559  0.0000
+## cohort                  0.0455547 0.07209496 1311  0.631871  0.5276
+## rank:cohort             0.0080695 0.00800853 1311  1.007612  0.3138
+## STAI.scale:cohort      -0.0772599 0.07392137 1311 -1.045164  0.2961
+## rank:STAI.scale        -0.0159309 0.01355001 1311 -1.175711  0.2399
+## rank:STAI.scale:cohort  0.0113352 0.00802350 1311  1.412753  0.1580
 ##  Correlation: 
 ##                        (Intr) rank   STAI.s cohort rnk:ch STAI.: rn:STAI.
-## rank                   -0.787                                            
-## STAI.scale             -0.081  0.059                                     
-## cohort                 -0.893  0.793  0.065                              
-## rank:cohort             0.798 -0.928 -0.044 -0.869                       
-## STAI.scale:cohort       0.042 -0.039 -0.917 -0.019  0.019                
-## rank:STAI.scale         0.061 -0.073 -0.852 -0.046  0.057  0.797         
-## rank:STAI.scale:cohort -0.039  0.039  0.824  0.019 -0.015 -0.863 -0.932  
+## rank                   -0.791                                            
+## STAI.scale             -0.084  0.062                                     
+## cohort                 -0.894  0.795  0.066                              
+## rank:cohort             0.799 -0.930 -0.046 -0.870                       
+## STAI.scale:cohort       0.044 -0.041 -0.917 -0.019  0.020                
+## rank:STAI.scale         0.064 -0.076 -0.853 -0.048  0.059  0.797         
+## rank:STAI.scale:cohort -0.041  0.041  0.824  0.020 -0.016 -0.863 -0.932  
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -4.9412620 -0.5469200 -0.1259803  0.5144180  5.2263278 
+## -4.9249148 -0.5480189 -0.1209908  0.5173477  5.2122195 
 ## 
-## Number of Observations: 1425
-## Number of Groups: 95</code></pre>
+## Number of Observations: 1411
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>intervals(mod1)</code></pre>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
-##                               lower         est.       upper
-## (Intercept)            -0.466974443 -0.219346066 0.028282311
-## rank                   -0.018039205  0.009607836 0.037254876
-## STAI.scale              0.337934366  0.573275094 0.808615821
-## cohort                 -0.090911765  0.049513403 0.189938571
-## rank:cohort            -0.008246129  0.007339143 0.022924415
-## STAI.scale:cohort      -0.222349129 -0.078409845 0.065529440
-## rank:STAI.scale        -0.042876590 -0.016499102 0.009878386
-## rank:STAI.scale:cohort -0.004121090  0.011504018 0.027129125
+##                               lower         est.      upper
+## (Intercept)            -0.464049850 -0.213812929 0.03642399
+## rank                   -0.020146588  0.007792114 0.03573082
+## STAI.scale              0.336519669  0.573755477 0.81099128
+## cohort                 -0.095879356  0.045554737 0.18698883
+## rank:cohort            -0.007641446  0.008069496 0.02378044
+## STAI.scale:cohort      -0.222277034 -0.077259923 0.06775719
+## rank:STAI.scale        -0.042512974 -0.015930894 0.01065119
+## rank:STAI.scale:cohort -0.004405075  0.011335220 0.02707551
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Fixed effects:&quot;
 ## 
 ##  Random Effects:
 ##   Level: as.factor(PID) 
 ##                             lower       est.      upper
-## sd((Intercept))        0.34355987 0.43330718 0.54649894
-## sd(rank)               0.02593336 0.03521778 0.04782611
-## cor((Intercept),rank) -0.33792695 0.07272037 0.46010801
+## sd((Intercept))        0.34489999 0.43195783 0.54099037
+## sd(rank)               0.02591108 0.03478923 0.04670938
+## cor((Intercept),rank) -0.28514528 0.04385482 0.36361013
 ## 
 ##  Within-group standard error:
 ##     lower      est.     upper 
-## 0.6119420 0.6366035 0.6622590</code></pre>
+## 0.6133062 0.6380497 0.6637914</code></pre>
 <pre class="r"><code>mod2&lt;-lme(fixed = as.numeric(PSS4.scale) ~ rank + STAI.scale + cohort + rank:cohort + cohort:STAI.scale + rank:STAI.scale + rank:STAI.scale:cohort,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -3030,68 +3030,68 @@ summary(mod2)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   2849.956 2912.697 -1412.978
+##   2828.856 2891.483 -1402.428
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.47522190 (Intr)
-## rank        0.03113304 0.162 
-## Residual    0.59248658       
+## (Intercept) 0.47368318 (Intr)
+## rank        0.03141703 0.167 
+## Residual    0.59387778       
 ## 
 ## Fixed effects: as.numeric(PSS4.scale) ~ rank + STAI.scale + cohort + rank:cohort +      cohort:STAI.scale + rank:STAI.scale + rank:STAI.scale:cohort 
 ##                             Value  Std.Error   DF   t-value p-value
-## (Intercept)            -0.0075941 0.12073517 1284 -0.062898  0.9499
-## rank                    0.0018000 0.01382120 1284  0.130234  0.8964
-## STAI.scale              0.4453223 0.11144919 1284  3.995743  0.0001
-## cohort                 -0.0142918 0.06866370 1284 -0.208142  0.8352
-## rank:cohort             0.0045919 0.00772313 1284  0.594567  0.5522
-## STAI.scale:cohort       0.0227035 0.06997901 1284  0.324434  0.7457
-## rank:STAI.scale        -0.0179634 0.01306893 1284 -1.374509  0.1695
-## rank:STAI.scale:cohort  0.0067926 0.00765738 1284  0.887073  0.3752
+## (Intercept)            -0.0144157 0.12204746 1273 -0.118116  0.9060
+## rank                    0.0021371 0.01400131 1273  0.152639  0.8787
+## STAI.scale              0.4496411 0.11228468 1273  4.004474  0.0001
+## cohort                 -0.0117372 0.06915906 1273 -0.169714  0.8653
+## rank:cohort             0.0043779 0.00779520 1273  0.561610  0.5745
+## STAI.scale:cohort       0.0220849 0.07048151 1273  0.313343  0.7541
+## rank:STAI.scale        -0.0182501 0.01317393 1273 -1.385319  0.1662
+## rank:STAI.scale:cohort  0.0068953 0.00771535 1273  0.893718  0.3716
 ##  Correlation: 
 ##                        (Intr) rank   STAI.s cohort rnk:ch STAI.: rn:STAI.
 ## rank                   -0.757                                            
-## STAI.scale             -0.068  0.045                                     
-## cohort                 -0.870  0.774  0.051                              
-## rank:cohort             0.787 -0.937 -0.029 -0.862                       
-## STAI.scale:cohort       0.023 -0.022 -0.909  0.003  0.002                
-## rank:STAI.scale         0.046 -0.058 -0.837 -0.031  0.045  0.771         
-## rank:STAI.scale:cohort -0.026  0.028  0.830  0.005 -0.006 -0.854 -0.938  
+## STAI.scale             -0.071  0.048                                     
+## cohort                 -0.871  0.775  0.052                              
+## rank:cohort             0.789 -0.938 -0.031 -0.863                       
+## STAI.scale:cohort       0.024 -0.024 -0.910  0.003  0.003                
+## rank:STAI.scale         0.049 -0.062 -0.837 -0.034  0.047  0.771         
+## rank:STAI.scale:cohort -0.028  0.031  0.831  0.006 -0.007 -0.854 -0.938  
 ## 
 ## Standardized Within-Group Residuals:
 ##         Min          Q1         Med          Q3         Max 
-## -3.91707976 -0.58782218 -0.04626888  0.55477637  4.16503768 
+## -3.90686901 -0.59960141 -0.04560956  0.55824953  4.15484775 
 ## 
-## Number of Observations: 1386
-## Number of Groups: 95</code></pre>
+## Number of Observations: 1373
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>intervals(mod2)</code></pre>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
 ##                               lower         est.       upper
-## (Intercept)            -0.244453911 -0.007594060 0.229265791
-## rank                   -0.025314618  0.001799994 0.028914606
-## STAI.scale              0.226679834  0.445322326 0.663964817
-## cohort                 -0.148997168 -0.014291806 0.120413556
-## rank:cohort            -0.010559415  0.004591914 0.019743243
-## STAI.scale:cohort      -0.114582205  0.022703540 0.159989285
-## rank:STAI.scale        -0.043602160 -0.017963360 0.007675439
-## rank:STAI.scale:cohort -0.008229692  0.006792649 0.021814991
+## (Intercept)            -0.253852011 -0.014415743 0.225020525
+## rank                   -0.025331030  0.002137143 0.029605315
+## STAI.scale              0.229357681  0.449641054 0.669924427
+## cohort                 -0.147415491 -0.011737232 0.123941027
+## rank:cohort            -0.010914989  0.004377861 0.019670712
+## STAI.scale:cohort      -0.116187800  0.022084890 0.160357579
+## rank:STAI.scale        -0.044095088 -0.018250095 0.007594898
+## rank:STAI.scale:cohort -0.008240848  0.006895348 0.022031543
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Fixed effects:&quot;
 ## 
 ##  Random Effects:
 ##   Level: as.factor(PID) 
-##                             lower       est.      upper
-## sd((Intercept))        0.38509713 0.47522190 0.58643869
-## sd(rank)               0.02264611 0.03113304 0.04280056
-## cor((Intercept),rank) -0.24436329 0.16158288 0.51933771
+##                            lower       est.      upper
+## sd((Intercept))        0.3825357 0.47368318 0.58654860
+## sd(rank)               0.0228188 0.03141703 0.04325511
+## cor((Intercept),rank) -0.2489725 0.16695175 0.53088442
 ## 
 ##  Within-group standard error:
 ##     lower      est.     upper 
-## 0.5691676 0.5924866 0.6167609</code></pre>
+## 0.5703828 0.5938778 0.6183406</code></pre>
 <pre class="r"><code>mod3&lt;-lme(fixed = as.numeric(Depressed.scale) ~ rank + STAI.scale + cohort + rank:cohort + cohort:STAI.scale + rank:STAI.scale + rank:STAI.scale:cohort,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -3099,69 +3099,69 @@ summary(mod2)</code></pre>
 summary(mod3)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
-##       AIC      BIC    logLik
-##   6803.21 6874.484 -3389.605
+##        AIC      BIC    logLik
+##   6752.951 6824.109 -3364.476
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.45105284 (Intr)
-## rank        0.04643906 -0.143
-## Residual    0.75124623       
+## (Intercept) 0.45096879 (Intr)
+## rank        0.04575425 -0.184
+## Residual    0.75414873       
 ## 
 ## Fixed effects: as.numeric(Depressed.scale) ~ rank + STAI.scale + cohort + rank:cohort +      cohort:STAI.scale + rank:STAI.scale + rank:STAI.scale:cohort 
 ##                             Value  Std.Error   DF   t-value p-value
-## (Intercept)            -0.0999991 0.10895100 2712 -0.917836  0.3588
-## rank                   -0.0012666 0.01261903 2712 -0.100369  0.9201
-## STAI.scale              0.6334148 0.10198822 2712  6.210666  0.0000
-## cohort                 -0.0281241 0.06064458 2712 -0.463753  0.6429
-## rank:cohort             0.0131873 0.00679018 2712  1.942106  0.0522
-## STAI.scale:cohort      -0.1481501 0.06265162 2712 -2.364665  0.0181
-## rank:STAI.scale        -0.0424265 0.01169478 2712 -3.627813  0.0003
-## rank:STAI.scale:cohort  0.0267286 0.00686265 2712  3.894794  0.0001
+## (Intercept)            -0.1012972 0.11027813 2687 -0.918561  0.3584
+## rank                   -0.0023187 0.01275287 2687 -0.181815  0.8557
+## STAI.scale              0.6381720 0.10298870 2687  6.196525  0.0000
+## cohort                 -0.0284146 0.06112694 2687 -0.464846  0.6421
+## rank:cohort             0.0134399 0.00684951 2687  1.962173  0.0498
+## STAI.scale:cohort      -0.1491227 0.06321561 2687 -2.358955  0.0184
+## rank:STAI.scale        -0.0426015 0.01180354 2687 -3.609215  0.0003
+## rank:STAI.scale:cohort  0.0267756 0.00692282 2687  3.867726  0.0001
 ##  Correlation: 
 ##                        (Intr) rank   STAI.s cohort rnk:ch STAI.: rn:STAI.
-## rank                   -0.754                                            
-## STAI.scale             -0.081  0.059                                     
-## cohort                 -0.862  0.749  0.068                              
-## rank:cohort             0.775 -0.890 -0.048 -0.866                       
-## STAI.scale:cohort       0.031 -0.027 -0.897 -0.007  0.007                
-## rank:STAI.scale         0.062 -0.075 -0.849 -0.050  0.066  0.768         
-## rank:STAI.scale:cohort -0.030  0.028  0.809  0.010 -0.006 -0.862 -0.906  
+## rank                   -0.763                                            
+## STAI.scale             -0.084  0.062                                     
+## cohort                 -0.863  0.752  0.069                              
+## rank:cohort             0.776 -0.893 -0.050 -0.867                       
+## STAI.scale:cohort       0.032 -0.028 -0.897 -0.006  0.008                
+## rank:STAI.scale         0.065 -0.078 -0.850 -0.052  0.068  0.768         
+## rank:STAI.scale:cohort -0.031  0.030  0.809  0.010 -0.006 -0.863 -0.906  
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -2.9967184 -0.5033129 -0.1523469  0.2432177  5.7000100 
+## -2.9858748 -0.5045440 -0.1540951  0.2438946  5.6897570 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>intervals(mod3)</code></pre>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
 ##                                lower         est.       upper
-## (Intercept)            -0.3136344963 -0.099999114  0.11363627
-## rank                   -0.0260104476 -0.001266565  0.02347732
-## STAI.scale              0.4334323199  0.633414810  0.83339730
-## cohort                 -0.1470383514 -0.028124093  0.09079017
-## rank:cohort            -0.0001272012  0.013187254  0.02650171
-## STAI.scale:cohort      -0.2709998227 -0.148150070 -0.02530032
-## rank:STAI.scale        -0.0653580747 -0.042426485 -0.01949490
-## rank:STAI.scale:cohort  0.0132720593  0.026728617  0.04018518
+## (Intercept)            -3.175357e-01 -0.101297172  0.11494140
+## rank                   -2.732508e-02 -0.002318657  0.02268777
+## STAI.scale              4.362269e-01  0.638172031  0.84011714
+## cohort                 -1.482752e-01 -0.028414641  0.09144596
+## rank:cohort             9.081758e-06  0.013439928  0.02687077
+## STAI.scale:cohort      -2.730789e-01 -0.149122741 -0.02516659
+## rank:STAI.scale        -6.574643e-02 -0.042601499 -0.01945657
+## rank:STAI.scale:cohort  1.320098e-02  0.026775568  0.04035016
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Fixed effects:&quot;
 ## 
 ##  Random Effects:
 ##   Level: as.factor(PID) 
 ##                             lower        est.      upper
-## sd((Intercept))        0.37004853  0.45105284 0.54978914
-## sd(rank)               0.03766876  0.04643906 0.05725132
-## cor((Intercept),rank) -0.38270437 -0.14282997 0.11508549
+## sd((Intercept))        0.36875465  0.45096879 0.55151263
+## sd(rank)               0.03698381  0.04575425 0.05660455
+## cor((Intercept),rank) -0.43590847 -0.18366806 0.09532557
 ## 
 ##  Within-group standard error:
 ##     lower      est.     upper 
-## 0.7311710 0.7512462 0.7718727</code></pre>
+## 0.7339017 0.7541487 0.7749543</code></pre>
 <pre class="r"><code>mod4&lt;-lme(fixed = as.numeric(Anxious.scale) ~ rank + STAI.scale + cohort + rank:cohort + cohort:STAI.scale + rank:STAI.scale + rank:STAI.scale:cohort,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -3169,69 +3169,69 @@ summary(mod3)</code></pre>
 summary(mod4)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
-##        AIC      BIC    logLik
-##   6825.663 6896.937 -3400.831
+##        AIC     BIC    logLik
+##   6756.052 6827.21 -3366.026
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.48146350 (Intr)
-## rank        0.04450086 -0.18 
-## Residual    0.75419390       
+## (Intercept) 0.48403003 (Intr)
+## rank        0.04424048 -0.197
+## Residual    0.75388608       
 ## 
 ## Fixed effects: as.numeric(Anxious.scale) ~ rank + STAI.scale + cohort + rank:cohort +      cohort:STAI.scale + rank:STAI.scale + rank:STAI.scale:cohort 
 ##                              Value  Std.Error   DF    t-value p-value
-## (Intercept)             0.16817587 0.11069692 2712  1.5192462  0.1288
-## rank                   -0.02603545 0.01258506 2712 -2.0687580  0.0387
-## STAI.scale              0.09736252 0.10278778 2712  0.9472189  0.3436
-## cohort                 -0.12868898 0.06091801 2712 -2.1124948  0.0347
-## rank:cohort             0.01986001 0.00681398 2712  2.9145975  0.0036
-## STAI.scale:cohort       0.07101254 0.06298001 2712  1.1275410  0.2596
-## rank:STAI.scale         0.00106070 0.01173576 2712  0.0903818  0.9280
-## rank:STAI.scale:cohort  0.00007541 0.00688764 2712  0.0109484  0.9913
+## (Intercept)             0.17649973 0.11178231 2687  1.5789595  0.1145
+## rank                   -0.02857432 0.01268930 2687 -2.2518441  0.0244
+## STAI.scale              0.09485464 0.10337211 2687  0.9176038  0.3589
+## cohort                 -0.13272343 0.06113763 2687 -2.1708959  0.0300
+## rank:cohort             0.02071184 0.00684513 2687  3.0257753  0.0025
+## STAI.scale:cohort       0.07276639 0.06327714 2687  1.1499633  0.2503
+## rank:STAI.scale         0.00183186 0.01179682 2687  0.1552839  0.8766
+## rank:STAI.scale:cohort -0.00015053 0.00691941 2687 -0.0217549  0.9826
 ##  Correlation: 
 ##                        (Intr) rank   STAI.s cohort rnk:ch STAI.: rn:STAI.
-## rank                   -0.757                                            
-## STAI.scale             -0.082  0.060                                     
-## cohort                 -0.852  0.754  0.070                              
-## rank:cohort             0.766 -0.896 -0.049 -0.866                       
-## STAI.scale:cohort       0.030 -0.027 -0.893 -0.007  0.007                
-## rank:STAI.scale         0.062 -0.075 -0.849 -0.051  0.065  0.768         
-## rank:STAI.scale:cohort -0.030  0.029  0.807  0.010 -0.006 -0.863 -0.908  
+## rank                   -0.759                                            
+## STAI.scale             -0.085  0.062                                     
+## cohort                 -0.852  0.755  0.071                              
+## rank:cohort             0.766 -0.897 -0.050 -0.867                       
+## STAI.scale:cohort       0.031 -0.028 -0.893 -0.006  0.008                
+## rank:STAI.scale         0.065 -0.078 -0.849 -0.053  0.067  0.768         
+## rank:STAI.scale:cohort -0.031  0.030  0.807  0.010 -0.006 -0.863 -0.908  
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.3431052 -0.5898814 -0.1528776  0.5400250  4.3433464 
+## -3.3372331 -0.5898943 -0.1530710  0.5387222  4.3456927 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>intervals(mod4)</code></pre>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
 ##                               lower          est.        upper
-## (Intercept)            -0.048882977  1.681759e-01  0.385234726
-## rank                   -0.050712724 -2.603545e-02 -0.001358166
-## STAI.scale             -0.104187770  9.736252e-02  0.298912810
-## cohort                 -0.248139402 -1.286890e-01 -0.009238562
-## rank:cohort             0.006498892  1.986001e-02  0.033221135
-## STAI.scale:cohort      -0.052481118  7.101254e-02  0.194506201
-## rank:STAI.scale        -0.021951244  1.060700e-03  0.024072644
-## rank:STAI.scale:cohort -0.013430140  7.540891e-05  0.013580958
+## (Intercept)            -0.042688299  0.1764997293  0.395687757
+## rank                   -0.053456102 -0.0285743242 -0.003692547
+## STAI.scale             -0.107842282  0.0948546422  0.297551566
+## cohort                 -0.252604979 -0.1327234271 -0.012841875
+## rank:cohort             0.007289575  0.0207118366  0.034134098
+## STAI.scale:cohort      -0.051310414  0.0727663908  0.196843195
+## rank:STAI.scale        -0.021299903  0.0018318556  0.024963614
+## rank:STAI.scale:cohort -0.013718444 -0.0001505309  0.013417382
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Fixed effects:&quot;
 ## 
 ##  Random Effects:
 ##   Level: as.factor(PID) 
-##                            lower        est.      upper
-## sd((Intercept))        0.3969150  0.48146350 0.58402205
-## sd(rank)               0.0357344  0.04450086 0.05541793
-## cor((Intercept),rank) -0.4305395 -0.18019808 0.09588845
+##                             lower        est.      upper
+## sd((Intercept))        0.39838712  0.48403003 0.58808394
+## sd(rank)               0.03546253  0.04424048 0.05519122
+## cor((Intercept),rank) -0.44892294 -0.19706620 0.08379685
 ## 
 ##  Within-group standard error:
 ##     lower      est.     upper 
-## 0.7340284 0.7541939 0.7749134</code></pre>
+## 0.7336370 0.7538861 0.7746940</code></pre>
 <pre class="r"><code>mod5&lt;-lme(fixed = as.numeric(Lonely.scale) ~ rank + STAI.scale + cohort + rank:cohort + cohort:STAI.scale + rank:STAI.scale + rank:STAI.scale:cohort,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -3240,68 +3240,68 @@ summary(mod5)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   6857.695 6928.969 -3416.847
+##   6790.917 6862.075 -3383.459
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.63015183 (Intr)
-## rank        0.03763394 -0.274
-## Residual    0.75648196       
+## (Intercept) 0.63178238 (Intr)
+## rank        0.03777919 -0.287
+## Residual    0.75651397       
 ## 
 ## Fixed effects: as.numeric(Lonely.scale) ~ rank + STAI.scale + cohort + rank:cohort +      cohort:STAI.scale + rank:STAI.scale + rank:STAI.scale:cohort 
 ##                             Value  Std.Error   DF   t-value p-value
-## (Intercept)            -0.4439661 0.11865417 2712 -3.741681  0.0002
-## rank                    0.0067828 0.01236404 2712  0.548588  0.5833
-## STAI.scale              0.4762112 0.10435315 2712  4.563458  0.0000
-## cohort                  0.2896561 0.06119794 2712  4.733102  0.0000
-## rank:cohort            -0.0032896 0.00681757 2712 -0.482518  0.6295
-## STAI.scale:cohort      -0.0709735 0.06331846 2712 -1.120898  0.2624
-## rank:STAI.scale        -0.0102718 0.01171724 2712 -0.876639  0.3808
-## rank:STAI.scale:cohort  0.0032508 0.00688138 2712  0.472402  0.6367
+## (Intercept)            -0.4549334 0.11984464 2687 -3.796026  0.0002
+## rank                    0.0074929 0.01248678 2687  0.600066  0.5485
+## STAI.scale              0.4811351 0.10497645 2687  4.583267  0.0000
+## cohort                  0.2926785 0.06143521 2687  4.764018  0.0000
+## rank:cohort            -0.0036215 0.00685446 2687 -0.528340  0.5973
+## STAI.scale:cohort      -0.0721647 0.06364300 2687 -1.133899  0.2569
+## rank:STAI.scale        -0.0106269 0.01178640 2687 -0.901622  0.3673
+## rank:STAI.scale:cohort  0.0033545 0.00691749 2687  0.484928  0.6278
 ##  Correlation: 
 ##                        (Intr) rank   STAI.s cohort rnk:ch STAI.: rn:STAI.
-## rank                   -0.741                                            
-## STAI.scale             -0.082  0.061                                     
-## cohort                 -0.799  0.768  0.077                              
-## rank:cohort             0.718 -0.914 -0.049 -0.866                       
-## STAI.scale:cohort       0.028 -0.028 -0.881 -0.006  0.008                
-## rank:STAI.scale         0.059 -0.073 -0.848 -0.052  0.062  0.770         
-## rank:STAI.scale:cohort -0.028  0.031  0.801  0.010 -0.008 -0.863 -0.916  
+## rank                   -0.743                                            
+## STAI.scale             -0.085  0.064                                     
+## cohort                 -0.798  0.769  0.078                              
+## rank:cohort             0.718 -0.914 -0.051 -0.867                       
+## STAI.scale:cohort       0.028 -0.029 -0.881 -0.005  0.008                
+## rank:STAI.scale         0.062 -0.076 -0.848 -0.054  0.064  0.770         
+## rank:STAI.scale:cohort -0.029  0.033  0.801  0.010 -0.009 -0.863 -0.916  
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.3888932 -0.5483250 -0.1435145  0.4077769  4.8441129 
+## -3.3884804 -0.5526176 -0.1410200  0.4091231  4.8431860 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>intervals(mod5)</code></pre>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
-##                              lower         est.       upper
-## (Intercept)            -0.67662784 -0.443966105 -0.21130437
-## rank                   -0.01746114  0.006782761  0.03102666
-## STAI.scale              0.27159151  0.476211236  0.68083096
-## cohort                  0.16965680  0.289656123  0.40965545
-## rank:cohort            -0.01665775 -0.003289599  0.01007855
-## STAI.scale:cohort      -0.19513084 -0.070973526  0.05318379
-## rank:STAI.scale        -0.03324743 -0.010271799  0.01270383
-## rank:STAI.scale:cohort -0.01024251  0.003250782  0.01674407
+##                              lower         est.        upper
+## (Intercept)            -0.68993045 -0.454933417 -0.219936386
+## rank                   -0.01699178  0.007492890  0.031977558
+## STAI.scale              0.27529231  0.481135099  0.686977886
+## cohort                  0.17221338  0.292678452  0.413143521
+## rank:cohort            -0.01706204 -0.003621484  0.009819071
+## STAI.scale:cohort      -0.19695893 -0.072164731  0.052629467
+## rank:STAI.scale        -0.03373821 -0.010626877  0.012484458
+## rank:STAI.scale:cohort -0.01020966  0.003354485  0.016918632
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Fixed effects:&quot;
 ## 
 ##  Random Effects:
 ##   Level: as.factor(PID) 
-##                             lower        est.       upper
-## sd((Intercept))        0.52813071  0.63015183 0.751880772
-## sd(rank)               0.02973817  0.03763394 0.047626109
-## cor((Intercept),rank) -0.51528252 -0.27414791 0.007208708
+##                             lower        est.        upper
+## sd((Intercept))        0.52905532  0.63178238  0.754456022
+## sd(rank)               0.02984192  0.03777919  0.047827581
+## cor((Intercept),rank) -0.52411095 -0.28690303 -0.008385356
 ## 
 ##  Within-group standard error:
 ##     lower      est.     upper 
-## 0.7362751 0.7564820 0.7772434</code></pre>
+## 0.7362178 0.7565140 0.7773697</code></pre>
 <pre class="r"><code>mod6&lt;-lme(fixed = as.numeric(neg.aff.scale) ~ rank + STAI.scale + cohort + rank:cohort + cohort:STAI.scale + rank:STAI.scale + rank:STAI.scale:cohort,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -3310,68 +3310,68 @@ summary(mod6)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   6498.552 6569.826 -3237.276
+##   6467.523 6538.681 -3221.761
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.39746038 (Intr)
-## rank        0.02887021 -0.155
-## Residual    0.72008818       
+## (Intercept) 0.38009870 (Intr)
+## rank        0.02847237 -0.266
+## Residual    0.72649149       
 ## 
 ## Fixed effects: as.numeric(neg.aff.scale) ~ rank + STAI.scale + cohort + rank:cohort +      cohort:STAI.scale + rank:STAI.scale + rank:STAI.scale:cohort 
 ##                             Value  Std.Error   DF    t-value p-value
-## (Intercept)             1.0924171 0.10279481 2712  10.627162  0.0000
-## rank                    0.0191405 0.01153988 2712   1.658641  0.0973
-## STAI.scale              0.7185411 0.09644245 2712   7.450465  0.0000
-## cohort                 -0.7652396 0.05794792 2712 -13.205644  0.0000
-## rank:cohort            -0.0045956 0.00646114 2712  -0.711266  0.4770
-## STAI.scale:cohort      -0.3005258 0.05950536 2712  -5.050399  0.0000
-## rank:STAI.scale         0.0074638 0.01098712 2712   0.679327  0.4970
-## rank:STAI.scale:cohort -0.0026882 0.00647171 2712  -0.415372  0.6779
+## (Intercept)             1.1176277 0.10380117 2687  10.767005  0.0000
+## rank                    0.0165089 0.01173601 2687   1.406686  0.1596
+## STAI.scale              0.7310318 0.09777117 2687   7.476967  0.0000
+## cohort                 -0.7806239 0.05872258 2687 -13.293420  0.0000
+## rank:cohort            -0.0035503 0.00655666 2687  -0.541480  0.5882
+## STAI.scale:cohort      -0.3047299 0.06034078 2687  -5.050149  0.0000
+## rank:STAI.scale         0.0084853 0.01114656 2687   0.761249  0.4466
+## rank:STAI.scale:cohort -0.0030927 0.00656222 2687  -0.471284  0.6375
 ##  Correlation: 
 ##                        (Intr) rank   STAI.s cohort rnk:ch STAI.: rn:STAI.
-## rank                   -0.790                                            
-## STAI.scale             -0.078  0.056                                     
-## cohort                 -0.874  0.781  0.062                              
-## rank:cohort             0.787 -0.930 -0.041 -0.867                       
-## STAI.scale:cohort       0.032 -0.030 -0.906 -0.008  0.010                
-## rank:STAI.scale         0.057 -0.069 -0.848 -0.043  0.054  0.780         
-## rank:STAI.scale:cohort -0.032  0.034  0.821  0.011 -0.011 -0.861 -0.930  
+## rank                   -0.807                                            
+## STAI.scale             -0.081  0.060                                     
+## cohort                 -0.882  0.784  0.063                              
+## rank:cohort             0.794 -0.932 -0.044 -0.868                       
+## STAI.scale:cohort       0.034 -0.032 -0.907 -0.008  0.010                
+## rank:STAI.scale         0.061 -0.072 -0.851 -0.046  0.057  0.780         
+## rank:STAI.scale:cohort -0.034  0.036  0.821  0.012 -0.012 -0.862 -0.930  
 ## 
 ## Standardized Within-Group Residuals:
 ##         Min          Q1         Med          Q3         Max 
-## -3.79857839 -0.51704282 -0.03544456  0.30205464  6.97300196 
+## -3.80637254 -0.51406055 -0.03951372  0.29814905  7.00637811 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>intervals(mod6)</code></pre>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
 ##                               lower         est.        upper
-## (Intercept)             0.890852985  1.092417066  1.293981147
-## rank                   -0.003487324  0.019140518  0.041768360
-## STAI.scale              0.529432939  0.718541069  0.907649199
-## cohort                 -0.878866130 -0.765239589 -0.651613048
-## rank:cohort            -0.017264850 -0.004595591  0.008073668
-## STAI.scale:cohort      -0.417206202 -0.300525772 -0.183845342
-## rank:STAI.scale        -0.014080128  0.007463845  0.029007817
-## rank:STAI.scale:cohort -0.015378143 -0.002688169  0.010001806
+## (Intercept)             0.914089457  1.117627686  1.321165916
+## rank                   -0.006503639  0.016508891  0.039521421
+## STAI.scale              0.539317482  0.731031819  0.922746156
+## cohort                 -0.895769900 -0.780623891 -0.665477881
+## rank:cohort            -0.016406911 -0.003550302  0.009306307
+## STAI.scale:cohort      -0.423048982 -0.304729928 -0.186410875
+## rank:STAI.scale        -0.013371388  0.008485311  0.030342010
+## rank:STAI.scale:cohort -0.015960172 -0.003092669  0.009774834
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Fixed effects:&quot;
 ## 
 ##  Random Effects:
 ##   Level: as.factor(PID) 
 ##                             lower        est.      upper
-## sd((Intercept))        0.32136329  0.39746038 0.49157685
-## sd(rank)               0.02100808  0.02887021 0.03967468
-## cor((Intercept),rank) -0.46636827 -0.15516192 0.19022273
+## sd((Intercept))        0.30547057  0.38009870 0.47295889
+## sd(rank)               0.02064806  0.02847237 0.03926160
+## cor((Intercept),rank) -0.55112853 -0.26555576 0.07570304
 ## 
 ##  Within-group standard error:
 ##     lower      est.     upper 
-## 0.7007881 0.7200882 0.7399198</code></pre>
+## 0.7069466 0.7264915 0.7465767</code></pre>
 <pre class="r"><code>mod1&lt;-lme(fixed = as.numeric(PHQ4.scale) ~ rank + UCLA.scale + cohort + rank:cohort + cohort:UCLA.scale + rank:UCLA.scale + rank:UCLA.scale:cohort,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -3379,69 +3379,69 @@ summary(mod6)</code></pre>
 summary(mod1)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
-##        AIC      BIC    logLik
-##   3173.526 3236.602 -1574.763
+##        AIC     BIC    logLik
+##   3145.953 3208.91 -1560.977
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.56345703 (Intr)
-## rank        0.03555505 0.141 
-## Residual    0.64377209       
+## (Intercept) 0.56400100 (Intr)
+## rank        0.03526802 0.126 
+## Residual    0.64519393       
 ## 
 ## Fixed effects: as.numeric(PHQ4.scale) ~ rank + UCLA.scale + cohort + rank:cohort +      cohort:UCLA.scale + rank:UCLA.scale + rank:UCLA.scale:cohort 
 ##                             Value  Std.Error   DF   t-value p-value
-## (Intercept)            -0.1331928 0.13212559 1323 -1.008077  0.3136
-## rank                    0.0121104 0.01418474 1323  0.853762  0.3934
-## UCLA.scale              0.5956696 0.12283287 1323  4.849431  0.0000
-## cohort                 -0.0079389 0.07201019 1323 -0.110246  0.9122
-## rank:cohort             0.0057796 0.00798921 1323  0.723420  0.4695
-## UCLA.scale:cohort      -0.2085309 0.07493743 1323 -2.782734  0.0055
-## rank:UCLA.scale        -0.0418683 0.01387118 1323 -3.018370  0.0026
-## rank:UCLA.scale:cohort  0.0253841 0.00821651 1323  3.089397  0.0020
+## (Intercept)            -0.1229187 0.13351751 1311 -0.920618  0.3574
+## rank                    0.0102562 0.01433090 1311  0.715672  0.4743
+## UCLA.scale              0.5995382 0.12371703 1311  4.846045  0.0000
+## cohort                 -0.0136666 0.07247634 1311 -0.188567  0.8505
+## rank:cohort             0.0065619 0.00804939 1311  0.815201  0.4151
+## UCLA.scale:cohort      -0.2100529 0.07546881 1311 -2.783307  0.0055
+## rank:UCLA.scale        -0.0421303 0.01396748 1311 -3.016311  0.0026
+## rank:UCLA.scale:cohort  0.0255753 0.00827298 1311  3.091423  0.0020
 ##  Correlation: 
 ##                        (Intr) rank   UCLA.s cohort rnk:ch UCLA.: rn:UCLA.
-## rank                   -0.749                                            
+## rank                   -0.751                                            
 ## UCLA.scale             -0.033  0.027                                     
-## cohort                 -0.858  0.795  0.024                              
-## rank:cohort             0.770 -0.928 -0.018 -0.872                       
+## cohort                 -0.858  0.797  0.024                              
+## rank:cohort             0.770 -0.929 -0.018 -0.873                       
 ## UCLA.scale:cohort       0.015 -0.015 -0.919 -0.002  0.003                
-## rank:UCLA.scale         0.027 -0.034 -0.856 -0.019  0.023  0.794         
+## rank:UCLA.scale         0.026 -0.033 -0.856 -0.019  0.023  0.795         
 ## rank:UCLA.scale:cohort -0.016  0.018  0.824  0.005 -0.003 -0.857 -0.939  
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -4.1224665 -0.5168947 -0.1112086  0.4893972  5.1847900 
+## -4.1048545 -0.5163002 -0.1093614  0.4887227  5.1788177 
 ## 
-## Number of Observations: 1425
-## Number of Groups: 95</code></pre>
+## Number of Observations: 1411
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>intervals(mod1)</code></pre>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
 ##                               lower         est.       upper
-## (Intercept)            -0.392391343 -0.133192813  0.12600572
-## rank                   -0.015716644  0.012110398  0.03993744
-## UCLA.scale              0.354701107  0.595669556  0.83663800
-## cohort                 -0.149205470 -0.007938862  0.13332775
-## rank:cohort            -0.009893348  0.005779560  0.02145247
-## UCLA.scale:cohort      -0.355540067 -0.208530915 -0.06152176
-## rank:UCLA.scale        -0.069080254 -0.041868348 -0.01465644
-## rank:UCLA.scale:cohort  0.009265253  0.025384061  0.04150287
+## (Intercept)            -0.384849988 -0.122918652  0.13901268
+## rank                   -0.017857777  0.010256219  0.03837021
+## UCLA.scale              0.356833252  0.599538242  0.84224323
+## cohort                 -0.155848905 -0.013666625  0.12851566
+## rank:cohort            -0.009229218  0.006561871  0.02235296
+## UCLA.scale:cohort      -0.358105703 -0.210052860 -0.06200002
+## rank:UCLA.scale        -0.069531312 -0.042130258 -0.01472920
+## rank:UCLA.scale:cohort  0.009345552  0.025575275  0.04180500
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Fixed effects:&quot;
 ## 
 ##  Random Effects:
 ##   Level: as.factor(PID) 
 ##                             lower       est.      upper
-## sd((Intercept))        0.46431718 0.56345703 0.68376497
-## sd(rank)               0.02625736 0.03555505 0.04814506
-## cor((Intercept),rank) -0.22145937 0.14146150 0.46996346
+## sd((Intercept))        0.46305016 0.56400100 0.68696041
+## sd(rank)               0.02589376 0.03526802 0.04803601
+## cor((Intercept),rank) -0.25458349 0.12628026 0.47322973
 ## 
 ##  Within-group standard error:
 ##     lower      est.     upper 
-## 0.6188678 0.6437721 0.6696786</code></pre>
+## 0.6200952 0.6451939 0.6713086</code></pre>
 <pre class="r"><code>mod2&lt;-lme(fixed = as.numeric(PSS4.scale) ~ rank + UCLA.scale + cohort + rank:cohort + cohort:UCLA.scale + rank:UCLA.scale + rank:UCLA.scale:cohort,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -3449,69 +3449,69 @@ summary(mod1)</code></pre>
 summary(mod2)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
-##        AIC      BIC    logLik
-##   2925.244 2987.985 -1450.622
+##        AIC     BIC    logLik
+##   2903.993 2966.62 -1439.996
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.63703731 (Intr)
-## rank        0.02855282 0.145 
-## Residual    0.60169929       
+## (Intercept) 0.63891373 (Intr)
+## rank        0.02877841 0.151 
+## Residual    0.60318157       
 ## 
 ## Fixed effects: as.numeric(PSS4.scale) ~ rank + UCLA.scale + cohort + rank:cohort +      cohort:UCLA.scale + rank:UCLA.scale + rank:UCLA.scale:cohort 
-##                              Value  Std.Error   DF    t-value p-value
-## (Intercept)             0.10529184 0.12925086 1284  0.8146316  0.4154
-## rank                    0.00053672 0.01391609 1284  0.0385682  0.9692
-## UCLA.scale              0.31525850 0.11492452 1284  2.7431787  0.0062
-## cohort                 -0.08826130 0.06929879 1284 -1.2736341  0.2030
-## rank:cohort             0.00534012 0.00780098 1284  0.6845454  0.4938
-## UCLA.scale:cohort      -0.05308136 0.07190422 1284 -0.7382232  0.4605
-## rank:UCLA.scale        -0.03210024 0.01350038 1284 -2.3777285  0.0176
-## rank:UCLA.scale:cohort  0.01752467 0.00789046 1284  2.2209945  0.0265
+##                             Value  Std.Error   DF    t-value p-value
+## (Intercept)             0.1039555 0.13076557 1273  0.7949759  0.4268
+## rank                    0.0005963 0.01409107 1273  0.0423156  0.9663
+## UCLA.scale              0.3170848 0.11575738 1273  2.7392191  0.0062
+## cohort                 -0.0880292 0.06976756 1273 -1.2617499  0.2073
+## rank:cohort             0.0053018 0.00787155 1273  0.6735382  0.5007
+## UCLA.scale:cohort      -0.0534171 0.07242461 1273 -0.7375540  0.4609
+## rank:UCLA.scale        -0.0323157 0.01360006 1273 -2.3761403  0.0176
+## rank:UCLA.scale:cohort  0.0176157 0.00794873 1273  2.2161589  0.0269
 ##  Correlation: 
 ##                        (Intr) rank   UCLA.s cohort rnk:ch UCLA.: rn:UCLA.
-## rank                   -0.719                                            
+## rank                   -0.718                                            
 ## UCLA.scale             -0.037  0.030                                     
-## cohort                 -0.820  0.780  0.026                              
-## rank:cohort             0.746 -0.942 -0.020 -0.866                       
-## UCLA.scale:cohort       0.016 -0.017 -0.913 -0.002  0.004                
-## rank:UCLA.scale         0.029 -0.034 -0.844 -0.021  0.024  0.771         
-## rank:UCLA.scale:cohort -0.018  0.020  0.831  0.007 -0.006 -0.850 -0.946  
+## cohort                 -0.820  0.781  0.027                              
+## rank:cohort             0.747 -0.942 -0.020 -0.867                       
+## UCLA.scale:cohort       0.016 -0.016 -0.913 -0.003  0.005                
+## rank:UCLA.scale         0.028 -0.033 -0.844 -0.021  0.023  0.771         
+## rank:UCLA.scale:cohort -0.018  0.019  0.831  0.007 -0.006 -0.850 -0.946  
 ## 
 ## Standardized Within-Group Residuals:
 ##         Min          Q1         Med          Q3         Max 
-## -3.55493248 -0.58644551 -0.03185359  0.55742768  4.34509792 
+## -3.54620193 -0.58887672 -0.03242689  0.55707560  4.33578189 
 ## 
-## Number of Observations: 1386
-## Number of Groups: 95</code></pre>
+## Number of Observations: 1373
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>intervals(mod2)</code></pre>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
 ##                               lower          est.        upper
-## (Intercept)            -0.148274222  0.1052918372  0.358857896
-## rank                   -0.026764044  0.0005367189  0.027837482
-## UCLA.scale              0.089798051  0.3152584965  0.540718942
-## cohort                 -0.224212577 -0.0882612964  0.047689985
-## rank:cohort            -0.009963937  0.0053401225  0.020644183
-## UCLA.scale:cohort      -0.194144001 -0.0530813568  0.087981288
-## rank:UCLA.scale        -0.058585469 -0.0321002414 -0.005615014
-## rank:UCLA.scale:cohort  0.002045060  0.0175246747  0.033004289
+## (Intercept)            -0.152584255  0.1039554749  0.360495205
+## rank                   -0.027048007  0.0005962725  0.028240552
+## UCLA.scale              0.089988608  0.3170848214  0.544181035
+## cohort                 -0.224901261 -0.0880292156  0.048842830
+## rank:cohort            -0.010140841  0.0053017870  0.020744415
+## UCLA.scale:cohort      -0.195501773 -0.0534170564  0.088667660
+## rank:UCLA.scale        -0.058996649 -0.0323156520 -0.005634655
+## rank:UCLA.scale:cohort  0.002021599  0.0176156585  0.033209718
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Fixed effects:&quot;
 ## 
 ##  Random Effects:
 ##   Level: as.factor(PID) 
 ##                             lower       est.      upper
-## sd((Intercept))        0.53098476 0.63703731 0.76427152
-## sd(rank)               0.02003223 0.02855282 0.04069759
-## cor((Intercept),rank) -0.23553233 0.14539586 0.48759928
+## sd((Intercept))        0.53236505 0.63891373 0.76678731
+## sd(rank)               0.02022821 0.02877841 0.04094266
+## cor((Intercept),rank) -0.21577211 0.15125265 0.48082884
 ## 
 ##  Within-group standard error:
 ##     lower      est.     upper 
-## 0.5780169 0.6016993 0.6263520</code></pre>
+## 0.5793477 0.6031816 0.6279960</code></pre>
 <pre class="r"><code>mod3&lt;-lme(fixed = as.numeric(Depressed.scale) ~ rank + UCLA.scale + cohort + rank:cohort + cohort:UCLA.scale + rank:UCLA.scale + rank:UCLA.scale:cohort,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -3520,68 +3520,68 @@ summary(mod3)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   6924.464 6995.739 -3450.232
+##   6874.527 6945.685 -3425.264
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.50435191 (Intr)
-## rank        0.04625752 -0.165
-## Residual    0.76637411       
+## (Intercept) 0.50639529 (Intr)
+## rank        0.04562456 -0.199
+## Residual    0.76940290       
 ## 
 ## Fixed effects: as.numeric(Depressed.scale) ~ rank + UCLA.scale + cohort + rank:cohort +      cohort:UCLA.scale + rank:UCLA.scale + rank:UCLA.scale:cohort 
 ##                             Value  Std.Error   DF   t-value p-value
-## (Intercept)            -0.0044255 0.11247939 2712 -0.039345  0.9686
-## rank                   -0.0006347 0.01275532 2712 -0.049758  0.9603
-## UCLA.scale              0.3982437 0.10544471 2712  3.776801  0.0002
-## cohort                 -0.0871179 0.06139285 2712 -1.419023  0.1560
-## rank:cohort             0.0121878 0.00686838 2712  1.774481  0.0761
-## UCLA.scale:cohort      -0.1377853 0.06487868 2712 -2.123738  0.0338
-## rank:UCLA.scale        -0.0339363 0.01215414 2712 -2.792164  0.0053
-## rank:UCLA.scale:cohort  0.0183114 0.00718309 2712  2.549234  0.0109
+## (Intercept)            -0.0007248 0.11388709 2687 -0.006365  0.9949
+## rank                   -0.0019551 0.01288805 2687 -0.151699  0.8794
+## UCLA.scale              0.4011814 0.10642550 2687  3.769598  0.0002
+## cohort                 -0.0892952 0.06184452 2687 -1.443866  0.1489
+## rank:cohort             0.0125984 0.00692522 2687  1.819212  0.0690
+## UCLA.scale:cohort      -0.1391037 0.06546446 2687 -2.124874  0.0337
+## rank:UCLA.scale        -0.0340619 0.01226094 2687 -2.778085  0.0055
+## rank:UCLA.scale:cohort  0.0185045 0.00724445 2687  2.554298  0.0107
 ##  Correlation: 
 ##                        (Intr) rank   UCLA.s cohort rnk:ch UCLA.: rn:UCLA.
-## rank                   -0.750                                            
-## UCLA.scale             -0.038  0.030                                     
-## cohort                 -0.845  0.753  0.027                              
-## rank:cohort             0.763 -0.892 -0.021 -0.870                       
-## UCLA.scale:cohort       0.015 -0.013 -0.905  0.000  0.000                
-## rank:UCLA.scale         0.031 -0.035 -0.857 -0.022  0.025  0.774         
-## rank:UCLA.scale:cohort -0.015  0.015  0.814  0.002  0.001 -0.860 -0.918  
+## rank                   -0.757                                            
+## UCLA.scale             -0.037  0.030                                     
+## cohort                 -0.845  0.756  0.027                              
+## rank:cohort             0.764 -0.895 -0.021 -0.871                       
+## UCLA.scale:cohort       0.015 -0.013 -0.905 -0.001  0.001                
+## rank:UCLA.scale         0.030 -0.035 -0.858 -0.022  0.025  0.774         
+## rank:UCLA.scale:cohort -0.015  0.016  0.813  0.003  0.000 -0.860 -0.919  
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -2.8403313 -0.4922196 -0.1452328  0.2282408  5.7288064 
+## -2.8289480 -0.4925445 -0.1461581  0.2274534  5.7201864 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>intervals(mod3)</code></pre>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
-##                               lower          est.       upper
-## (Intercept)            -0.224979510 -0.0044255197  0.21612847
-## rank                   -0.025645816 -0.0006346809  0.02437645
-## UCLA.scale              0.191483608  0.3982437237  0.60500384
-## cohort                 -0.207499361 -0.0871178552  0.03326365
-## rank:cohort            -0.001279982  0.0121878113  0.02565560
-## UCLA.scale:cohort      -0.265001975 -0.1377853318 -0.01056869
-## rank:UCLA.scale        -0.057768649 -0.0339363427 -0.01010404
-## rank:UCLA.scale:cohort  0.004226494  0.0183113750  0.03239626
+##                                lower          est.       upper
+## (Intercept)            -0.2240400333 -0.0007248485  0.22259034
+## rank                   -0.0272266103 -0.0019551048  0.02331640
+## UCLA.scale              0.1924972572  0.4011814141  0.60986557
+## cohort                 -0.2105628940 -0.0892952306  0.03197243
+## rank:cohort            -0.0009808574  0.0125984456  0.02617775
+## UCLA.scale:cohort      -0.2674695477 -0.1391037412 -0.01073793
+## rank:UCLA.scale        -0.0581037815 -0.0340619461 -0.01002011
+## rank:UCLA.scale:cohort  0.0042992210  0.0185044813  0.03270974
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Fixed effects:&quot;
 ## 
 ##  Random Effects:
 ##   Level: as.factor(PID) 
 ##                             lower        est.      upper
-## sd((Intercept))        0.41622226  0.50435191 0.61114186
-## sd(rank)               0.03731166  0.04625752 0.05734824
-## cor((Intercept),rank) -0.41242411 -0.16459847 0.10591081
+## sd((Intercept))        0.41727636  0.50639529 0.61454762
+## sd(rank)               0.03675566  0.04562456 0.05663347
+## cor((Intercept),rank) -0.44477078 -0.19917860 0.07427129
 ## 
 ##  Within-group standard error:
 ##     lower      est.     upper 
-## 0.7458829 0.7663741 0.7874283</code></pre>
+## 0.7487436 0.7694029 0.7906322</code></pre>
 <pre class="r"><code>mod4&lt;-lme(fixed = as.numeric(Anxious.scale) ~ rank + UCLA.scale + cohort + rank:cohort + cohort:UCLA.scale + rank:UCLA.scale + rank:UCLA.scale:cohort,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -3589,69 +3589,69 @@ summary(mod3)</code></pre>
 summary(mod4)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
-##        AIC      BIC    logLik
-##   6845.061 6916.335 -3410.531
+##        AIC     BIC    logLik
+##   6775.962 6847.12 -3375.981
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
 ##             StdDev     Corr  
-## (Intercept) 0.52437220 (Intr)
-## rank        0.04432425 -0.083
-## Residual    0.75442708       
+## (Intercept) 0.52791948 (Intr)
+## rank        0.04418868 -0.094
+## Residual    0.75407913       
 ## 
 ## Fixed effects: as.numeric(Anxious.scale) ~ rank + UCLA.scale + cohort + rank:cohort +      cohort:UCLA.scale + rank:UCLA.scale + rank:UCLA.scale:cohort 
 ##                              Value  Std.Error   DF    t-value p-value
-## (Intercept)             0.21616497 0.11206342 2712  1.9289520  0.0538
-## rank                   -0.02516961 0.01250844 2712 -2.0122103  0.0443
-## UCLA.scale             -0.16047489 0.10374081 2712 -1.5468830  0.1220
-## cohort                 -0.15840516 0.06042403 2712 -2.6215588  0.0088
-## rank:cohort             0.01917821 0.00675803 2712  2.8378395  0.0046
-## UCLA.scale:cohort       0.15757826 0.06379842 2712  2.4699398  0.0136
-## rank:UCLA.scale         0.00552709 0.01194138 2712  0.4628519  0.6435
-## rank:UCLA.scale:cohort -0.00388279 0.00705510 2712 -0.5503521  0.5821
+## (Intercept)             0.22639846 0.11316290 2687  2.0006421  0.0455
+## rank                   -0.02760515 0.01261003 2687 -2.1891419  0.0287
+## UCLA.scale             -0.16074333 0.10424984 2687 -1.5419048  0.1232
+## cohort                 -0.16351174 0.06060518 2687 -2.6979831  0.0070
+## rank:cohort             0.01999201 0.00678538 2687  2.9463365  0.0032
+## UCLA.scale:cohort       0.15787946 0.06409383 2687  2.4632552  0.0138
+## rank:UCLA.scale         0.00543761 0.01199587 2687  0.4532906  0.6504
+## rank:UCLA.scale:cohort -0.00382098 0.00708671 2687 -0.5391754  0.5898
 ##  Correlation: 
 ##                        (Intr) rank   UCLA.s cohort rnk:ch UCLA.: rn:UCLA.
 ## rank                   -0.730                                            
 ## UCLA.scale             -0.037  0.030                                     
-## cohort                 -0.835  0.756  0.027                              
-## rank:cohort             0.754 -0.896 -0.021 -0.870                       
-## UCLA.scale:cohort       0.015 -0.013 -0.905  0.000  0.001                
+## cohort                 -0.834  0.757  0.027                              
+## rank:cohort             0.753 -0.896 -0.021 -0.871                       
+## UCLA.scale:cohort       0.015 -0.013 -0.905 -0.001  0.001                
 ## rank:UCLA.scale         0.030 -0.035 -0.856 -0.022  0.025  0.775         
-## rank:UCLA.scale:cohort -0.015  0.016  0.815  0.003  0.000 -0.859 -0.921  
+## rank:UCLA.scale:cohort -0.015  0.016  0.814  0.003 -0.001 -0.859 -0.920  
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.4036243 -0.5838510 -0.1588001  0.5142530  4.3213447 
+## -3.3986523 -0.5845085 -0.1611666  0.5137288  4.3238913 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>intervals(mod4)</code></pre>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
-##                               lower         est.         upper
-## (Intercept)            -0.003573375  0.216164968  0.4359033108
-## rank                   -0.049696655 -0.025169614 -0.0006425732
-## UCLA.scale             -0.363893922 -0.160474890  0.0429441415
-## cohort                 -0.276886965 -0.158405158 -0.0399233516
-## rank:cohort             0.005926796  0.019178208  0.0324296202
-## UCLA.scale:cohort       0.032479818  0.157578258  0.2826766981
-## rank:UCLA.scale        -0.017888035  0.005527091  0.0289422171
-## rank:UCLA.scale:cohort -0.017716695 -0.003882787  0.0099511215
+##                               lower         est.        upper
+## (Intercept)             0.004503296  0.226398461  0.448293627
+## rank                   -0.052331495 -0.027605149 -0.002878803
+## UCLA.scale             -0.365161337 -0.160743329  0.043674680
+## cohort                 -0.282349231 -0.163511739 -0.044674246
+## rank:cohort             0.006686918  0.019992009  0.033297100
+## UCLA.scale:cohort       0.032201251  0.157879462  0.283557674
+## rank:UCLA.scale        -0.018084449  0.005437614  0.028959677
+## rank:UCLA.scale:cohort -0.017716940 -0.003820981  0.010074979
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Fixed effects:&quot;
 ## 
 ##  Random Effects:
 ##   Level: as.factor(PID) 
 ##                             lower        est.      upper
-## sd((Intercept))        0.42661894  0.52437220 0.64452415
-## sd(rank)               0.03495771  0.04432425 0.05620045
-## cor((Intercept),rank) -0.47714402 -0.08348475 0.33807793
+## sd((Intercept))        0.43843926  0.52791948 0.63566154
+## sd(rank)               0.03544311  0.04418868 0.05509222
+## cor((Intercept),rank) -0.35682206 -0.09354572 0.18349732
 ## 
 ##  Within-group standard error:
 ##     lower      est.     upper 
-## 0.7342357 0.7544271 0.7751737</code></pre>
+## 0.7338276 0.7540791 0.7748896</code></pre>
 <pre class="r"><code>mod5&lt;-lme(fixed = as.numeric(Lonely.scale) ~ rank + UCLA.scale + cohort + rank:cohort + cohort:UCLA.scale + rank:UCLA.scale + rank:UCLA.scale:cohort,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -3660,68 +3660,68 @@ summary(mod5)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   6888.092 6959.367 -3432.046
+##   6821.724 6892.882 -3398.862
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##             StdDev    Corr  
-## (Intercept) 0.5996099 (Intr)
-## rank        0.0364001 -0.245
-## Residual    0.7622587       
+##             StdDev     Corr  
+## (Intercept) 0.60197227 (Intr)
+## rank        0.03655926 -0.26 
+## Residual    0.76235039       
 ## 
 ## Fixed effects: as.numeric(Lonely.scale) ~ rank + UCLA.scale + cohort + rank:cohort +      cohort:UCLA.scale + rank:UCLA.scale + rank:UCLA.scale:cohort 
 ##                             Value  Std.Error   DF   t-value p-value
-## (Intercept)            -0.3687420 0.11682609 2712 -3.156333  0.0016
-## rank                    0.0074765 0.01234207 2712  0.605777  0.5447
-## UCLA.scale              0.6343521 0.10513907 2712  6.033457  0.0000
-## cohort                  0.2380174 0.06104022 2712  3.899353  0.0001
-## rank:cohort            -0.0036990 0.00681614 2712 -0.542683  0.5874
-## UCLA.scale:cohort      -0.2643690 0.06444998 2712 -4.101926  0.0000
-## rank:UCLA.scale        -0.0327663 0.01200770 2712 -2.728776  0.0064
-## rank:UCLA.scale:cohort  0.0138701 0.00707737 2712  1.959781  0.0501
+## (Intercept)            -0.3762122 0.11798440 2687 -3.188661  0.0014
+## rank                    0.0080159 0.01245953 2687  0.643358  0.5200
+## UCLA.scale              0.6364274 0.10572626 2687  6.019578  0.0000
+## cohort                  0.2403696 0.06125933 2687  3.923804  0.0001
+## rank:cohort            -0.0039407 0.00685062 2687 -0.575240  0.5652
+## UCLA.scale:cohort      -0.2653694 0.06479242 2687 -4.095686  0.0000
+## rank:UCLA.scale        -0.0328238 0.01207192 2687 -2.719024  0.0066
+## rank:UCLA.scale:cohort  0.0139039 0.00711477 2687  1.954227  0.0508
 ##  Correlation: 
 ##                        (Intr) rank   UCLA.s cohort rnk:ch UCLA.: rn:UCLA.
-## rank                   -0.748                                            
-## UCLA.scale             -0.037  0.031                                     
-## cohort                 -0.809  0.773  0.027                              
-## rank:cohort             0.731 -0.916 -0.021 -0.870                       
-## UCLA.scale:cohort       0.014 -0.014 -0.902  0.000  0.001                
-## rank:UCLA.scale         0.029 -0.036 -0.856 -0.022  0.025  0.777         
-## rank:UCLA.scale:cohort -0.015  0.017  0.815  0.003 -0.002 -0.859 -0.928  
+## rank                   -0.750                                            
+## UCLA.scale             -0.036  0.031                                     
+## cohort                 -0.808  0.774  0.028                              
+## rank:cohort             0.731 -0.917 -0.021 -0.871                       
+## UCLA.scale:cohort       0.014 -0.014 -0.901 -0.001  0.002                
+## rank:UCLA.scale         0.029 -0.035 -0.856 -0.022  0.025  0.776         
+## rank:UCLA.scale:cohort -0.015  0.017  0.814  0.004 -0.002 -0.859 -0.927  
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -3.3068909 -0.5317749 -0.1536523  0.4127429  4.7060332 
+## -3.3065833 -0.5366414 -0.1526112  0.4155958  4.7046590 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>intervals(mod5)</code></pre>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
 ##                                lower         est.        upper
-## (Intercept)            -5.978192e-01 -0.368741989 -0.139664821
-## rank                   -1.672426e-02  0.007476545  0.031677349
-## UCLA.scale              4.281913e-01  0.634352084  0.840512893
-## cohort                  1.183273e-01  0.238017398  0.357707452
-## rank:cohort            -1.706437e-02 -0.003699006  0.009666357
-## UCLA.scale:cohort      -3.907451e-01 -0.264369037 -0.137993002
-## rank:UCLA.scale        -5.631151e-02 -0.032766335 -0.009221160
-## rank:UCLA.scale:cohort -7.488969e-06  0.013870101  0.027747691
+## (Intercept)            -6.075616e-01 -0.376212248 -0.144862855
+## rank                   -1.641529e-02  0.008015942  0.032447174
+## UCLA.scale              4.291144e-01  0.636427450  0.843740495
+## cohort                  1.202494e-01  0.240369598  0.360489783
+## rank:cohort            -1.737376e-02 -0.003940748  0.009492266
+## UCLA.scale:cohort      -3.924174e-01 -0.265369373 -0.138321339
+## rank:UCLA.scale        -5.649501e-02 -0.032823825 -0.009152643
+## rank:UCLA.scale:cohort -4.710347e-05  0.013903878  0.027854859
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Fixed effects:&quot;
 ## 
 ##  Random Effects:
 ##   Level: as.factor(PID) 
-##                             lower       est.      upper
-## sd((Intercept))        0.50265314  0.5996099 0.71526872
-## sd(rank)               0.02852983  0.0364001 0.04644147
-## cor((Intercept),rank) -0.49149464 -0.2454708 0.03683753
+##                             lower        est.      upper
+## sd((Intercept))        0.50358543  0.60197227 0.71958119
+## sd(rank)               0.02862584  0.03655926 0.04669136
+## cor((Intercept),rank) -0.50535561 -0.26001711 0.02421442
 ## 
 ##  Within-group standard error:
 ##     lower      est.     upper 
-## 0.7419051 0.7622587 0.7831706</code></pre>
+## 0.7418983 0.7623504 0.7833663</code></pre>
 <pre class="r"><code>mod6&lt;-lme(fixed = as.numeric(neg.aff.scale) ~ rank + UCLA.scale + cohort + rank:cohort + cohort:UCLA.scale + rank:UCLA.scale + rank:UCLA.scale:cohort,
           data = pooled,
           random = ~ rank| as.factor(PID), na.action=na.omit)
@@ -3730,68 +3730,68 @@ summary(mod6)</code></pre>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: pooled 
 ##        AIC      BIC    logLik
-##   6620.641 6691.916 -3298.321
+##   6595.987 6667.145 -3285.993
 ## 
 ## Random effects:
 ##  Formula: ~rank | as.factor(PID)
 ##  Structure: General positive-definite, Log-Cholesky parametrization
-##             StdDev    Corr  
-## (Intercept) 0.4516283 (Intr)
-## rank        0.0288420 -0.147
-## Residual    0.7339435       
+##             StdDev     Corr  
+## (Intercept) 0.43976856 (Intr)
+## rank        0.02861225 -0.227
+## Residual    0.74078657       
 ## 
 ## Fixed effects: as.numeric(neg.aff.scale) ~ rank + UCLA.scale + cohort + rank:cohort +      cohort:UCLA.scale + rank:UCLA.scale + rank:UCLA.scale:cohort 
 ##                             Value  Std.Error   DF    t-value p-value
-## (Intercept)             1.1743010 0.10618059 2712  11.059470  0.0000
-## rank                    0.0195444 0.01169441 2712   1.671265  0.0948
-## UCLA.scale              0.4702161 0.09937141 2712   4.731906  0.0000
-## cohort                 -0.8127285 0.05866115 2712 -13.854630  0.0000
-## rank:cohort            -0.0051721 0.00654668 2712  -0.790030  0.4296
-## UCLA.scale:cohort      -0.2206561 0.06131701 2712  -3.598612  0.0003
-## rank:UCLA.scale         0.0075775 0.01141989 2712   0.663537  0.5070
-## rank:UCLA.scale:cohort -0.0048857 0.00672573 2712  -0.726412  0.4676
+## (Intercept)             1.2037583 0.10737755 2687  11.210521  0.0000
+## rank                    0.0168968 0.01189766 2687   1.420175  0.1557
+## UCLA.scale              0.4822517 0.10079843 2687   4.784318  0.0000
+## cohort                 -0.8292032 0.05944364 2687 -13.949401  0.0000
+## rank:cohort            -0.0040613 0.00664359 2687  -0.611317  0.5410
+## UCLA.scale:cohort      -0.2252812 0.06220448 2687  -3.621623  0.0003
+## rank:UCLA.scale         0.0076822 0.01158278 2687   0.663246  0.5072
+## rank:UCLA.scale:cohort -0.0048179 0.00681999 2687  -0.706440  0.4800
 ##  Correlation: 
 ##                        (Intr) rank   UCLA.s cohort rnk:ch UCLA.: rn:UCLA.
-## rank                   -0.778                                            
+## rank                   -0.792                                            
 ## UCLA.scale             -0.037  0.030                                     
-## cohort                 -0.857  0.784  0.026                              
-## rank:cohort             0.774 -0.930 -0.020 -0.870                       
-## UCLA.scale:cohort       0.016 -0.015 -0.913 -0.001  0.003                
-## rank:UCLA.scale         0.030 -0.036 -0.854 -0.021  0.025  0.781         
-## rank:UCLA.scale:cohort -0.017  0.019  0.824  0.005 -0.004 -0.857 -0.937  
+## cohort                 -0.863  0.786  0.026                              
+## rank:cohort             0.780 -0.932 -0.020 -0.871                       
+## UCLA.scale:cohort       0.016 -0.015 -0.913 -0.002  0.003                
+## rank:UCLA.scale         0.030 -0.035 -0.855 -0.021  0.025  0.781         
+## rank:UCLA.scale:cohort -0.017  0.019  0.824  0.005 -0.005 -0.857 -0.937  
 ## 
 ## Standardized Within-Group Residuals:
 ##         Min          Q1         Med          Q3         Max 
-## -3.76555506 -0.56331692 -0.04214561  0.34332037  6.80177907 
+## -3.77424217 -0.56217466 -0.04336009  0.34169697  6.82801967 
 ## 
-## Number of Observations: 2814
-## Number of Groups: 95</code></pre>
+## Number of Observations: 2787
+## Number of Groups: 93</code></pre>
 <pre class="r"><code>intervals(mod6)</code></pre>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
-##                               lower         est.       upper
-## (Intercept)             0.966097913  1.174300956  1.38250400
-## rank                   -0.003386401  0.019544449  0.04247530
-## UCLA.scale              0.275364774  0.470216114  0.66506745
-## cohort                 -0.927753609 -0.812728531 -0.69770345
-## rank:cohort            -0.018009070 -0.005172075  0.00766492
-## UCLA.scale:cohort      -0.340888921 -0.220656137 -0.10042335
-## rank:UCLA.scale        -0.014815048  0.007577527  0.02997010
-## rank:UCLA.scale:cohort -0.018073733 -0.004885652  0.00830243
+##                               lower         est.        upper
+## (Intercept)             0.993207359  1.203758334  1.414309309
+## rank                   -0.006432732  0.016896764  0.040226259
+## UCLA.scale              0.284601422  0.482251739  0.679902055
+## cohort                 -0.945763104 -0.829203200 -0.712643295
+## rank:cohort            -0.017088413 -0.004061342  0.008965728
+## UCLA.scale:cohort      -0.347254677 -0.225281198 -0.103307719
+## rank:UCLA.scale        -0.015029827  0.007682227  0.030394281
+## rank:UCLA.scale:cohort -0.018190870 -0.004817914  0.008555041
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Fixed effects:&quot;
 ## 
 ##  Random Effects:
 ##   Level: as.factor(PID) 
-##                             lower       est.      upper
-## sd((Intercept))        0.36948870  0.4516283 0.55202800
-## sd(rank)               0.02071291  0.0288420 0.04016147
-## cor((Intercept),rank) -0.45345834 -0.1471734 0.19020053
+##                             lower        est.      upper
+## sd((Intercept))        0.35797455  0.43976856 0.54025177
+## sd(rank)               0.02045932  0.02861225 0.04001408
+## cor((Intercept),rank) -0.52597604 -0.22747166 0.12092805
 ## 
 ##  Within-group standard error:
 ##     lower      est.     upper 
-## 0.7142454 0.7339435 0.7541849</code></pre>
+## 0.7208279 0.7407866 0.7612979</code></pre>
 </div>
 <div id="coping" class="section level1">
 <h1>Coping</h1>
