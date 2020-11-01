@@ -10,29 +10,29 @@ Analysis scripts are here: https://kskuehn.github.io/UWEXP_COVID/
   ### Variables included in this file:
     PID: Participant ID
     Phase: Variable specifying if 2019 or 2020 data 
-    Q_BDI: BDI-II scale scores  
-    Q_STAI: State-Trait Anxiety Inventory scale scores
-    Q_PSS: Perceived Stress Scale Scores
-    Q_UCLA: UCLA Loneliness Scale scores
+    Q_BDI: BDI-II scores  
+    Q_STAI: State-Trait Anxiety Inventory scores
+    Q_PSS: Perceived Stress scores
+    Q_UCLA: UCLA Loneliness scores
     
 ## Within.csv
  Data file that includes only participants in both 2019 and 2020
  ### Variables included in this file:
      PID: Participant ID
      Phase: Variable specifying if 2019 or 2020 data 
-     Q_BDI: BDI-II scale scores  
-     Q_STAI: State-Trait Anxiety Inventory scale scores
-     Q_PSS: Perceived Stress Scale Scores
-     Q_UCLA: UCLA Loneliness Scale scores
+     Q_BDI: BDI-II scores  
+     Q_STAI: State-Trait Anxiety Inventory scores
+     Q_PSS: Perceived Stress scores
+     Q_UCLA: UCLA Loneliness scores
 
 ## 2020pre.post.csv: 
   Data file to compare 2020 pre and post survey
   ### Variables included in this file:
     PID: Participant ID
     tp: Variable specifying if Time or Time 2 score
-    Q_BDI: BDI-II scale scores  
-    Q_STAI: State-Trait Anxiety Inventory scale scores
-    Q_PSS: Perceived Stress Scale Scores
+    Q_BDI: BDI-II scores  
+    Q_STAI: State-Trait Anxiety Inventory scores
+    Q_PSS: Perceived Stress Scale scores
     Q_UCLA: UCLA Loneliness Scale scores
 
 ## Pooled.ESM.CSV: 
