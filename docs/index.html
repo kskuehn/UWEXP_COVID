@@ -1518,26 +1518,94 @@ div.tocify {
 
 <div id="comparing-2019-to-2020-data" class="section level1">
 <h1>Comparing 2019 to 2020 data</h1>
-<pre class="r"><code>phase&lt;-read.csv(&quot;/Users/kevinkuehn/Documents/UWEXP/COVID/Year2Year.csv&quot;)</code></pre>
-<pre><code>## Error in file(file, &quot;rt&quot;): cannot open the connection</code></pre>
-<pre class="r"><code>phase$phase&lt;-as.factor(phase$phase)</code></pre>
-<pre><code>## Error in is.factor(x): object &#39;phase&#39; not found</code></pre>
-<pre class="r"><code>mod1&lt;-lm(Q_BDI2~as.factor(phase), data=phase)</code></pre>
-<pre><code>## Error in is.data.frame(data): object &#39;phase&#39; not found</code></pre>
-<pre class="r"><code>summary(mod1)</code></pre>
-<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;object&#39; in selecting a method for function &#39;summary&#39;: object &#39;mod1&#39; not found</code></pre>
-<pre class="r"><code>mod2&lt;-lm(Q_STAI~as.factor(phase), data=phase)</code></pre>
-<pre><code>## Error in is.data.frame(data): object &#39;phase&#39; not found</code></pre>
-<pre class="r"><code>summary(mod2)</code></pre>
-<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;object&#39; in selecting a method for function &#39;summary&#39;: object &#39;mod2&#39; not found</code></pre>
-<pre class="r"><code>mod3&lt;-lm(Q_PSS~as.factor(phase), data=phase)</code></pre>
-<pre><code>## Error in is.data.frame(data): object &#39;phase&#39; not found</code></pre>
-<pre class="r"><code>summary(mod3)</code></pre>
-<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;object&#39; in selecting a method for function &#39;summary&#39;: object &#39;mod3&#39; not found</code></pre>
-<pre class="r"><code>mod4&lt;-lm(Q_UCLA~as.factor(phase), data=phase)</code></pre>
-<pre><code>## Error in is.data.frame(data): object &#39;phase&#39; not found</code></pre>
-<pre class="r"><code>summary(mod4)</code></pre>
-<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;object&#39; in selecting a method for function &#39;summary&#39;: object &#39;mod4&#39; not found</code></pre>
+<pre class="r"><code>phase&lt;-read.csv(&quot;/Users/kevinkuehn/Documents/UWEXP/COVID/UWEXP_COVID/Year2Year.csv&quot;)
+
+phase$phase&lt;-as.factor(phase$phase)
+
+mod1&lt;-lm(Q_BDI2~as.factor(phase), data=phase)
+
+summary(mod1)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Q_BDI2 ~ as.factor(phase), data = phase)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -12.422  -6.422  -1.816   4.791  31.791 
+## 
+## Coefficients:
+##                   Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)        12.2095     0.5515  22.140   &lt;2e-16 ***
+## as.factor(phase)3   0.2123     0.9097   0.233    0.816    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 8.771 on 398 degrees of freedom
+## Multiple R-squared:  0.0001368,  Adjusted R-squared:  -0.002375 
+## F-statistic: 0.05446 on 1 and 398 DF,  p-value: 0.8156</code></pre>
+<pre class="r"><code>mod2&lt;-lm(Q_STAI~as.factor(phase), data=phase)
+
+summary(mod2)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Q_STAI ~ as.factor(phase), data = phase)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -22.8458  -7.8458   0.1542   7.1542  28.1542 
+## 
+## Coefficients:
+##                   Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)         45.846      0.658  69.680   &lt;2e-16 ***
+## as.factor(phase)3   -1.492      1.085  -1.375     0.17    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 10.47 on 398 degrees of freedom
+## Multiple R-squared:  0.004726,   Adjusted R-squared:  0.002226 
+## F-statistic:  1.89 on 1 and 398 DF,  p-value: 0.17</code></pre>
+<pre class="r"><code>mod3&lt;-lm(Q_PSS~as.factor(phase), data=phase)
+
+summary(mod3)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Q_PSS ~ as.factor(phase), data = phase)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -23.6601  -4.7298   0.3399   4.3399  24.3399 
+## 
+## Coefficients:
+##                   Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)        27.6601     0.4586  60.314   &lt;2e-16 ***
+## as.factor(phase)3  -0.7213     0.7565  -0.953    0.341    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 7.294 on 398 degrees of freedom
+## Multiple R-squared:  0.002279,   Adjusted R-squared:  -0.0002278 
+## F-statistic: 0.9091 on 1 and 398 DF,  p-value: 0.3409</code></pre>
+<pre class="r"><code>mod4&lt;-lm(Q_UCLA~as.factor(phase), data=phase)
+
+summary(mod4)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Q_UCLA ~ as.factor(phase), data = phase)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -22.6957  -3.8262   0.3043   3.7823  17.3043 
+## 
+## Coefficients:
+##                   Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)        22.6957     0.3406  66.642   &lt;2e-16 ***
+## as.factor(phase)3  -0.4780     0.5618  -0.851    0.395    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 5.417 on 398 degrees of freedom
+## Multiple R-squared:  0.001815,   Adjusted R-squared:  -0.0006925 
+## F-statistic: 0.7239 on 1 and 398 DF,  p-value: 0.3954</code></pre>
 </div>
 <div id="comparing-within-person-changes" class="section level1">
 <h1>Comparing within person changes</h1>
