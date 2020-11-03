@@ -5,6 +5,9 @@ Analysis scripts are here: https://kskuehn.github.io/UWEXP_COVID/
 
 # Data files included in repository: 
 
+## Anonymized codebook for reviewers.xlsx
+ Codebook used for thematic analysis. Will be removed from repository after review to protect confidentiality. 
+
 ## Year2Year.csv:
  Data file used to compare 2019 and 2020 Time 1 responses
   ### Variables included in this file:
