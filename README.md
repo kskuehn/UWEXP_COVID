@@ -36,7 +36,7 @@ Analysis scripts are here: https://kskuehn.github.io/UWEXP_COVID/
     Q_UCLA: UCLA Loneliness Scale scores
 
 ## Pooled.ESM.CSV: 
-  2019 and 2020 experience sampling data from the 95 participants who took part in both years
+  2019 and 2020 experience sampling data from the 90 participants who took part in both years
    ### Variables included in this file:
     PID
     rank	
