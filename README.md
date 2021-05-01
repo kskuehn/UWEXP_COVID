@@ -67,7 +67,6 @@ Analysis scripts are here: https://kskuehn.github.io/UWEXP_COVID/
   2020 experience sampling data 
    ### Variables included in this file:
     PID
-    date
     rank
     Depressed
     Anxious
